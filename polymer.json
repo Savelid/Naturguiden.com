@@ -1,0 +1,21 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/ng-app.html",
+  "fragments": [
+    "src/ng-view1.html",
+    "src/ng-view2.html",
+    "src/ng-view3.html",
+    "src/ng-home.html",
+    "src/ng-adventure.html",
+    "src/ng-view404.html"
+  ],
+  "sourceGlobs": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

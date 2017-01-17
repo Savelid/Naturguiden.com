@@ -1,0 +1,280 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="my-icons.html">
+
+<dom-module id="ng-app">
+    <template>
+        <style is="custom-style">
+            :host {
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+                --softer-text-color: #444;
+                display: block;
+            }
+            /*
+            app-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-position: bottom center;
+                background-size: cover;
+                height: 192px;
+                color: #fff;
+                background-color: var(--app-primary-color);
+                background-image: url(//app-layout-assets.appspot.com/assets/bg3.jpg);
+                --app-header-background-front-layer: {
+                    background: -webkit-linear-gradient(top, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+                }
+                ;
+                --app-header-background-rear-layer: {
+                    background-color: #303f9f;
+                }
+                ;
+            }*/
+            
+            app-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 64px;
+                color: #fff;
+                background-color: var(--app-primary-color);
+                --app-header-background-front-layer: {
+                    background: -webkit-linear-gradient(top, transparent 0%, transparent 0%, rgba(0, 0, 0, 0.0) 0%);
+                }
+                ;
+                --app-header-background-rear-layer: {
+                    background-color: #303f9f;
+                }
+                ;
+            }
+            
+            @media (min-width: 768px) {
+                app-header {
+                    background-position: bottom center;
+                    background-size: cover;
+                    height: 192px;
+                    background-image: url(../images/banner/skating001.jpg);
+                }
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+            #drawer app-toolbar {
+                background: #F44336;
+                color: white;
+                font-size: 24px;
+            }
+            
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list .subheader {
+                color: #9e9e9e;
+                cursor: default;
+                padding: 0 16px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: 500;
+                line-height: 48px;
+                text-transform: uppercase;
+            }
+            
+            .drawer-list .divider {
+                padding: 0;
+                margin: 12px 0;
+                border-bottom: 1px solid #EEEEEE;
+            }
+
+            .drawer-list iron-icon {
+                margin-right: 16px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                text-decoration: none;
+                color: var(--softer-text-color);
+                line-height: 48px;
+            }
+            
+            .drawer-list a:hover {
+                background-color: #F5F5F5
+            }
+            
+            .drawer-list a.iron-selected {
+                color: white;
+                background-color: #039be5
+            }
+        </style>
+
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <app-drawer-layout fullbleed>
+            <!-- Drawer content -->
+            <app-drawer id="drawer">
+                <app-toolbar>Menu</app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="view1" href="/view1">View One</a>
+                    <a name="view2" href="/view2">View Two</a>
+                    <a name="view3" href="/view3">View Three</a>
+                    <a href="/" name="home">
+                        <iron-icon icon="custom-icons:home"></iron-icon>
+                        Home
+                    </a>
+
+                    <a href="/adventures" name="adventures">
+                        <iron-icon icon="custom-icons:pets"></iron-icon>
+                        Our adventures
+                    </a>
+
+                    <a href="/info" name="info">
+                        <iron-icon icon="custom-icons:info"></iron-icon>
+                        Information
+                    </a>
+
+                    <a href="/pictures" name="pictures">
+                        <iron-icon icon="custom-icons:collections"></iron-icon>
+                        Photos
+                    </a>
+
+                    <a href="/About-us" name="about-us">
+                        <iron-icon icon="custom-icons:naturguiden"></iron-icon>
+                        About us
+                    </a>
+
+                    <div class="divider"></div>
+
+                    <div class="subheader">
+                        Our adventures
+                    </div>
+
+                    <a href="/adventures/skating" name="skating">
+                            Nordic Skating
+                    </a>
+                    <a href="/adventures/skiing" name="skiing">
+                            Skiing
+                    </a>
+                    <a href="/adventures/kayak" name="kayak">
+                            Kayaking
+                    </a>
+                    <a href="/adventures/hiking" name="hiking">
+                            Hiking
+                    </a>
+
+                    <div class="divider"></div>
+
+                    <div class="subheader">
+                        Information
+                    </div>
+
+                    <a href="/info/about-tours" name="about-tours">
+                            About our tours
+                    </a>
+                    <a href="/info/how-get-here" name="how-get-here">
+                            How to get here
+                    </a>
+                    <a href="/info/accommodation" name="accommodation">
+                            Accommundation
+                    </a>
+                    <a href="/info/about-sweden" name="about-sweden">
+                            About Sweden
+                    </a>
+
+                    <div class="divider"></div>
+
+                    <a href="/booking" name="booking">
+                        <iron-icon icon="custom-icons:event"></iron-icon>
+                        Send an inquiry
+                    </a>
+
+                    <a href="/about-us/contact" name="contact">
+                        <iron-icon icon="custom-icons:phone"></iron-icon>
+                        Contact us
+                    </a>
+                </iron-selector>
+            </app-drawer>
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+
+                <app-header condenses fixed effects="parallax-background fade-background" effects-config='"fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
+                    <app-toolbar>App name</app-toolbar>
+                </app-header>
+
+                <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+                    <ng-view1 name="view1"></ng-view1>
+                    <ng-view2 name="view2"></ng-view2>
+                    <ng-view3 name="view3"></ng-view3>
+                    <ng-home name="home"></ng-home>
+                    <ng-adventures name="adventures"></ng-adventures>
+                    <ng-view404 name="view404"></ng-view404>
+                </iron-pages>
+            </app-header-layout>
+        </app-drawer-layout>
+    </template>
+
+    <script>
+    Polymer({
+      is: 'ng-app',
+
+      properties: {
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged',
+        },
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)',
+      ],
+
+      _routePageChanged: function(page) {
+        this.page = page || 'home';
+
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+      },
+
+      _pageChanged: function(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('ng-' + page + '.html');
+        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+      },
+
+      _showPage404: function() {
+        this.page = 'view404';
+      },
+    });
+  </script>
+</dom-module>
