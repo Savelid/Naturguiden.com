@@ -10,9 +10,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 
+<!--
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+-->
 
 
 <dom-module id="my-left-image-paper-card">
@@ -30,21 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     [hidden] {
       display: none !important;
     }
-    .header {
-      position: relative;
-      border-top-left-radius: inherit;
-      border-top-right-radius: inherit;
-      overflow: hidden;
-      @apply(--my-left-image-paper-card-header);
-    }
 
-    .header .title-text {
-      padding: 16px;
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--paper-card-header-color, #000);
-      @apply(--my-left-image-paper-card-header-text);
-    }
     :host ::content .card-content {
       padding: 16px;
       position:relative;
