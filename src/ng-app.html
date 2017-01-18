@@ -112,13 +112,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 left: 230px;
                 width: 410px;
             }
-
+            
             paper-tab a {
                 color: inherit;
                 font-weight: 600;
                 text-decoration: none;
                 line-height: 48px;
                 text-align: center;
+            }
+
+            iron-pages {
+                padding: 6px;
+            }
+
+            footer {
+                position: fixed;
+                bottom: 0;
+                background-color: rgba(250, 250, 250, 0.8);
+                line-height: 48px;
+                width: 100%;
             }
             
             .naturguiden_name,
@@ -128,7 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 left: 60px;
                 height: 48px;
             }
-
+            
             @media (min-width: 768px) {
                 app-header {
                     background-position: bottom center;
@@ -149,6 +161,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+</app-route>
 
         <app-drawer-layout fullbleed force-narrow id="aaa">
             <!-- Drawer content -->
@@ -179,7 +192,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             Photos
                         </a>
 
-                        <a href="/About-us" name="about-us">
+                        <a href="/about-us" name="about-us">
                             <iron-icon icon="custom-icons:naturguiden"></iron-icon>
                             About us
                         </a>
@@ -226,64 +239,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <app-header id="scrollheader" condenses fixed effects="parallax-background resize-snapped-title fade-background" effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
                     <app-toolbar>
-                        <!--
-                        <paper-icon-button on-tap="toggleDrawer" icon="custom-icons:menu" paper-drawer-toggle></paper-icon-button>
-
-                        <!-- Application name --/>
-                        <div class="middle middle-container center horizontal layout logo-container">
-                            <a href="/">
-                                <img class="naturguiden_name" alt="Naturguiden name" src="../images/name.png">
-                            </a>
-                        </div>
-
-                        <div class="flex"></div>
-
-                        <a href="https://www.facebook.com/Naturguiden/">
-                            <paper-icon-button class="large" icon="128-icons:facebook"></paper-icon-button>
-                        </a>
-                        <a href="/about-us/contact" data-route="contact">
-                            <paper-icon-button class="large" icon="custom-icons:phone" style="color:#CCC;"></paper-icon-button>
-                        </a>
-
-                        <!-- Application sub title --/>
-
-                        <div class="bottom flex" style="min-width: 220px;"></div>
-                        <paper-tabs selected="[[route]]" bottom-item>
-                            <paper-tab data-route="adventures" link><a href="/adventures" class="link">Our adventures</a></paper-tab>
-                            <paper-tab data-route="info" link><a href="/info" class="link">Information</a></paper-tab>
-                            <paper-tab data-route="pictures" link><a href="/pictures" class="link">Photos</a></paper-tab>
-                            <paper-tab data-route="about-us" link><a href="/about-us" class="link">About us</a></paper-tab>
-                        </paper-tabs>
-                        -->
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
                         <a href="/" condensed-title>
                             <img class="naturguiden_name" alt="Naturguiden name" src="../images/name.png">
                         </a>
-                        <!--<my-rezising-logo id="maintitle" main-title image="../images/name.png" small-height="48" large-height="128" scale="[[_transrate()]]"></my-rezising-logo>-->
                         <paper-icon-button icon="128-icons:facebook"></paper-icon-button>
                         <paper-icon-button icon="custom-icons:phone"></paper-icon-button>
                     </app-toolbar>
                     <a href="/" main-title>
                         <img class="naturguiden_name_large" alt="Naturguiden name" src="../images/name.png">
                     </a>
-                        <paper-tabs selected="[[route]]">
-                            <paper-tab link><a href="/adventures" class="link">Our adventures</a></paper-tab>
-                            <paper-tab link><a href="/info" class="link">Information</a></paper-tab>
-                            <paper-tab link><a href="/pictures" class="link">Photos</a></paper-tab>
-                            <paper-tab link><a href="/about-us" class="link">About us</a></paper-tab>
-                        </paper-tabs>
+                    <paper-tabs selected="[[page]]" attr-for-selected="name">
+                        <paper-tab link><a href="/adventures" name="adventures" class="link">Our adventures</a></paper-tab>
+                        <paper-tab link><a href="/info" name="info" class="link">Information</a></paper-tab>
+                        <paper-tab link><a href="/pictures" name="pictures" class="link">Photos</a></paper-tab>
+                        <paper-tab link><a href="/about-us" name="about-us" class="link">About us</a></paper-tab>
+                    </paper-tabs>
 
 
                 </app-header>
 
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-                    <ng-view1 name="view1"></ng-view1>
-                    <ng-view2 name="view2"></ng-view2>
-                    <ng-view3 name="view3"></ng-view3>
                     <ng-home name="home"></ng-home>
-                    <ng-adventures name="adventures"></ng-adventures>
+                    <ng-adventures name="adventures" route="{{subroute}}"></ng-adventures>
                     <ng-view404 name="view404"></ng-view404>
                 </iron-pages>
+
+                <footer>
+                    Send inquery
+                </footer>
             </app-header-layout>
         </app-drawer-layout>
     </template>
@@ -306,11 +290,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         '_routePageChanged(routeData.page)',
       ],
 
-      listeners: {
-        'scroll': '_setLogoScale',
-      },
-
       _routePageChanged: function(page) {
+          console.log('hej1')
         this.page = page || 'home';
 
         if (!this.$.drawer.persistent) {
@@ -320,7 +301,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('ng-' + page + '.html');
+        var myPageToOpen = 'ng-' + page + '.html';
+
+        var resolvedPageUrl = this.resolveUrl(myPageToOpen);
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
@@ -332,13 +315,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this.$.drawer.toggle();
       },
 
-      _transrate: function() {
-          return 1 - this.$.scrollheader.getScrollState()["progress"];
-      },
-      _setLogoScale: function() {
-        console.log(this.$.scrollheader.getScrollState()["progress"]);
-        this.$.maintitle.setAttribute('scale', 1 - this.$.scrollheader.getScrollState()["progress"]);
-      },
     });
   </script>
 </dom-module>

@@ -1,68 +1,38 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../elements/my-left-image-paper-card.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="adventures/index.html">
 
 <dom-module id="ng-adventures">
 
     <template>
         <style>
             /* CSS rules for your element */
-
+            
             a my-left-image-paper-card {
-                color:#444;
+                color: #444;
             }
+            
             my-left-image-paper-card {
-                margin: 5px;
+                margin: 6px 0;
                 width: 100%;
             }
-
         </style>
 
         <!-- local DOM for your element -->
 
-        <a href="/adventures/skating">
-            <my-left-image-paper-card image="images/500/skating002.jpg">
-                <div class="card-content">
-                    <h1>Nordic skating</h1>
-                    <p>Experience some amazing long distance ice-skating adventures in Sweden. The unspoiled countryside and
-                        the huge expanse of glossy ice – everything is here waiting for you. We skate on some of Sweden's
-                        many lakes, the Göta Kanal or in the beautiful archipelago.</p>
-                </div>
-            </my-left-image-paper-card>
-        </a>
-        <a href="/adventures/skiing">
-            <my-left-image-paper-card image="images/500/skiing001.jpg">
-                <div class="card-content">
-                    <h1>Cross country skiing</h1>
-                    <p>Cross country skiing in the Swedish mountains during the best time of the year, the fifth season: still
-                        winter, but with long lasting sunshine days. Sun factor 20 is needed.</p>
+        <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
 
-                    <p>We cross the snowy mountains under a blue sky, take our breaks in dug couches of snow and spend the nights
-                        in mountain lodges. Days of enjoyment, experience and fantastic views!</p>
-                </div>
-            </my-left-image-paper-card>
-        </a>
-        <a href="/adventures/kayak">
-            <my-left-image-paper-card image="images/500/kayak001_bad.jpg">
-                <div class="card-content">
-                    <h1>Kayak</h1>
-                    <p>Join us on our Kayak tours in the beautiful archipelago of the Baltic sea. Between islands and skerries,
-                        out in the open sea and in seduced caves. There are thousands of islands, most of them unsettled.
-                        The Swedish "allemansrätt" gives us the right to camp on any one of them. At lunchtime we make a
-                        break on some island, cock a meal, maybe take a swim. In the evenings we camp on another island,
-                        make dinner over open fire and sleep in tents.</p>
-                </div>
-            </my-left-image-paper-card>
-        </a>
-        <a href="/adventures/hiking">
-            <my-left-image-paper-card image="images/500/tent001.jpg">
-                <div class="card-content">
-                    <h1>Hiking</h1>
-                    <p>Leave the civilisation for a couple of days. Join our hiking tours in the beautiful nature of Sweden.
-                        Time for recovery and recreation, the most beautiful trails, what to eat and where to sleep - everything
-                        is arranged for you. Leave the control and just enjoy.</p>
-                </div>
-            </my-left-image-paper-card>
-        </a>
+        <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="index" role="main">
+            <ng-view1 name="view1"></ng-view1>
+            <ng-view2 name="view2"></ng-view2>
+            <ng-view3 name="view3"></ng-view3>
+            <ng-home name="home"></ng-home>
+            <adventures-index name="index"></adventures-index>
+            <ng-view404 name="view404"></ng-view404>
+        </iron-pages>
 
     </template>
 
@@ -75,6 +45,25 @@
 
           properties: {
             // declare properties for the element's public API
+            properties: {
+                route: {
+                    type: Object,
+                    reflectToAttribute: true,
+                    observer: '_routeChanged',
+                }
+            },
+
+            properties: {
+                action: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_routeChanged',
+                }
+            },
+
+            _routeChanged(route) {
+                console.log(route + 'hej');
+            }
           }
         });
       </script>
