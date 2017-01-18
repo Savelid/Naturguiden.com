@@ -32,27 +32,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --softer-text-color: #444;
                 display: block;
             }
-            /*
-            app-header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background-position: bottom center;
-                background-size: cover;
-                height: 192px;
-                color: #fff;
-                background-color: var(--app-primary-color);
-                background-image: url(//app-layout-assets.appspot.com/assets/bg3.jpg);
-                --app-header-background-front-layer: {
-                    background: -webkit-linear-gradient(top, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
-                }
-                ;
-                --app-header-background-rear-layer: {
-                    background-color: #303f9f;
-                }
-                ;
-            }*/
             
             app-header {
                 position: fixed;
@@ -72,27 +51,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 ;
             }
             
-            @media (min-width: 768px) {
-                app-header {
-                    background-position: bottom center;
-                    background-size: cover;
-                    height: 192px;
-                    background-image: url(../images/banner/skating001.jpg);
-                }
-            }
-            
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
             }
-
+            
             #drawer app-toolbar {
                 background: #F44336;
                 color: white;
                 font-size: 24px;
-            }
-            
-            .drawer-list {
-                margin: 0 20px;
+                margin-bottom: 12px;
             }
             
             .drawer-list .subheader {
@@ -107,12 +74,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-transform: uppercase;
             }
             
+            .drawer-list a:last-child {
+                margin-bottom: 24px;
+            }
+            
             .drawer-list .divider {
                 padding: 0;
                 margin: 12px 0;
                 border-bottom: 1px solid #EEEEEE;
             }
-
+            
             .drawer-list iron-icon {
                 margin-right: 16px;
             }
@@ -133,131 +104,176 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: white;
                 background-color: #039be5
             }
+            
+            paper-tabs {
+                display: none;
+                position: absolute;
+                bottom: 0px;
+                left: 230px;
+                width: 410px;
+            }
 
+            paper-tab a {
+                color: inherit;
+                font-weight: 600;
+                text-decoration: none;
+                line-height: 48px;
+                text-align: center;
+            }
+            
+            .naturguiden_name,
+            .naturguiden_name_large {
+                position: absolute;
+                top: 5px;
+                left: 60px;
+                height: 48px;
+            }
+
+            @media (min-width: 768px) {
+                app-header {
+                    background-position: bottom center;
+                    background-size: cover;
+                    height: 192px;
+                    background-image: url(../images/banner/skating001.jpg);
+                }
+                .naturguiden_name_large {
+                    height: 100px;
+                    top: 25px;
+                    left: 60px;
+                }
+                paper-tabs {
+                    display: block;
+                }
+            }
         </style>
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-        <app-drawer-layout fullbleed>
+        <app-drawer-layout fullbleed force-narrow id="aaa">
             <!-- Drawer content -->
-            <app-drawer id="drawer">
-                <app-toolbar>Menu</app-toolbar>
-                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="view1" href="/view1">View One</a>
-                    <a name="view2" href="/view2">View Two</a>
-                    <a name="view3" href="/view3">View Three</a>
-                    <a href="/" name="home">
-                        <iron-icon icon="custom-icons:home"></iron-icon>
-                        Home
-                    </a>
+            <app-drawer id="drawer" swipe-open>
+                <div style="height: 100%; overflow: auto;">
+                    <app-toolbar>
+                        <paper-icon-button on-tap="toggleDrawer" icon="custom-icons:menu" paper-drawer-toggle></paper-icon-button>
+                        Menu
+                    </app-toolbar>
+                    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                        <a href="/" name="home">
+                            <iron-icon icon="custom-icons:home"></iron-icon>
+                            Home
+                        </a>
 
-                    <a href="/adventures" name="adventures">
-                        <iron-icon icon="custom-icons:pets"></iron-icon>
-                        Our adventures
-                    </a>
+                        <a href="/adventures" name="adventures">
+                            <iron-icon icon="custom-icons:pets"></iron-icon>
+                            Our adventures
+                        </a>
 
-                    <a href="/info" name="info">
-                        <iron-icon icon="custom-icons:info"></iron-icon>
-                        Information
-                    </a>
+                        <a href="/info" name="info">
+                            <iron-icon icon="custom-icons:info"></iron-icon>
+                            Information
+                        </a>
 
-                    <a href="/pictures" name="pictures">
-                        <iron-icon icon="custom-icons:collections"></iron-icon>
-                        Photos
-                    </a>
+                        <a href="/pictures" name="pictures">
+                            <iron-icon icon="custom-icons:collections"></iron-icon>
+                            Photos
+                        </a>
 
-                    <a href="/About-us" name="about-us">
-                        <iron-icon icon="custom-icons:naturguiden"></iron-icon>
-                        About us
-                    </a>
+                        <a href="/About-us" name="about-us">
+                            <iron-icon icon="custom-icons:naturguiden"></iron-icon>
+                            About us
+                        </a>
 
-                    <div class="divider"></div>
+                        <div class="divider"></div>
 
-                    <div class="subheader">
-                        Our adventures
-                    </div>
+                        <div class="subheader">
+                            Our adventures
+                        </div>
 
-                    <a href="/adventures/skating" name="skating">
-                            Nordic Skating
-                    </a>
-                    <a href="/adventures/skiing" name="skiing">
-                            Skiing
-                    </a>
-                    <a href="/adventures/kayak" name="kayak">
-                            Kayaking
-                    </a>
-                    <a href="/adventures/hiking" name="hiking">
-                            Hiking
-                    </a>
+                        <a href="/adventures/skating" name="skating">Nordic Skating</a>
+                        <a href="/adventures/skiing" name="skiing">Skiing</a>
+                        <a href="/adventures/kayak" name="kayak">Kayaking</a>
+                        <a href="/adventures/hiking" name="hiking">Hiking</a>
 
-                    <div class="divider"></div>
+                        <div class="divider"></div>
 
-                    <div class="subheader">
-                        Information
-                    </div>
+                        <div class="subheader">
+                            Information
+                        </div>
 
-                    <a href="/info/about-tours" name="about-tours">
-                            About our tours
-                    </a>
-                    <a href="/info/how-get-here" name="how-get-here">
-                            How to get here
-                    </a>
-                    <a href="/info/accommodation" name="accommodation">
-                            Accommundation
-                    </a>
-                    <a href="/info/about-sweden" name="about-sweden">
-                            About Sweden
-                    </a>
+                        <a href="/info/about-tours" name="about-tours">About our tours</a>
+                        <a href="/info/how-get-here" name="how-get-here">How to get here</a>
+                        <a href="/info/accommodation" name="accommodation">Accommundation</a>
+                        <a href="/info/about-sweden" name="about-sweden">About Sweden</a>
 
-                    <div class="divider"></div>
+                        <div class="divider"></div>
 
-                    <a href="/booking" name="booking">
-                        <iron-icon icon="custom-icons:event"></iron-icon>
-                        Send an inquiry
-                    </a>
+                        <a href="/booking" name="booking">
+                            <iron-icon icon="custom-icons:event"></iron-icon>
+                            Send an inquiry
+                        </a>
 
-                    <a href="/about-us/contact" name="contact">
-                        <iron-icon icon="custom-icons:phone"></iron-icon>
-                        Contact us
-                    </a>
-                </iron-selector>
+                        <a href="/about-us/contact" name="contact">
+                            <iron-icon icon="custom-icons:phone"></iron-icon>
+                            Contact us
+                        </a>
+                    </iron-selector>
+                </div>
             </app-drawer>
 
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
 
-                <app-header condenses fixed effects="parallax-background fade-background" effects-config='"fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
-                    <app-toolbar id="mainToolbar" class="small">
-                        <paper-icon-button id="paperToggle" icon="custom-icons:menu" paper-drawer-toggle></paper-icon-button>
+                <app-header id="scrollheader" condenses fixed effects="parallax-background resize-snapped-title fade-background" effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
+                    <app-toolbar>
+                        <!--
+                        <paper-icon-button on-tap="toggleDrawer" icon="custom-icons:menu" paper-drawer-toggle></paper-icon-button>
+
+                        <!-- Application name --/>
+                        <div class="middle middle-container center horizontal layout logo-container">
+                            <a href="/">
+                                <img class="naturguiden_name" alt="Naturguiden name" src="../images/name.png">
+                            </a>
+                        </div>
+
                         <div class="flex"></div>
+
                         <a href="https://www.facebook.com/Naturguiden/">
                             <paper-icon-button class="large" icon="128-icons:facebook"></paper-icon-button>
                         </a>
-                        <a href$="{{baseUrl}}about-us/contact" data-route="contact">
+                        <a href="/about-us/contact" data-route="contact">
                             <paper-icon-button class="large" icon="custom-icons:phone" style="color:#CCC;"></paper-icon-button>
                         </a>
 
-                        <!-- Application name -->
-                        <div class="middle middle-container center horizontal layout logo-container">
-                            <div class="app-logo" style="padding:0px; padding-bottom: 0px;">
-                                <a href="{{baseUrl}}" data-route="home">
-                                    <img class="naturguiden_name" alt="Naturguiden name" src="images/name.png">
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Application sub title -->
+                        <!-- Application sub title --/>
 
                         <div class="bottom flex" style="min-width: 220px;"></div>
-                        <paper-tabs selected="[[route]]" class="bottom self-end hidden-sm hidden-xs main-tab-menu" link attr-for-selected="data-route" selectable="paper-tab, paper-menu-button">
-                            <paper-tab data-route="adventures" link><a href$="{{baseUrl}}adventures" class="link">Our adventures</a></paper-tab>
-                            <paper-tab data-route="info" link><a href$="{{baseUrl}}info" class="link">Information</a></paper-tab>
-                            <paper-tab data-route="pictures" link><a href$="{{baseUrl}}pictures" class="link">Photos</a></paper-tab>
-                            <paper-tab data-route="about-us" link><a href$="{{baseUrl}}about-us" class="link">About us</a></paper-tab>
+                        <paper-tabs selected="[[route]]" bottom-item>
+                            <paper-tab data-route="adventures" link><a href="/adventures" class="link">Our adventures</a></paper-tab>
+                            <paper-tab data-route="info" link><a href="/info" class="link">Information</a></paper-tab>
+                            <paper-tab data-route="pictures" link><a href="/pictures" class="link">Photos</a></paper-tab>
+                            <paper-tab data-route="about-us" link><a href="/about-us" class="link">About us</a></paper-tab>
                         </paper-tabs>
-                        <div class="bottom tabs-right-spacing"></div>
+                        -->
+                        <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
+                        <a href="/" condensed-title>
+                            <img class="naturguiden_name" alt="Naturguiden name" src="../images/name.png">
+                        </a>
+                        <!--<my-rezising-logo id="maintitle" main-title image="../images/name.png" small-height="48" large-height="128" scale="[[_transrate()]]"></my-rezising-logo>-->
+                        <paper-icon-button icon="128-icons:facebook"></paper-icon-button>
+                        <paper-icon-button icon="custom-icons:phone"></paper-icon-button>
                     </app-toolbar>
+                    <a href="/" main-title>
+                        <img class="naturguiden_name_large" alt="Naturguiden name" src="../images/name.png">
+                    </a>
+                        <paper-tabs selected="[[route]]">
+                            <paper-tab link><a href="/adventures" class="link">Our adventures</a></paper-tab>
+                            <paper-tab link><a href="/info" class="link">Information</a></paper-tab>
+                            <paper-tab link><a href="/pictures" class="link">Photos</a></paper-tab>
+                            <paper-tab link><a href="/about-us" class="link">About us</a></paper-tab>
+                        </paper-tabs>
+
+
                 </app-header>
 
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
@@ -273,6 +289,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
 
     <script>
+
+
     Polymer({
       is: 'ng-app',
 
@@ -281,12 +299,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged',
-        },
+        }
       },
 
       observers: [
         '_routePageChanged(routeData.page)',
       ],
+
+      listeners: {
+        'scroll': '_setLogoScale',
+      },
 
       _routePageChanged: function(page) {
         this.page = page || 'home';
@@ -305,6 +327,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404: function() {
         this.page = 'view404';
       },
+
+      toggleDrawer: function() {
+          this.$.drawer.toggle();
+      },
+
+      _transrate: function() {
+          return 1 - this.$.scrollheader.getScrollState()["progress"];
+      },
+      _setLogoScale: function() {
+        console.log(this.$.scrollheader.getScrollState()["progress"]);
+        this.$.maintitle.setAttribute('scale', 1 - this.$.scrollheader.getScrollState()["progress"]);
+      },
     });
   </script>
 </dom-module>
+
+<script>
+  window.onscroll = function() {
+    console.log('scrolling');
+};
+</script>
