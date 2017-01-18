@@ -163,7 +163,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 </app-route>
 
-        <app-drawer-layout fullbleed force-narrow id="aaa">
+        <app-drawer-layout fullbleed force-narrow>
             <!-- Drawer content -->
             <app-drawer id="drawer" swipe-open>
                 <div style="height: 100%; overflow: auto;">
@@ -291,7 +291,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-          console.log('hej1')
         this.page = page || 'home';
 
         if (!this.$.drawer.persistent) {
@@ -318,9 +317,3 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
   </script>
 </dom-module>
-
-<script>
-  window.onscroll = function() {
-    console.log('scrolling');
-};
-</script>
