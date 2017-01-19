@@ -161,6 +161,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <app-route route="{{subroute}}" pattern="/:aaapage" data="{{aaarouteData}}" tail="{{aaasubroute}}"></app-route>
 </app-route>
 
         <app-drawer-layout fullbleed force-narrow>
@@ -171,7 +172,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <paper-icon-button on-tap="toggleDrawer" icon="custom-icons:menu" paper-drawer-toggle></paper-icon-button>
                         Menu
                     </app-toolbar>
-                    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <iron-selector selected="[[selectedMenuItem]]" attr-for-selected="name" class="drawer-list" role="navigation">
                         <a href="/" name="home">
                             <iron-icon icon="custom-icons:home"></iron-icon>
                             Home
@@ -250,10 +251,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <img class="naturguiden_name_large" alt="Naturguiden name" src="../images/name.png">
                     </a>
                     <paper-tabs selected="[[page]]" attr-for-selected="name">
-                        <paper-tab link><a href="/adventures" name="adventures" class="link">Our adventures</a></paper-tab>
-                        <paper-tab link><a href="/info" name="info" class="link">Information</a></paper-tab>
-                        <paper-tab link><a href="/pictures" name="pictures" class="link">Photos</a></paper-tab>
-                        <paper-tab link><a href="/about-us" name="about-us" class="link">About us</a></paper-tab>
+                        <paper-tab name="adventures"><a href="/adventures">Our adventures</a></paper-tab>
+                        <paper-tab name="info"><a href="/info">Information</a></paper-tab>
+                        <paper-tab name="pictures"><a href="/pictures">Photos</a></paper-tab>
+                        <paper-tab name="about-us"><a href="/about-us">About us</a></paper-tab>
                     </paper-tabs>
 
 
@@ -262,6 +263,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"></ng-home>
                     <ng-adventures name="adventures" route="{{subroute}}"></ng-adventures>
+                    <ng-info name="info" route="{{subroute}}"></ng-info>
+                    <ng-pictures name="pictures" route="{{subroute}}"></ng-pictures>
+                    <ng-about-us name="about-us" route="{{subroute}}"></ng-about-us>
                     <ng-view404 name="view404"></ng-view404>
                 </iron-pages>
 
@@ -273,47 +277,70 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
 
     <script>
+        Polymer({
+        is: 'ng-app',
 
+        properties: {
+            page: {
+                type: String,
+                reflectToAttribute: true,
+                observer: '_pageChanged',
+            },
+            aaapage: {
+                type: String,
+                reflectToAttribute: true,
+                observer: '_aaapageChanged',
+            },
+            bbbpage: {
+                type: String,
+                reflectToAttribute: true,
+                observer: '_bbbpageChanged',
+            },
+            selectedMenuItem: {
+                type: String,
+                value: "home"
+            },
+            aaapageData: Object
+        },
 
-    Polymer({
-      is: 'ng-app',
+        observers: [
+            '_routePageChanged(routeData.page)',
+            '_aaaBbb(aaarouteData.aaapage)'
+        ],
 
-      properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged',
-        }
-      },
+        _routePageChanged: function(page) {
 
-      observers: [
-        '_routePageChanged(routeData.page)',
-      ],
+            this.page = page || 'home';
+            if(page != null) {
+                this.selectedMenuItem = page || 'home';
+            }
+            if (!this.$.drawer.persistent) {
+                this.$.drawer.close();
+            }
+        },
 
-      _routePageChanged: function(page) {
-        this.page = page || 'home';
+        _aaaBbb: function(aaapage) {
+            if(aaapage != null){
+                this.selectedMenuItem = aaapage;
+            }
+        },
 
-        if (!this.$.drawer.persistent) {
-          this.$.drawer.close();
-        }
-      },
+        _pageChanged: function(page) {
+            // Load page import on demand. Show 404 page if fails
+            var myPageToOpen = 'ng-' + page + '.html';
 
-      _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var myPageToOpen = 'ng-' + page + '.html';
+            var resolvedPageUrl = this.resolveUrl(myPageToOpen);
+            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        },
 
-        var resolvedPageUrl = this.resolveUrl(myPageToOpen);
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
+        _showPage404: function() {
+            this.page = 'view404';
+        },
 
-      _showPage404: function() {
-        this.page = 'view404';
-      },
+        toggleDrawer: function() {
+            this.$.drawer.toggle();
+        },
 
-      toggleDrawer: function() {
-          this.$.drawer.toggle();
-      },
-
-    });
+        });
   </script>
 </dom-module>
