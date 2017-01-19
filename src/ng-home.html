@@ -1,78 +1,77 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="/elements/my-left-image-paper-card.html">
+<link rel="import" href="/elements/my-news-container.html">
+<link rel="import" href="/elements/my-fancy-list.html">
 
 <dom-module id="ng-home">
     <template>
         <style>
-
+            .slider {
+                margin-bottom: 16px;
+            }
+            
+            my-left-image-paper-card,
+            paper-card {
+                margin: 8px 0;
+                width: 100%;
+            }
         </style>
-            <paper-card>
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                    </ol>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <a href$="{{baseUrl}}adventures/skating" data-route="skating">
-                                <img src="https://photos.smugmug.com/Blog-posts/i-KsqLq6d/2/X2/what-to-do-in-melbourne-australia-X2.jpg" alt="1...">
-                            </a>
-                            <div class="carousel-caption">
-                                <h3>Nordic Skating</h3>
-                                <p>Fantastic skating on the lakes of Sweden</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <a href$="{{baseUrl}}adventures/kayak" data-route="kayak">
-                                <img src="http://4.bp.blogspot.com/-XbbMqRzKxGI/VXhoPK7U1EI/AAAAAAAAAZg/ZhkW9a4xUtM/s1600/20150609_184325.jpg" alt=".2..">
-                            </a>
-                            <div class="carousel-caption">
-                                <h3>Kayak</h3>
-                                <p>Paddle amoung the islands of the Swedish arcepelago</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <a href$="{{baseUrl}}adventures/hiking" data-route="hiking">
-                                <img src="../images/1280/hiking001.jpg" alt="..3.">
-                            </a>
-                            <div class="carousel-caption">
-                                <h3>Hiking</h3>
-                                <p>Walk in the wilderness of northern Sweden</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <a href$="{{baseUrl}}adventures/skiing" data-route="skiing">
-                                <img src="http://lh3.ggpht.com/-7ogtBQtJO9E/VRe-bkip9qI/AAAAAAAAbLU/rG_AKTeb1tc/s1600/20150328_133105.jpg" alt="...4">
-                            </a>
-                            <div class="carousel-caption">
-                                <h3>Cross country skiing</h3>
-                                <p>Ski in the bla bla bla</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <a href="/adventures/skating">
+                        <img src="https://photos.smugmug.com/Blog-posts/i-KsqLq6d/2/X2/what-to-do-in-melbourne-australia-X2.jpg">
+                        <div class="caption center-align">
+                            <h3>Nordic Skating</h3>
+                            <h5 class="light grey-text text-lighten-3">Fantastic skating on the lakes of Sweden</h5>
+                        </div>
                     </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                </li>
+                <li>
+                    <a href="/adventures/kayak">
+                        <img src="http://4.bp.blogspot.com/-XbbMqRzKxGI/VXhoPK7U1EI/AAAAAAAAAZg/ZhkW9a4xUtM/s1600/20150609_184325.jpg">
+                        <div class="caption right-align">
+                            <h3>Kayak</h3>
+                            <h5 class="light grey-text text-lighten-3">Paddle amoung the islands of the Swedish arcepelago</h5>
+                        </div>
                     </a>
-                </div>
-            </paper-card>
+                </li>
+                <li>
+                    <a href="/adventures/skiing">
+                        <img src="http://lh3.ggpht.com/-7ogtBQtJO9E/VRe-bkip9qI/AAAAAAAAbLU/rG_AKTeb1tc/s1600/20150328_133105.jpg">
+                        <div class="caption left-align">
+                            <h3>Cross country skiing</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/adventures/hiking">
+                        <img src="../images/1280/hiking001.jpg">
+                        <div class="caption right-align">
+                            <h3>Hiking</h3>
+                            <h5 class="light grey-text text-lighten-3">Walk in the wilderness of northern Sweden</h5>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <my-news-container>
 
             <my-left-image-paper-card image="../images/500/happy_w001.jpg">
                 <div class="card-content">
                     <h1>Adventure Tours in Sweden</h1>
                     <p>Join us on our tours. We have gathered our best outdoor experiences and are now offering all inclusive
                         guided tours. We offer tours for small groups where we tailor each tour after the interests and wishes
-                        of the participants.</p>
+                        of the participants.
+                    </p>
                 </div>
                 <div class="card-actions">
                     <a href$="{{baseUrl}}adventures">
@@ -155,17 +154,26 @@
                 </google-youtube>
             </paper-card>
 
+        </my-news-container>
+
     </template>
 
     <script>
     Polymer({
-      is: 'ng-home',
+        is: 'ng-home',
 
-      properties: {
+        properties: {
 
-      }
+        },
+        ready: function(){
+            var slider = Polymer.dom(this.root).querySelector('.slider');
+            $(slider).slider({full_width: true});
+
+            var parallax = Polymer.dom(this.root).querySelector('.parallax');
+            $(parallax).parallax();
+        }
     });
 
-  </script>
+    </script>
 
 </dom-module>

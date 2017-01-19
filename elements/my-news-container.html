@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="my-news.html">
+
+<dom-module id="my-news-container">
+    <template>
+        <style>
+            
+            my-left-image-paper-card,
+            paper-card {
+                margin: 8px 0;
+                width: 100%;
+            }
+            my-news {
+                --card: {
+                    margin: 8px 0;
+                };
+                --newsFeed: {
+                    color: grey;
+                };
+            }
+        </style>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+        <div class="row">
+
+            <div class="col l3 hide-on-med-and-down">
+
+                <my-news></my-news>
+
+            </div>
+
+            <div class="col s12 m12 l9">
+
+                <content></content>
+
+            </div>
+        </div>
+
+    </template>
+
+    <script>
+    Polymer({
+        is: 'my-news-container',
+
+        properties: {
+
+        },
+    });
+
+    </script>
+
+</dom-module>

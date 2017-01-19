@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="my-news">
+    <template>
+        <style>
+            #newsFeed {
+                @apply(--newsFeed);
+            }
+            paper-card {
+                --paper-card-header-color: white;
+                @apply(--card);
+            }
+        </style>
+
+                <div id="newsFeed">
+                    <iron-ajax auto url="http://admin.naturguiden.com/query.php" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
+                        id="ajaxRequest"></iron-ajax>
+
+                    <template is="dom-repeat" items="[[ajaxResponse.news]]">
+                        <paper-card class="newscard" heading="[[item.header]]" image="[[item.image]]">
+                            <div class="card-content">
+                                <p>[[item.content]]</p>
+                            </div>
+                            <div hidden="[[!item.link]]" class="card-actions">
+                                <a href="[[item.link]]">
+                                    <paper-button>[[item.linktext]]</paper-button>
+                                </a>
+                            </div>
+                    </template>
+                </div>
+
+    </template>
+
+    <script>
+    Polymer({
+        is: 'my-news',
+
+        properties: {
+
+        },
+    });
+
+    </script>
+
+</dom-module>

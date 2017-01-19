@@ -121,10 +121,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-align: center;
             }
 
-            iron-pages {
-                padding: 6px;
-            }
-
             footer {
                 position: fixed;
                 bottom: 0;
@@ -142,13 +138,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
             
             @media (min-width: 768px) {
-                app-header {
+                app-header.dynamicHeader {
                     background-position: bottom center;
                     background-size: cover;
                     height: 192px;
                     background-image: url(../images/banner/skating001.jpg);
                 }
-                .naturguiden_name_large {
+                .dynamicHeader .naturguiden_name_large {
                     height: 100px;
                     top: 25px;
                     left: 60px;
@@ -238,7 +234,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
 
-                <app-header id="scrollheader" condenses fixed effects="parallax-background resize-snapped-title fade-background" effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
+                <app-header id="scrollheader" class="dynamicHeader" condenses fixed effects="parallax-background resize-snapped-title fade-background" effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
                     <app-toolbar>
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
                         <a href="/" condensed-title>
@@ -308,8 +304,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             '_aaaBbb(aaarouteData.aaapage)'
         ],
 
-        _routePageChanged: function(page) {
+        ready: function(){
+            var slider = Polymer.dom(this.root).querySelector('.slider');
+            $(slider).slider({full_width: true});
+            var helloDiv = Polymer.dom(this.root).querySelector('.materialboxed');
+            $(helloDiv).materialbox();
+        },
 
+        _routePageChanged: function(page) {
+            if(this.page == 'home') {
+                this.$.scrollheader.classList.remove('dynamicHeader');
+            }
+            else{
+                this.$.scrollheader.classList.add('dynamicHeader');
+            }
+            this.$.scrollheader.resetLayout()
             this.page = page || 'home';
             if(page != null) {
                 this.selectedMenuItem = page || 'home';
