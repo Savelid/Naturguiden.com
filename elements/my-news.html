@@ -4,12 +4,17 @@
 
 <dom-module id="my-news">
     <template>
-        <style>
+        <style is="custom-style" include="shared-styles">
             #newsFeed {
                 @apply(--newsFeed);
             }
             paper-card {
                 --paper-card-header-color: white;
+                --paper-card-header-text: {
+                    font: inherit;
+                    font-size: 1.4em;
+                    text-shadow: 1px 1px #555;
+                };
                 @apply(--card);
             }
         </style>

@@ -23,9 +23,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="my-icons.html">
 
+<link rel="import" href="shared-styles.html">
+
 <dom-module id="ng-app">
     <template>
-        <style is="custom-style">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <style is="custom-style" include="shared-styles">
             :host {
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
@@ -40,9 +43,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 width: 100%;
                 height: 64px;
                 color: #fff;
-                background-color: var(--app-primary-color);
+                background-color: black;
                 --app-header-background-front-layer: {
-                    background: -webkit-linear-gradient(top, transparent 0%, transparent 0%, rgba(0, 0, 0, 0.0) 0%);
+                    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
                 }
                 ;
                 --app-header-background-rear-layer: {
@@ -120,14 +123,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 line-height: 48px;
                 text-align: center;
             }
-
-            footer {
-                position: fixed;
-                bottom: 0;
-                background-color: rgba(250, 250, 250, 0.8);
-                line-height: 48px;
-                width: 100%;
-            }
             
             .naturguiden_name,
             .naturguiden_name_large {
@@ -137,12 +132,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 height: 48px;
             }
             
+            footer {
+                padding: 16px 40px;
+                color: rgb(158, 158, 158);
+                background-color: rgb(66, 66, 66);
+            }
+            
+            footer h3 {
+                color: #DDD;
+                font-size: 1.7em
+            }
+            
+            .footer-checkbox:checked + .footer-heading:after {
+                content: '\02C7';
+                font-size: 24px;
+            }
+            
+            .footer-checkbox + .footer-heading:after {
+                content: '\02C6';
+                font-size: 24px;
+            }
+            
+            .footer-checkbox {
+                position: absolute;
+                width: 100%;
+                height: 55.8px;
+                padding: 32px;
+                margin: 0;
+                margin-top: -16px;
+                cursor: pointer;
+                z-index: 1;
+                opacity: 0.0;
+            }
+            
+            .footer-heading {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            
+            .footer-heading:after {
+                content: '';
+                position: absolute;
+                right: 0;
+                margin-top: -16px;
+                display: block;
+                width: 23.8px;
+                height: 23.8px;
+                background-size: cover;
+            }
+            
+            .footer-checkbox:checked ~ .footer-list,
+            .footer-checkbox:checked + .footer-heading + .footer-list {
+                display: none;
+            }
+            
             @media (min-width: 768px) {
                 app-header.dynamicHeader {
-                    background-position: bottom center;
+                    background-position: center center;
                     background-size: cover;
                     height: 192px;
-                    background-image: url(../images/banner/skating001.jpg);
+                    background-image: url(../images/2000/iceskating005.jpg);
                 }
                 .dynamicHeader .naturguiden_name_large {
                     height: 100px;
@@ -152,13 +202,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 paper-tabs {
                     display: block;
                 }
+                .footer-checkbox {
+                    display: none;
+                }
+                .footer-checkbox + .mdl-mega-footer--heading:after {
+                    background-image: none;
+                }
+                .footer-checkbox:checked ~ .footer-list,
+                .footer-checkbox:checked + .footer-heading + .footer-list {
+                    display: block;
+                }
+                .footer-checkbox:checked + .footer-heading:after {
+                    content: '';
+                }
             }
         </style>
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <app-route route="{{subroute}}" pattern="/:aaapage" data="{{aaarouteData}}" tail="{{aaasubroute}}"></app-route>
-</app-route>
+        <app-route route="{{subRoute}}" pattern="/:subpage" data="{{subRouteData}}" tail="{{subRouteTail}}"></app-route>
+        </app-route>
 
         <app-drawer-layout fullbleed force-narrow>
             <!-- Drawer content -->
@@ -234,7 +297,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
 
-                <app-header id="scrollheader" class="dynamicHeader" condenses fixed effects="parallax-background resize-snapped-title fade-background" effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
+                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed effects="parallax-background resize-snapped-title fade-background"
+                    effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
                     <app-toolbar>
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
                         <a href="/" condensed-title>
@@ -266,7 +330,92 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </iron-pages>
 
                 <footer>
-                    Send inquery
+                    <div class="row">
+                        <div class="col m4">
+                            <input class="footer-checkbox" type="checkbox" checked>
+                            <h3 class="footer-heading">Our adventures</h3>
+                            <ul class="list-unstyled footer-list">
+                                <li><a href$="{{baseUrl}}adventures" data-route="adventures">Overview</a></li>
+                                <li>
+                                    <a href$="{{baseUrl}}adventures/skating" data-route="skating">Skating </a>
+                                    <!--<a href$="{{baseUrl}}adventures/skating_nl" data-route="skating-nl">- Dutch </a>-->
+                                    <!--<a href$="{{baseUrl}}adventures/skating_fr" data-route="skating-fr">- French </a>-->
+                                </li>
+                                <li>
+                                    <a href$="{{baseUrl}}adventures/skiing" data-route="skiing">Skiing </a>
+                                    <!--<a href$="{{baseUrl}}adventures/skiing_fr" data-route="skiing-fr">- French </a>-->
+                                </li>
+                                <li>
+                                    <a href$="{{baseUrl}}adventures/kayak" data-route="kayak">Kayak</a>
+                                </li>
+                                <li>
+                                    <a href$="{{baseUrl}}adventures/hiking" data-route="hiking">Hiking</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col m4">
+                            <div>
+                                <input class="footer-checkbox" type="checkbox" checked>
+                                <h3 class="footer-heading">Information</h3>
+                                <ul class="list-unstyled footer-list">
+                                    <li>
+                                        <a href$="{{baseUrl}}info/about-tours" data-route="about-tours">About our tours</a>
+                                    </li>
+                                    <li>
+                                        <a href$="{{baseUrl}}info/how-get-here" data-route="how-get-here">How to get here</a>
+                                    </li>
+                                    <li>
+                                        <a href$="{{baseUrl}}info/accommodation" data-route="accommodation">Accommodations</a>
+                                    </li>
+                                    <li>
+                                        <a href$="{{baseUrl}}before-trip/0" data-route="before-trip">Before the trip</a>
+                                    </li>
+                                    <li>
+                                        <a href$="{{baseUrl}}info/about-sweden" data-route="about-sweden">About Sweden</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col m4">
+                            <input class="footer-checkbox" type="checkbox" checked>
+                            <h3 class="footer-heading">About us</h3>
+                            <ul class="list-unstyled footer-list">
+                                <li>
+                                    <a href$="{{baseUrl}}about-us" data-route="about-us">About Naturguiden</a>
+                                </li>
+                                <li>
+                                    <a href$="{{baseUrl}}about-us/contact" data-route="about-us">Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="{{baseUrl}}booking" data-route="booking">Send an inquiry</a>
+                                </li>
+                                <li>
+                                    <br>
+                                    <a href="{{baseUrl}}pictures" data-route="pictures">Photos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col s12">
+                            <h3>Contact information</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 m4">
+                            <address>
+                                <strong>Naturguiden</strong><br> Munkhagsgatan 120B<br> 587 25 LINKÖPING<br> SWEDEN
+                            </address>
+                        </div>
+                        <div class="col s6 m4">
+                            <address>
+                                <strong>John Savelid</strong><br>
+                                <a href="mailto:info@naturguiden.se">info@naturguiden.se</a><br>
+                                <a href="tel:+46-705-353-630">+46 70 53 53 630</a>
+                            </address>
+                        </div>
+                    </div>
                 </footer>
             </app-header-layout>
         </app-drawer-layout>
@@ -282,15 +431,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 reflectToAttribute: true,
                 observer: '_pageChanged',
             },
-            aaapage: {
+            subpage: {
                 type: String,
                 reflectToAttribute: true,
-                observer: '_aaapageChanged',
-            },
-            bbbpage: {
-                type: String,
-                reflectToAttribute: true,
-                observer: '_bbbpageChanged',
+                observer: '_subpageChanged',
             },
             selectedMenuItem: {
                 type: String,
@@ -301,7 +445,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         observers: [
             '_routePageChanged(routeData.page)',
-            '_aaaBbb(aaarouteData.aaapage)'
+            '_routeSubPageChanged(subRouteData.subpage)'
         ],
 
         ready: function(){
@@ -313,12 +457,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _routePageChanged: function(page) {
             if(this.page == 'home') {
-                this.$.scrollheader.classList.remove('dynamicHeader');
+                this.$.scrollHeader.classList.remove('dynamicHeader');
             }
             else{
-                this.$.scrollheader.classList.add('dynamicHeader');
+                this.$.scrollHeader.classList.add('dynamicHeader');
             }
-            this.$.scrollheader.resetLayout()
+            this.$.scrollHeader.resetLayout()
             this.page = page || 'home';
             if(page != null) {
                 this.selectedMenuItem = page || 'home';
@@ -328,9 +472,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         },
 
-        _aaaBbb: function(aaapage) {
-            if(aaapage != null){
-                this.selectedMenuItem = aaapage;
+        _routeSubPageChanged: function(subpage) {
+            if(subpage != null){
+                this.selectedMenuItem = subpage;
             }
         },
 

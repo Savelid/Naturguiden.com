@@ -5,9 +5,13 @@
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-fancy-list.html">
 
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="materialize.html">
+
 <dom-module id="ng-home">
     <template>
-        <style>
+        
+        <style is="custom-style" include="shared-styles">
             .slider {
                 margin-bottom: 16px;
             }
@@ -17,17 +21,19 @@
                 margin: 8px 0;
                 width: 100%;
             }
+            .caption {
+                text-shadow: 2px 2px #555;
+            }
+
         </style>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
 
         <div class="slider">
             <ul class="slides">
                 <li>
                     <a href="/adventures/skating">
-                        <img src="https://photos.smugmug.com/Blog-posts/i-KsqLq6d/2/X2/what-to-do-in-melbourne-australia-X2.jpg">
-                        <div class="caption center-align">
+                        <img src="../images/2000/iceskating004.jpg">
+                        <div class="caption left-align">
                             <h3>Nordic Skating</h3>
                             <h5 class="light grey-text text-lighten-3">Fantastic skating on the lakes of Sweden</h5>
                         </div>
@@ -35,7 +41,7 @@
                 </li>
                 <li>
                     <a href="/adventures/kayak">
-                        <img src="http://4.bp.blogspot.com/-XbbMqRzKxGI/VXhoPK7U1EI/AAAAAAAAAZg/ZhkW9a4xUtM/s1600/20150609_184325.jpg">
+                        <img src="../images/2000/kayak003.jpg">
                         <div class="caption right-align">
                             <h3>Kayak</h3>
                             <h5 class="light grey-text text-lighten-3">Paddle amoung the islands of the Swedish arcepelago</h5>
@@ -53,7 +59,7 @@
                 </li>
                 <li>
                     <a href="/adventures/hiking">
-                        <img src="../images/1280/hiking001.jpg">
+                        <img src="../images/2000/hiking001.jpg">
                         <div class="caption right-align">
                             <h3>Hiking</h3>
                             <h5 class="light grey-text text-lighten-3">Walk in the wilderness of northern Sweden</h5>

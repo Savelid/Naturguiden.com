@@ -2,10 +2,12 @@
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-left-image-paper-card.html">
 
+<link rel="import" href="shared-styles.html">
+
 <dom-module id="adventures-index">
 
     <template>
-        <style>
+        <style is="custom-style" include="shared-styles">
             /* CSS rules for your element */
             
             a my-left-image-paper-card {
@@ -23,7 +25,7 @@
         <my-news-container>
 
             <a href="/adventures/skating">
-                <my-left-image-paper-card image="/images/500/skating002.jpg">
+                <my-left-image-paper-card image="/images/500/skating003.jpg">
                     <div class="card-content">
                         <h1>Nordic skating</h1>
                         <p>Experience some amazing long distance ice-skating adventures in Sweden. The unspoiled countryside
@@ -57,7 +59,7 @@
                 </my-left-image-paper-card>
             </a>
             <a href="/adventures/hiking">
-                <my-left-image-paper-card image="/images/500/tent001.jpg">
+                <my-left-image-paper-card image="/images/500/hiking007.jpg">
                     <div class="card-content">
                         <h1>Hiking</h1>
                         <p>Leave the civilisation for a couple of days. Join our hiking tours in the beautiful nature of Sweden.
