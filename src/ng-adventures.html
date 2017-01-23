@@ -23,7 +23,7 @@
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
         <div class="submenu">
             <paper-card>
-                <paper-tabs selected="[[actionData.action]]" class="center-block self-end" attr-for-selected="name" noink>
+                <paper-tabs selected="[[actionData.action]]" attr-for-selected="name" noink>
                     <paper-tab name="skating">
                         <a href="/adventures/skating">
                             <span class="hide-on-small-only">Ice skating</span>
@@ -64,15 +64,15 @@
                     type: String,
                     reflectToAttribute: true,
                     observer: '_pageChanged',
-                }
+                },
             },
 
             observers: [
                 '_routePageChanged(actionData.action)',
             ],
 
-            _routePageChanged(route) {
-                this.action = route;
+            _routePageChanged: function(route) {
+                this.action = route || 'main';
             },
 
             _pageChanged: function(action) {

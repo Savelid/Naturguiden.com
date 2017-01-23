@@ -60,8 +60,8 @@
                 '_routePageChanged(actionData.action)',
             ],
 
-            _routePageChanged(route) {
-                this.action = route;
+            _routePageChanged: function(route) {
+                this.action = route || 'about-us';
             },
         });
       </script>

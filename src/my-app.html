@@ -24,46 +24,201 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-app">
   <template>
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <style is="custom-style" include="shared-styles">
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
-
+        --softer-text-color: #444;
         display: block;
       }
-
+      
       app-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 64px;
         color: #fff;
-        background-color: var(--app-primary-color);
+        background-color: black;
+        --app-header-background-front-layer: {
+          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
+        }
+        ;
+        --app-header-background-rear-layer: {
+          background-color: #303f9f;
+        }
+        ;
       }
-      app-header paper-icon-button {
+      
+      app-header paper-icon-button,
+      app-header a paper-icon-button {
         --paper-icon-button-ink-color: white;
+        color: white;
       }
-
-      .drawer-list {
-        margin: 0 20px;
+      
+      #drawer app-toolbar {
+        background: #F44336;
+        color: white;
+        font-size: 24px;
+        margin-bottom: 12px;
       }
-
+      
+      .drawer-list .subheader {
+        color: #9e9e9e;
+        cursor: default;
+        padding: 0 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        line-height: 48px;
+        text-transform: uppercase;
+      }
+      
+      .drawer-list a:last-child {
+        margin-bottom: 24px;
+      }
+      
+      .drawer-list .divider {
+        padding: 0;
+        margin: 12px 0;
+        border-bottom: 1px solid #EEEEEE;
+      }
+      
+      .drawer-list iron-icon {
+        margin-right: 16px;
+      }
+      
       .drawer-list a {
         display: block;
         padding: 0 16px;
         text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
+        color: var(--softer-text-color);
+        line-height: 48px;
       }
-
+      
+      .drawer-list a:hover {
+        background-color: #F5F5F5
+      }
+      
       .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
+        color: white;
+        background-color: #039be5
+      }
+      
+      paper-tabs {
+        display: none;
+        position: absolute;
+        bottom: 0px;
+        left: 230px;
+        width: 410px;
+      }
+      
+      paper-tab a {
+        color: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        line-height: 48px;
+        text-align: center;
+      }
+      
+      .naturguiden_name,
+      .naturguiden_name_large {
+        position: absolute;
+        top: 5px;
+        left: 60px;
+        height: 48px;
+      }
+      
+      footer {
+        padding: 16px 40px;
+        color: rgb(158, 158, 158);
+        background-color: rgb(66, 66, 66);
+      }
+      
+      footer h3 {
+        color: #DDD;
+        font-size: 1.7em
+      }
+      
+      .footer-checkbox:checked + .footer-heading:after {
+        content: '\02C7';
+        font-size: 24px;
+      }
+      
+      .footer-checkbox + .footer-heading:after {
+        content: '\02C6';
+        font-size: 24px;
+      }
+      
+      .footer-checkbox {
+        position: absolute;
+        width: 100%;
+        height: 55.8px;
+        padding: 32px;
+        margin: 0;
+        margin-top: -16px;
+        cursor: pointer;
+        z-index: 1;
+        opacity: 0.0;
+      }
+      
+      .footer-heading {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      
+      .footer-heading:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        margin-top: -16px;
+        display: block;
+        width: 23.8px;
+        height: 23.8px;
+        background-size: cover;
+      }
+      
+      .footer-checkbox:checked ~ .footer-list,
+      .footer-checkbox:checked + .footer-heading + .footer-list {
+        display: none;
+      }
+      
+      @media (min-width: 768px) {
+        app-header.dynamicHeader {
+          background-position: center center;
+          background-size: cover;
+          height: 192px;
+          background-image: url(../images/2000/iceskating005.jpg);
+        }
+        .dynamicHeader .naturguiden_name_large {
+          height: 100px;
+          top: 25px;
+          left: 60px;
+        }
+        paper-tabs {
+          display: block;
+        }
+        .footer-checkbox {
+          display: none;
+        }
+        .footer-checkbox + .mdl-mega-footer--heading:after {
+          background-image: none;
+        }
+        .footer-checkbox:checked ~ .footer-list,
+        .footer-checkbox:checked + .footer-heading + .footer-list {
+          display: block;
+        }
+        .footer-checkbox:checked + .footer-heading:after {
+          content: '';
+        }
       }
     </style>
 
     <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
@@ -86,11 +241,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
