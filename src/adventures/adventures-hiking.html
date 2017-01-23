@@ -1,0 +1,50 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/elements/my-news-container.html">
+<link rel="import" href="/elements/my-left-image-paper-card.html">
+
+<link rel="import" href="/src/shared-styles.html">
+
+<dom-module id="adventures-hiking">
+
+    <template>
+        <style is="custom-style" include="shared-styles">
+            /* CSS rules for your element */
+            
+            my-left-image-paper-card {
+                margin: 6px 0;
+                width: 100%;
+            }
+        </style>
+
+        <!-- local DOM for your element -->
+
+        <my-news-container>
+
+            <a href="/adventures/hiking">
+                <my-left-image-paper-card image="/images/500/hiking007.jpg">
+                    <div class="card-content">
+                        <h1>Hiking</h1>
+                        <p>Leave the civilisation for a couple of days. Join our hiking tours in the beautiful nature of Sweden.
+                            Time for recovery and recreation, the most beautiful trails, what to eat and where to sleep -
+                            everything is arranged for you. Leave the control and just enjoy.</p>
+                    </div>
+                </my-left-image-paper-card>
+            </a>
+        </my-news-container>
+
+    </template>
+
+    <script>
+        // element registration
+        Polymer({
+          is: "adventures-hiking",
+
+          // add properties and methods on the element's prototype
+
+          properties: {
+            // declare properties for the element's public API
+          }
+        });
+      </script>
+
+</dom-module>

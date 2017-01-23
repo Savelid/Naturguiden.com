@@ -2,17 +2,13 @@
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-left-image-paper-card.html">
 
-<link rel="import" href="shared-styles.html">
+<link rel="import" href="/src/shared-styles.html">
 
-<dom-module id="adventures-index">
+<dom-module id="adventures-main">
 
     <template>
         <style is="custom-style" include="shared-styles">
             /* CSS rules for your element */
-            
-            a my-left-image-paper-card {
-                color: #444;
-            }
             
             my-left-image-paper-card {
                 margin: 6px 0;
@@ -75,7 +71,7 @@
     <script>
         // element registration
         Polymer({
-          is: "adventures-index",
+          is: "adventures-main",
 
           // add properties and methods on the element's prototype
 

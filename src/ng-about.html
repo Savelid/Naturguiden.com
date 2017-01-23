@@ -1,0 +1,69 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="/elements/my-news-container.html">
+
+<link rel="import" href="about/about-us.html">
+<link rel="import" href="about/about-contact.html">
+
+<dom-module id="ng-about">
+
+    <template>
+        <style is="custom-style" include="shared-styles">
+            /* CSS rules for your element */
+        </style>
+
+        <!-- local DOM for your element -->
+
+        <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
+        <div class="submenu">
+            <paper-card>
+                <paper-tabs selected="[[actionData.action]]" class="center-block self-end" attr-for-selected="name" noink>
+                    <paper-tab name="about-us"><a href="/about/about-us">About us</a></paper-tab>
+                    <paper-tab name="contact"><a href="/about/contact">Contact us</a></paper-tab>
+                </paper-tabs>
+            </paper-card>
+        </div>
+
+        <my-news-container>
+            <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="about-us" role="main">
+                <div name="about-us">
+                    <about-us></about-us>
+                    <about-contact></about-contact>
+                </div>
+                <div name="contact">
+                    <about-contact></about-contact>
+                    <about-us></about-us>
+                </div>
+            </iron-pages>
+        </my-news-container>
+
+    </template>
+
+    <script>
+        // element registration
+        Polymer({
+          is: "ng-about",
+
+          // add properties and methods on the element's prototype
+
+            properties: {
+                action: {
+                    type: String,
+                    reflectToAttribute: true,
+                }
+            },
+
+            observers: [
+                '_routePageChanged(actionData.action)',
+            ],
+
+            _routePageChanged(route) {
+                this.action = route;
+            },
+        });
+      </script>
+
+</dom-module>

@@ -1,0 +1,50 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="info/info-main.html">
+
+<dom-module id="ng-info">
+
+    <template>
+        <style is="custom-style" include="shared-styles">
+            /* CSS rules for your element */
+            
+            my-left-image-paper-card {
+                margin: 6px 0;
+                width: 100%;
+            }
+        </style>
+
+        <!-- local DOM for your element -->
+
+        <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
+
+        <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
+            <info-main name="main"></info-main>
+        </iron-pages>
+
+    </template>
+
+    <script>
+        // element registration
+        Polymer({
+            is: "ng-info",
+
+            // add properties and methods on the element's prototype
+
+            properties: {
+                action: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_routeChanged',
+                }
+            },
+
+            _routeChanged(route) {
+                console.log(route + 'hej');
+            }
+        });
+      </script>
+
+</dom-module>

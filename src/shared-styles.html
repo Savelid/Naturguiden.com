@@ -18,7 +18,120 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="materialize"></style>
     <style include="shared-fonts"></style>
     <style>
-
+      div.submenu {
+        margin: 6px 12px 0 12px;
+      }
+      
+      .submenu paper-card {
+        width: 100%;
+        background: white;
+        ;
+      }
+      
+      .submenu paper-card a {
+        color: #242424;
+        text-align: center;
+        line-height: 48px;
+      }
+      
+      my-left-image-paper-card,
+      paper-card {
+        margin: 6px 0;
+        width: 100%;
+      }
+      
+      .left-image {
+        float: left;
+        margin: 0;
+        margin-right: 16px;
+        margin-bottom: 8px;
+      }
+      
+      .right-image {
+        float: right;
+        margin: 0;
+        margin-left: 16px;
+        margin-bottom: 8px;
+      }
+      
+      .image-width-md {
+        width: 30%;
+        max-width: 100%;
+      }
+      
+      .image-height-md {
+        height: 300px;
+        max-width: 100%;
+      }
+      
+      .image-width-lg {
+        width: 50%;
+        max-width: 100%;
+      }
+      
+      .image-width-full {
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .image-height-auto {
+        --iron-image-width: 100%;
+      }
+      
+      .image-with-margin.left-image {
+        margin-top: 36px;
+        margin-left: 16px;
+        border-radius: 4px;
+      }
+      
+      .image-with-margin.right-image {
+        margin-top: 36px;
+        margin-right: 16px;
+        border-radius: 4px;
+      }
+      
+      .dont-wrap-image {
+        display: block;
+        overflow: hidden;
+      }
+      
+      address {
+        font-style: normal;
+      }
+      
+      ul.flame-list {
+        list-style-image: url('../images/postbullets.png');
+      }
+      
+      ul.nothing-list {
+        list-style-type: none;
+        padding-left: 24px;
+      }
+      
+      ul.list-unstyled {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      
+      .pointer {
+        cursor: pointer;
+      }
+      
+      .no-text-formating {
+        font-size: inherit;
+        font-weight: inherit;
+        text-align: inherit;
+        text-transform: inherit;
+      }
+      
+      .no-spacing {
+        padding: 0;
+        margin: 0;
+      }
+      
+      .full-width {
+        width: 100%;
+      }
     </style>
   </template>
 </dom-module>
