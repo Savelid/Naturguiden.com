@@ -10,10 +10,6 @@
         <style is="custom-style" include="shared-styles">
             /* CSS rules for your element */
             
-            my-left-image-paper-card {
-                margin: 6px 0;
-                width: 100%;
-            }
         </style>
 
         <!-- local DOM for your element -->
@@ -51,7 +47,7 @@
 
             _pageChanged: function(action) {
                 // Load page import on demand. Show 404 page if fails
-                var myPageToOpen = 'adventures/adventures-' + action + '.html';
+                var myPageToOpen = 'info/info-' + action + '.html';
 
                 var resolvedPageUrl = this.resolveUrl(myPageToOpen);
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
