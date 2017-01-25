@@ -18,6 +18,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="materialize"></style>
     <style include="shared-fonts"></style>
     <style>
+
+      .my-package-menu {
+        display: flex;
+      }
+      .my-package-menu > a {
+        flex: 1;
+        margin-right: 20px;
+      }
+      .my-package-menu a:last-child {
+        margin-right: 0;
+      }
+      .my-package-menu a.iron-selected paper-card {
+        --paper-card-background-color: red;
+      }
+
       div.submenu {
         margin: 6px 12px 0 12px;
       }

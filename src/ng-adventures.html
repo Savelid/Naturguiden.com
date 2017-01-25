@@ -20,24 +20,24 @@
         <div class="submenu">
             <paper-card>
                 <iron-selector selected="[[actionData.action]]" attr-for-selected="name">
-                    <a href="/adventures/skating" name="skating">
+                    <a href="/adventures/skating/main" name="skating">
                         <div>
                             <span class="hide-on-small-only">Ice skating</span>
                             <span class="hide-on-med-and-up">Skating</span>
                         </div>
                     </a>
-                    <a href="/adventures/skiing" name="skiing">
+                    <a href="/adventures/skiing/main" name="skiing">
                         <div>
                             <span class="hide-on-small-only">Cross country skiing</span>
                             <span class="hide-on-med-and-up">Skiing</span>
                         </div>
                     </a>
-                    <a href="/adventures/kayak" name="kayak">
+                    <a href="/adventures/kayak/main" name="kayak">
                         <div>
                             Kayak<span class="hide-on-small-only">ing</span>
                         </div>
                     </a>
-                    <a href="/adventures/hiking" name="hiking">
+                    <a href="/adventures/hiking/main" name="hiking">
                         <div>
                             Hiking
                         </div>
@@ -49,7 +49,7 @@
         <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
             <adventures-main name="main"></adventures-main>
             <adventures-skating name="skating"></adventures-skating>
-            <adventures-skiing name="skiing"></adventures-skiing>
+            <adventures-skiing name="skiing" route="{{tail}}"></adventures-skiing>
             <adventures-kayak name="kayak"></adventures-kayak>
             <adventures-hiking name="hiking"></adventures-hiking>
         </iron-pages>

@@ -1,0 +1,61 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="/src/shared-styles.html">
+
+<dom-module id="adventures-package-menu">
+
+    <template>
+        <style is="custom-style" include="shared-styles">
+            /* CSS rules for your element */
+        </style>
+
+        <!-- local DOM for your element -->
+        <iron-selector class="my-package-menu" attr-for-selected="name">
+            <a href="/adventures/skiing/cabin" name "cabin">
+                <paper-card heading="Standard" image="/images/500/skiing001.jpg">
+                    <div class="card-content">
+                        <p>Our standard package is including everything for a fantastic skiing experience!</p>
+                    </div>
+                </paper-card>
+            </a>
+
+            <a href="/adventures/skiing/tent" name "tent">
+                <paper-card heading="Adventure" image="/images/500/skiing002.jpg">
+                    <div class="card-content">
+                        <p>This package focuses more on giving you an adventure to remember.</p>
+                    </div>
+                </paper-card>
+            </a>
+
+            <a href="/adventures/skiing/yourown" name "yourown">
+                <paper-card heading="Midnight-Sun" image="/images/500/skiing003.jpg">
+                    <div class="card-content">
+                        <p>Experiens the fantastic feeling of skiing all night where the sun never sets</p>
+                    </div>
+                </paper-card>
+            </a>
+
+        </iron-selector>
+
+    </template>
+
+    <script>
+        // element registration
+        Polymer({
+          is: "adventures-package-menu",
+
+          // add properties and methods on the element's prototype
+
+          properties: {
+              name: {
+                  type: String,
+                  value: 'cabin'
+              }
+            // declare properties for the element's public API
+          }
+        });
+      </script>
+
+</dom-module>
