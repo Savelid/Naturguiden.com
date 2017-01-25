@@ -1,6 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-left-image-paper-card.html">
+<link rel="import" href="/elements/my-inquiry-button.html">
 
 <link rel="import" href="/src/shared-styles.html">
 
@@ -12,22 +13,372 @@
         </style>
 
         <!-- local DOM for your element -->
+        <div class="row">
 
-        <my-news-container>
+            <div class="col l3 hide-on-med-and-down" style="max-width: 350px;">
 
-            <a href="/adventures/skiing">
-                <my-left-image-paper-card image="/images/500/skiing001.jpg">
+
+                <my-inquiry-button></my-inquiry-button>
+
+            </div>
+
+            <div class="col s12 m12 l9">
+
+                <my-left-image-paper-card image="images/500/skiing002.jpg">
                     <div class="card-content">
                         <h1>Cross country skiing</h1>
-                        <p>Cross country skiing in the Swedish mountains during the best time of the year, the fifth season:
-                            still winter, but with long lasting sunshine days. Sun factor 20 is needed.</p>
-
-                        <p>We cross the snowy mountains under a blue sky, take our breaks in dug couches of snow and spend the
-                            nights in mountain lodges. Days of enjoyment, experience and fantastic views!</p>
+                        <p class="lead">Cross country skiing in the Swedish mountains during the best time of the year, the fifth season: still winter, but
+                            with long lasting sunshine days. Sun factor 20 is needed.</p>
+                        <p>We cross the snowy mountains under a blue sky, take our breaks in dug couches of snow and spend the nights in mountain
+                            lodges. Days of enjoyment, experience and fantastic views!</p>
                     </div>
                 </my-left-image-paper-card>
-            </a>
-        </my-news-container>
+
+            </div>
+        </div>
+
+        <paper-card class="flex-menu-horizontal">
+            <div class
+            <div class="card-content">
+                <h1>Cross country skiing <small class="hidden-xs">in the Swedish mountains!</small></h1>
+                <p class="lead">We have three packages to choose between:</p>
+            </div>
+
+            <my-image-menubar selected="{{params.type}}" onclick="_scrollToContent('#skiing-pack-content')">
+
+                <paper-card heading="Standard" image="images/500/skiing001.jpg">
+                    <div class="card-content">
+                        <p>Our standard package is including everything for a fantastic skiing experience!</p>
+                    </div>
+                </paper-card>
+
+                <paper-card heading="Adventure" image="images/500/skiing002.jpg">
+                    <div class="card-content">
+                        <p>This package focuses more on giving you an adventure to remember.</p>
+                    </div>
+                </paper-card>
+
+                <paper-card heading="Midnight-Sun" image="images/500/skiing003.jpg">
+                    <div class="card-content">
+                        <p>Experiens the fantastic feeling of skiing all night where the sun never sets</p>
+                    </div>
+                </paper-card>
+
+            </my-image-menubar>
+
+            <div class="card-content scroll-to-container" id="skiing-pack-content">
+                <iron-pages selected="{{params.type}}">
+                    <div>
+                        <h2>Standard</h2>
+                        <p class="lead">Cross country skiing over the mountains. Experience the space and the meditative in crossing the mountains on skies. Enjoy the breaks with beautiful views sitting in our dug couches eating our lunch.</p>
+                        <p>We spend the nights in mountains lodges enjoy the time together during the evening.</p>
+                        <p>First day we start training downhill skiing with cross country skies. Good to have knowledge when we get up on the mountains. You carry your own backpack with personal equipment during the tour.</p>
+                        <h3>Dates</h3>
+                        <h4>Individuals</h4>
+                        <p>No fixed date</p>
+                        <h4>Groups</h4>
+                        <p>any date during season</p>
+                        <h3>Information</h3>
+                        <p>Cross country skies in the Swedish mountains. We crossing a almost white landscape, not that steep as in the Alps and no trees as you can see on the picture. We use “ordinary” skies for cross country skiing, skies with steel edge and back country bindings. Depending on what you prefer we went over the tops, up and then downhill, maybe with nice telemark turns, or we went around the tops, not that much up and down.</p>
+                        <h4>Season</h4>
+                        <p>March - April</p>
+                        <h4>Gradient</h4>
+                        <p>Middle</p>
+                        <h4>Lodging</h4>
+                        <p>share in double room or dorm in mountain station and mountain cottage</p>
+                        <h4>Get here</h4>
+                        <p>Plane or train to Östersund. Then bus to Ljungdalen</p>
+                        <h4>Pick up</h4>
+                        <p>In Ljungdalen</p>
+                        <h4>Transport</h4>
+                        <p>Transfer from the Östersund to Ljungdalen, back and forth on local buses is included. Detailed travel information will be provided.</p>
+                        <h4>Personal equipment</h4>
+                        <p>Clothing for winter sports, rucksack for hiking, sunglasses, sleeping bag</p>
+                        <h4>Equipment included</h4>
+                        <p>Skies and ski boots</p>
+                        <h4>Price: 710 EUR</h4>
+                        <h3>Included in the price</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Transfer Östersund Airport to Ljungdalen, Dinner, share in double room at a hostel</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Breakfast, lunch package, dinner, a bed at Fältjägaren mountain lodge, rent of skies, ski ticket, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Breakfast, lunch package, dinner, a bed at Helags mountain lodge, rent of skies, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Breakfast, lunch package, dinner, guide, transfer to Östersund</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-warning"><b>Not included:</b> alcoholic drinks. Transfer from the airport to Östersund (approx. 5 EUR with bus, 12 EUR for a taxi)</p>
+                        <h3>Choices of extras:</h3>
+                        <h4>Extra days</h4>
+                        <p>It is possible to extend the trip with one or more days. We will then make the trip longer passing more mountain lodges.</p>
+                        <p>Price for each extra day: 96 Euro</p>
+                        <h4>Arrive earlier / depart later</h4>
+                        <p>For guests who want to experience more of Sweden there is of course a possibility to arrive earlier or depart later than is stated in our programmes. Stay some extra days in Ljungdalen, do some downhill skiing, fishing, more cross-country skiing. Naturguiden can help you arrange with necessary transports and accommodations.</p>
+                        <p>Price: Guests undertake all extra costs themselves</p>
+                        <h3>Program Cross-country skiing in the Swedish mountains</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Arrival Östersund. Transfer to Ljungdalen</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Skiing 15 km</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Skiing 12 km, Summit tour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Skiing 20 km, Transfer to Östersund.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-info">Suggestion for a 3 nights trip</p>
+                        <h4>Day 1</h4>
+                        <p>Arrival at Östersund airport or by train at the station. Transfer with bus to Ljungdalen. Your guide will meet you at the bus stop and show you the way to the hostel. You get your room and then we will have a nice dinner together. After dinner we try out ski boots and skies and wind down the evening by informing you about the following days, the weather forecast and all you need to know.</p>
+                        <h4>Day II</h4>
+                        <p>After breakfast buffet but before we head off for the mountains, we prepare ourselves big lunch packages. The first stage is up to the ski slope. Before we start we need some exercise in going downhill on cross country skies. It is a little tricky, but with the right technique it becomes much easier.</p>
+                        <p>After exercising we eat our lunch in the ski slope and then let the ski lift pull us up towards the summit once again. This time we should not go downhill again but continue towards the very top. When passing it you get marvellous views, mountains everywhere. We will see the dramatic mountain Helags, the target for tomorrow, in front of us, but we head of towards Fältjägaren, a small cabin in the middle of noware. It starts with a small slope, your practise will come handy. Then we leave the trail and head straight in between the mountains, the guide showing the right way. We take some breaks along the way and reach Fältjägaren in the late afternoon. Fältjägaren is a small lodge with two big rooms. Built by the military after an accident when a patrol got lost in bad weather and one person froze to death. . It has no washing facilities and the toilet is in a separate building. After skiing the whole day it is now time to prepare the dinner together and end up the day around the small table in the cabin. You will probably sleep well after this long day.</p>
+                        <h4>Day III</h4>
+                        <p>You will wake up with the view of Helags, one of the highest mountains in Sweden, 1797 meters. If the weather is good enough we probably will be at the top before this day has end. After breakfast and a couple of hours skiing we reach the the mountain and start the climbing. We enjoy the day and are in no hurry. When it starts to get more steep we stop for a lunch break. We dig a cosy couch in the snow that gives us shelter. The couch is a perfect place for lunch, still with awesome views. From here we walk on the snow to the summit, leaving skies and backpacks behind. One hour later we reach the top and we will have amazing views in all directions. It feels satisfying to put our names in the guestbook after climbing an altitude difference of 800 meters.</p>
+                        <p>Back to the skies and time for a short break in our cosy couch Then we continue towards Helags mountain lodge, our next stop. Downhill almost the whole way. Before we leave to our lodge we will have time to relax. After skiing the whole day it is now time to prepare the dinner together and end up the day in the warming and relaxing sauna and a nice shower.</p>
+                        <h4>Day IV</h4>
+                        <p>This day we follow the marked tracks towards Ljungdalen. If we have met no people in earlier days, we will probably meet some today. It goes up and down over some minor mountains and after 13 km, you get the last part downhill from the mountain through the forest down to the village Ljungdalen. In the afternoon we are back. A welcome shower or maybe a visit to the small indoor swimming pool is waiting. A good dinner ends a fantastic tour before it is time for the bus back to Östersund.</p>
+                    </div>
+                    <div>
+                        <h2>Adventure</h2>
+                        <p class="lead">A tour with more adventures. First night we spend in a snow cave. We heading for the highest summit and most of the tour is made of track. But there is also some luxury, one night at Helgas with sauna and time to relax.</p>
+                        <p>First day starting with training on downhill skiing on cross country skies. Could be tricky but with some help you got the right technique.</p>
+                        <h3>Dates</h3>
+                        <h4>Individuals</h4>
+                        <p>No fixed dates</p>
+                        <h4>Group</h4>
+                        <p>any date during season</p>
+                        <h3>Information</h3>
+                        <p>Cross country skies in the Swedish mountains. We crossing a almost white landscape, not that steep as in the Alps and no trees as you can see on the picture. We use “ordinary” skies for cross country skiing, skies with steel edge and back country bindings. Depending on what you prefer we went over the tops, up and then downhill, maybe with nice telemark turns, or we went around the tops, not that much up and down.</p>
+                        <h4>Season</h4>
+                        <p>March - April</p>
+                        <h4>Gradient</h4>
+                        <p>Tough</p>
+                        <h4>Lodging: </h4>
+                        <p>share in double room or dorm in mountain stations and mountain cottages</p>
+                        <h4>Get here:</h4>
+                        <p>Plane or train to Östersund</p>
+                        <h4>Pick up:</h4>
+                        <p>At the airport or in Ljungdalen</p>
+                        <h4>Transport: </h4>
+                        <p>Transfer from the airport to Ljungdalen, back and forth with local buses included in the price. Detailed travel information will be provided.</p>
+                        <h4>Personal equipment:</h4>
+                        <p>Clothing for winter sports, rucksack for hiking, sunglasses, sleeping bag</p>
+                        <h4>Equipment included:</h4>
+                        <p>Skies, ski boots, sleeping pad</p>
+                        <h4>Price</h4>
+                        <p>657 EUR</p>
+                        <h3>Included in the price:</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Transfer Östersund Airport to Ljungdalen, Dinner, share in double room at a hostel</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Breakfast, lunch package, dinner, a bed in an igloo, rent of skies, ski ticket, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Breakfast, lunch package, dinner, a bed at Helags mountain lodge, rent of skies, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Breakfast, lunch package, dinner, rent of skies, guide, transfer to the Östersund</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-warning"><b>Not included:</b> alcoholic drinks; transfer from the airport to Östersund (approx. 5 EUR with bus, 12 EUR for a taxi), accommodation day IV if needed.</p>
+                        <h3>Choices of extras:</h3>
+                        <h4>Extra days</h4>
+                        <p>It is possible to extend the trip with one or more days. We will then make the trip longer passing more mountain lodges.</p>
+                        <p>Price for each extra day: 70 Euro</p>
+                        <h4>Arrive earlier, depart later</h4>
+                        <p>For guests who want to experience more of Sweden there is of course a possibility to arrive earlier or depart later than is stated in our programmes. Stay some extra days in Ljungdalen, do some down hill skiing, fishing, more cross country skiing. Naturguiden can help you arrange with necessary transports and accommodations.</p>
+                        <p>Price: Guests undertake all extra costs themselves</p>
+                        <h3>Program Cross-country skiing in the Swedish mountains, adventure</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Arrival Östersund. Transfer to Ljungdalen</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Skiing 11 km, sleeping in an igloo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Skiing 12 km, Summit tour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Skiing 20 km, Transfer to Östersund.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-info">Suggestion for a 3 nights trip</p>
+                        <h4>Day 1</h4>
+                        <p>Arrival at Östersund Airport or with train at the station. Transfer with bus to Ljungdalen (14:20 – 18:05). Your guide will meet you at the bus stop and show you the way to the hostel. You get your room and then we will have a nice dinner together. After dinner we try out ski boots and skies and wind down the evening by informing you about the following days, the weather forecast and all you need to know.</p>
+                        <h4>Day II</h4>
+                        <p>After breakfast buffet but before we head off for the mountains, we prepare ourselves big lunch packages. The first stage is up to the ski slope. Before we start we need some exercise in going downhill on cross country skies. It is a little tricky, but with the right technique it becomes much easier.</p>
+                        <p>We eat our lunch in the ski slope and then let the ski lift pull us up towards the summit once again. This time we should not go downhill again but continue towards the very top. When passing it you get marvellous views, mountains everywhere. We continue for some hours before we find ourselves a good place to build our igloos. We take turns with the shovel to dig a cave big enough. When ready we put our sleeping pads on the beds and make ourselves comfortable in our new home. Before we prepare our dinner there is time to relax. We end up the day with a short tour, watching the sun set and getting warm before going to bed in our winter sleeping bags.</p>
+                        <h4>Day III</h4>
+                        <p>The third day, we wake up in our igloo, make ourselves a warm breakfast and then head of towards the Helags, one of the highest mountains in Sweden, 1797 meters. If the weather is good enough we head for the summit, starting the climb after a couple of hours skiing. Further on we leave our skies and backpacks and walk the last ascent to the summit. One hour later we reach the top and we will have amazing views in all directions. It feels satisfying to put our names in the guestbook after climbing an altitude difference of 800 meters.</p>
+                        <p>Back to the skies and time for a lunch break. We dig a cosy couch in the snow that gives us shelter. The couch is a perfect place for lunch, still with unending views. Then we continue towards the mountain station, downwards almost the whole way. Before we go to our lodge there is time to relax. Together, we prepare dinner and eat and just relax afterwards.</p>
+                        <h4>Day IV</h4>
+                        <p>Today we go off the marked tracks altogether, 22 km strait over the mountains. The compass will show us the way. If we have met some people in earlier days, we will not meet any today. It goes up and down over some minor mountains and ends up in a valley. We enjoy the day and are in no hurry, the sun is up to after eight o clock. Taking some nice breaks, we maybe try some ice fishing on the lakes we pass over.</p>
+                        <p>The last stretch down to Ljungdalen is downhill, hopefully not too steep. In the evening we are back at the hostel. A welcome shower or maybe a visit to the small indoor swimming pool is waiting. A good dinner ends a fantastic tour.</p>
+                        <h4>Day V</h4>
+                        <p>Early breakfast and then to the bus that leaves at 06.00. Back in Östersund at half past nine. Take an early plane back home or take some hours in the city of Östersund.</p>
+                    </div>
+                    <div>
+                        <h2>Midnight Sun</h2>
+                        <p class="lead">Visit the highest mountain region of Sweden, situated in the far north-east parts of the country. Here we will be skiing during late spring, early summer, when there is still snow. During this time of the year, we almost will experience the midnight sun, a time of the year when the sun only sets for an hour midnight. We will then be able to ski during the whole day and the whole night. For sleeping, there are nice cabins to spend the nights, or days in, depending on when we want to ski. The strong sun and white snow makes it essential to bring sunglasses, a hat and sun factor.</p>
+                        <h3>Dates:</h3>
+                        <h4>Individuals</h4>
+                        <p>No fixed dates</p>
+                        <h4>Groups</h4>
+                        <p>any date during season</p>
+                        <h3>Information</h3>
+                        <p>Cross country skies in the Swedish mountains. We crossing a almost white landscape, not that steep as in the Alps and no trees as you can see on the picture. We use “ordinary” skies for cross country skiing, skies with steel edge and back country bindings. Depending on what you prefer we went over the tops, up and then downhill, maybe with nice telemark turns, or we went around the tops, not that much up and down.</p>
+                        <h4>Season</h4>
+                        <p>May</p>
+                        <h4>Gradient</h4>
+                        <p>Middle to tough in condition and technique depending on the group.</p>
+                        <h4>Lodging</h4>
+                        <p>Dorm in mountain cottages</p>
+                        <h4>Get here</h4>
+                        <p>Plane to Kiruna</p>
+                        <h4>Pick up</h4>
+                        <p>At the airport of Kiruna</p>
+                        <h4>Transport</h4>
+                        <p>Transfer from the airport to Abisko, back and forth with local buses included in the price. Detailed travel information will be provided.</p>
+                        <h4>Personal equipment</h4>
+                        <p>Clothing for winter sports, rucksack for hiking, sleeping bag. SUNGLASSES essential.</p>
+                        <h4>Equipment included</h4>
+                        <p>Skies, ski boots</p>
+                        <h4>Price</h4>
+                        <p>731 EUR</p>
+                        <h3>Included in the price:</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Transfer Kiruna Airport to Abisko, lunch package, dinner, a bed in the mountain lodge, rent of skies, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Breakfast, lunch package, dinner, a bed in the mountain lodge, rent of skies, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Breakfast, lunch package, dinner, a bed in the mountain lodge, rent of skies, guide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Breakfast, lunch package, transfer to the airport, rent of skies, guide</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-warning"><b>Not included: </b>alcoholic drinks (the customer need to bring them by them self, can not be purchased)</p>
+                        <h3>Choices of extras:</h3>
+                        <h4>Extra days</h4>
+                        <p>It is possible to extend the trip with one or more days. We can stay in the same mountain lodges or make a tour passing several lodges.</p>
+                        <p>Price for each extra day: 99 Euro</p>
+                        <h4>Arrive earlier / depart later</h4>
+                        <p>For guests who want to experience more of Sweden there is of course a possibility to arrive earlier or depart later than is stated in our programmes. Stay some extra days in Kiruna, visit Riksgränsen for some downhill skiing or try ice fishing, more cross country skiing. Naturguiden can help you arrange with necessary transports and accommodations.</p>
+                        <p>Price: Guests undertake all extra costs themselves</p>
+                        <h3>Program Cross-country skiing in the Swedish mountains, midnight sun</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td>Day I </td>
+                                        <td>Arrival Kiruna. Transfer to Abisko, aprox. 1 h, 20 min. Skiing 14 km</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day II </td>
+                                        <td>Summit tour in the midnight sun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day III </td>
+                                        <td>Skiing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Day IV </td>
+                                        <td>Skiing 14 km, Transfer to Kiruna. Departure</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="bg-info">Suggestion for a 3 nights trip</p>
+                        <h4>Day 1</h4>
+                        <p>Arrival at Kiruna Airport or with train at the station. Transfer with bus to Abisko. Your guide will meet you at the airport. In Abisko we step on the skies and start our tour immediately. After a while, getting away from the civilisation, we stop for a late lunch. The days are long this time of the year, they almost never ends; we are in no hurry and take it easy up the mountains. In the evening we reach our mountain cabin where we should spend three nights completely by our self. We make our self comfortable and then start preparing dinner together. Maybe we can eat it outdoor? The mountain cabin is very simple, but nice and clean. The toilet is in a separate building. The washing facilities is a bucket in the common kitchen or outdoor.</p>
+                        <h4>Day II</h4>
+                        <p>The topic for this second day is a summit tour in the midnight sun. The sun sets at 23:40 and even later on the summit.</p>
+                        <p>But first breakfast in the morning and then a tour before lunch. We rest for a while in the cabin during the afternoon or stays out in the sun to increase the tan. Dinner at five o’clock and then we head of for the summit. Reaching it about 23:30, digging a couch towards the sun and then just wait to se the sun hide behind the mountains for an hour. In the midnight hour we heading downhill again back towards our cabin, reaching it approximately at dawn at 01:40</p>
+                        <h4>Day III</h4>
+                        <p>The third day, we wake up a little late and decide during breakfast where to ski this day. Maybe we take a long tour, or find a nice slope for Telemarking or just enjoy the nice weather and make a couch in the snow, relaxing and reading some book.</p>
+                        <h4>Day IV</h4>
+                        <p>A period of the year when night and day almost looks the same. We get up real early in the morning, the sun already high on the sky. Today we heading back towards the civilisation, slightly downhill all the way back to Abisko. Then transfer back to Kiruna and the airport.</p>
+                    </div>
+                </iron-pages>
+            </div>
+        </paper-card>
+        <paper-card>
+            <div class="card-content">
+                <h1>Send an inquiry</h1>
+                <p class="lead">If you would like to know more, get a price or ask questions feel free to contact us, or fill out this form</p>
+            </div>
+            <div class="card-actions">
+                <a href$="{{baseUrl}}booking" data-route="booking">
+                    <paper-button>Go to the inquiry form</paper-button>
+                </a>
+            </div>
+        </paper-card>
+        <paper-card>
+            <div class="card-content">
+                <h1>Before the trip - Skiing</h1>
+                <p class="lead">In this section we will try to give you the information you need to be able to bring right kind of cloth and equipment, but also give an idea about what you can expect.</p>
+            </div>
+            <div class="card-actions">
+                <a href$="{{baseUrl}}before-trip/1" data-route="before-trip">
+                    <paper-button><iron-icon icon="info"></iron-icon> Read more</paper-button>
+                </a>
+            </div>
+        </paper-card>
 
     </template>
 

@@ -26,11 +26,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
         background: white;
       }
+
+      .submenu iron-selector{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        width: 100%;
+      }
+
+      .submenu iron-selector > div {
+        text-align: center;
+      }
       
-      .submenu paper-card a {
+      .submenu iron-selector a {
         color: #242424;
         text-align: center;
         line-height: 48px;
+        flex: 1 auto;
+      }
+
+      .submenu iron-selector a.iron-selected > div {
+        background-color: #F5F5F5;
+        font-weight: 600;
       }
       
       my-left-image-paper-card,
