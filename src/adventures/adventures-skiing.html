@@ -23,19 +23,18 @@
 
                 <my-inquiry-button></my-inquiry-button>
 
-                <paper-card>
-                    <div class="card-content">
-                        <h1>Before the trip - Skiing</h1>
-                        <p class="lead">In this section we will try to give you the information you need to be able to bring right kind of
-                            cloth and equipment, but also give an idea about what you can expect.</p>
-                    </div>
-                    <div class="card-actions">
-                        <a href="/before-trip/1" data-route="before-trip">
-                            <paper-button>
-                                <iron-icon icon="info"></iron-icon> Read more</paper-button>
-                        </a>
-                    </div>
-                </paper-card>
+                <a href="/before-trip/skiing">
+                    <paper-card heading="Before the trip" class="colorfull">
+                        <div class="card-content">
+                            <p>In this section we will try to give you the information you need to be able to bring right kind
+                                of cloth and equipment, but also give an idea about what you can expect.</p>
+                        </div>
+                    </paper-card>
+                </a>
+                <a href="/photos/skiing">
+                    <paper-card heading="Skiing photos" image="/images/500/cabin_w002.jpg">
+                    </paper-card>
+                </a>
 
             </div>
 
@@ -47,8 +46,8 @@
                             <h1>Cross country skiing</h1>
                             <p class="lead">Cross country skiing in the Swedish mountains during the best time of the year, the fifth season:
                                 still winter, but with long lasting sunshine days. Sun factor 20 is needed.</p>
-                            <p>We cross the snowy mountains under a blue sky, take our breaks in dug couches of snow and spend the
-                                nights in mountain lodges. Days of enjoyment, experience and fantastic views!</p>
+                            <p>We cross the snowy mountains under a blue sky, take our breaks in dug couches of snow and spend
+                                the nights in mountain lodges. Days of enjoyment, experience and fantastic views!</p>
                         </div>
                     </paper-card>
                 </template>
@@ -59,7 +58,7 @@
 
                 <iron-selector class="my-package-menu" selected="{{idData.id}}" attr-for-selected="name">
                     <a href="/adventures/skiing/cabin" name="cabin">
-                        <paper-card heading="Standard" image="/images/500/skiing001.jpg">
+                        <paper-card heading="Cabin tour" image="/images/500-300/skiing001.jpg">
                             <div class="card-content">
                                 <p>Our standard package is including everything for a fantastic skiing experience!</p>
                             </div>
@@ -67,7 +66,7 @@
                     </a>
 
                     <a href="/adventures/skiing/tent" name="tent">
-                        <paper-card heading="Adventure" image="/images/500/skiing002.jpg">
+                        <paper-card heading="Tent tour" image="/images/500-300/skiing002.jpg">
                             <div class="card-content">
                                 <p>This package focuses more on giving you an adventure to remember.</p>
                             </div>
@@ -75,7 +74,7 @@
                     </a>
 
                     <a href="/adventures/skiing/yourown" name="yourown">
-                        <paper-card heading="Midnight-Sun" image="/images/500/skiing003.jpg">
+                        <paper-card heading="Your own tour" image="/images/500-300/skiing003.jpg">
                             <div class="card-content">
                                 <p>Experiens the fantastic feeling of skiing all night where the sun never sets</p>
                             </div>
@@ -84,16 +83,18 @@
 
                 </iron-selector>
 
-                <iron-ajax auto url="http://localhost:61382/api/packages/{{idData.id}}" handle-as="json" timeout="10000" last-response="{{ajaxPackage}}"
-                    id="ajaxRequest"></iron-ajax>
-                <paper-card>
-                    <div class="card-content">
-                        <h1>[[ajaxPackage.Name]]</h1>
-                        <h4>Information</h4>
-                        <p>[[ajaxPackage.Information]]</p>
-                        <p><b>Price:</b> € [[ajaxPackage.Price]]</p>
-                    </div>
-                </paper-card>
+                <template is="dom-if" if="{{!isMain}}">
+                    <iron-ajax auto url="http://localhost:61382/api/packages/{{idData.id}}" handle-as="json" timeout="10000" last-response="{{ajaxPackage}}"
+                        id="ajaxRequest"></iron-ajax>
+                    <paper-card>
+                        <div class="card-content">
+                            <h1>[[ajaxPackage.Name]]</h1>
+                            <h4>Information</h4>
+                            <p>[[ajaxPackage.Information]]</p>
+                            <p><b>Price:</b> € [[ajaxPackage.Price]]</p>
+                        </div>
+                    </paper-card>
+                </template>
 
                 <paper-card>
                     <div class="card-content">

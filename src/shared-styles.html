@@ -18,7 +18,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="materialize"></style>
     <style include="shared-fonts"></style>
     <style>
-
+      :root {
+      --soft-highlight-color: #EEEEEE;
+      --softer-highlight-color: #FAFAFA;
+      --fun-yellow-color: #FFC107;
+      }
       .my-package-menu {
         display: flex;
       }
@@ -30,7 +34,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right: 0;
       }
       .my-package-menu a.iron-selected paper-card {
-        --paper-card-background-color: red;
+        background-color: var(--soft-highlight-color);
+        font-weight: 600;
+      }
+      paper-card.colorfull {
+        --paper-card-background-color: var(--fun-yellow-color);
       }
 
       div.submenu {
@@ -62,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .submenu iron-selector a.iron-selected > div {
-        background-color: #F5F5F5;
+        background-color: var(--softer-highlight-color);
         font-weight: 600;
       }
       
