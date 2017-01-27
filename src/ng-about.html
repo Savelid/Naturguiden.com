@@ -1,12 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="/elements/my-news-container.html">
 
 <link rel="import" href="about/about-us.html">
 <link rel="import" href="about/about-contact.html">
+<link rel="import" href="about/about-inquiry.html">
 
 <dom-module id="ng-about">
 
@@ -20,10 +20,23 @@
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
         <div class="submenu">
             <paper-card>
-                <paper-tabs selected="[[actionData.action]]" class="center-block self-end" attr-for-selected="name" noink>
-                    <paper-tab name="about-us"><a href="/about/about-us">About us</a></paper-tab>
-                    <paper-tab name="contact"><a href="/about/contact">Contact us</a></paper-tab>
-                </paper-tabs>
+                <iron-selector selected="[[actionData.action]]" attr-for-selected="name">
+                    <a href="/about/about-us" name="about-us">
+                        <div>
+                            About us
+                        </div>
+                    </a>
+                    <a href="/about/contact" name="contact">
+                        <div>
+                            Contact us
+                        </div>
+                    </a>
+                    <a href="/about/inquiry" name="inquiry">
+                        <div>
+                            Send an inquiry
+                        </div>
+                    </a>
+                </iron-selector>
             </paper-card>
         </div>
 
@@ -35,7 +48,10 @@
                 </div>
                 <div name="contact">
                     <about-contact></about-contact>
-                    <about-us></about-us>
+                </div>
+                <div name="inquiry">
+                    <about-inquiry></about-inquiry>
+                    <about-contact></about-contact>
                 </div>
             </iron-pages>
         </my-news-container>

@@ -21,7 +21,11 @@
     "paper-tabs": "PolymerElements/paper-tabs#^1.7.0",
     "paper-card": "PolymerElements/paper-card#^1.1.4",
     "google-youtube": "GoogleWebComponents/google-youtube#^1.2.1",
-    "iron-ajax": "PolymerElements/iron-ajax#^1.4.3"
+    "iron-ajax": "PolymerElements/iron-ajax#^1.4.3",
+    "paper-radio-group": "PolymerElements/paper-radio-group#^1.2.1",
+    "vaadin-date-picker": "vaadin/vaadin-date-picker#^1.2.1",
+    "paper-input": "PolymerElements/paper-input#^1.1.23",
+    "gold-email-input": "PolymerElements/gold-email-input#^1.0.9"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
