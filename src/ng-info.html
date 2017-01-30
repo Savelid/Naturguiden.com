@@ -15,9 +15,41 @@
         <!-- local DOM for your element -->
 
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
-
+        <div class="submenu">
+            <paper-card>
+                <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
+                    <a href="/info/about-tours" name="about-tours">
+                        <div>
+                            <span class="hide-on-small-only">About our tours</span>
+                            <span class="hide-on-med-and-up">Tours</span>
+                        </div>
+                    </a>
+                    <a href="/info/how-get-here" name="how-get-here">
+                        <div>
+                            <span class="hide-on-small-only">How to get here</span>
+                            <span class="hide-on-med-and-up">Get here</span>
+                        </div>
+                    </a>
+                    <a href="/info/accommodation" name="accommodation">
+                        <div>
+                            <span class="hide-on-small-only">Accommodation</span>
+                            <span class="hide-on-med-and-up">Housing</span>
+                        </div>
+                    </a>
+                    <a href="/info/about-sweden" name="about-sweden">
+                        <div>
+                            About Sweden
+                        </div>
+                    </a>
+                </iron-selector>
+            </paper-card>
+        </div>
         <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
             <info-main name="main"></info-main>
+            <info-about-tours name="about-tours"></info-about-tours>
+            <info-how-get-here name="how-get-here"></info-how-get-here>
+            <info-accommodation name="accommodation"></info-accommodation>
+            <info-about-sweden name="about-sweden"></info-about-sweden>
         </iron-pages>
 
     </template>
@@ -42,19 +74,22 @@
             ],
 
             _routePageChanged: function(route) {
-                this.action = route || 'main';
+                for(var i = 0; i < this.$.selector.items.length; i++){
+                    if(this.$.selector.items[i].name == route.toLowerCase()){
+                        this.action = route || 'main';
+                        console.log(this.action);
+                    }
+                }
             },
 
             _pageChanged: function(action) {
                 // Load page import on demand. Show 404 page if fails
-                var myPageToOpen = 'info/info-' + action + '.html';
-
-                var resolvedPageUrl = this.resolveUrl(myPageToOpen);
+                var resolvedPageUrl = this.resolveUrl('info/info-' + action + '.html');
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 
             _showPage404: function() {
-                this.page = 'main';
+                this.action = 'main';
             },
         });
       </script>

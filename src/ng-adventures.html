@@ -19,7 +19,7 @@
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
         <div class="submenu">
             <paper-card>
-                <iron-selector selected="[[actionData.action]]" attr-for-selected="name">
+                <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
                     <a href="/adventures/skating/main" name="skating">
                         <div>
                             <span class="hide-on-small-only">Ice skating</span>
@@ -76,19 +76,22 @@
             ],
 
             _routePageChanged: function(route) {
-                this.action = route || 'main';
+                for(var i = 0; i < this.$.selector.items.length; i++){
+                    if(this.$.selector.items[i].name == route.toLowerCase()){
+                        this.action = route || 'main';
+                    }
+                }
             },
 
             _pageChanged: function(action) {
                 // Load page import on demand. Show 404 page if fails
-                var myPageToOpen = 'adventures/adventures-' + action + '.html';
-
-                var resolvedPageUrl = this.resolveUrl(myPageToOpen);
+                
+                var resolvedPageUrl = this.resolveUrl('adventures/adventures-' + action + '.html');
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 
             _showPage404: function() {
-                this.page = 'main';
+                this.action = 'main';
             },
         });
       </script>
