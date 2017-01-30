@@ -4,9 +4,7 @@
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="/elements/my-news-container.html">
 
-<link rel="import" href="about/about-us.html">
 <link rel="import" href="about/about-contact.html">
-<link rel="import" href="about/about-inquiry.html">
 
 <dom-module id="ng-about">
 
@@ -20,7 +18,7 @@
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
         <div class="submenu">
             <paper-card>
-                <iron-selector selected="[[actionData.action]]" attr-for-selected="name">
+                <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
                     <a href="/about/about-us" name="about-us">
                         <div>
                             About us
@@ -65,11 +63,13 @@
 
           // add properties and methods on the element's prototype
 
+
             properties: {
                 action: {
                     type: String,
                     reflectToAttribute: true,
-                }
+                    observer: '_pageChanged',
+                },
             },
 
             observers: [
@@ -77,7 +77,21 @@
             ],
 
             _routePageChanged: function(route) {
-                this.action = route || 'about-us';
+                for(var i = 0; i < this.$.selector.items.length; i++){
+                    if(this.$.selector.items[i].name == route.toLowerCase()){
+                        this.action = route || 'main';
+                    }
+                }
+            },
+
+            _pageChanged: function(action) {
+                    // Load page import on demand. Show 404 page if fails
+                    var resolvedPageUrl = this.resolveUrl('about/about-' + action + '.html');
+                    this.importHref(resolvedPageUrl, null, this._showPage404, true);
+            },
+
+            _showPage404: function() {
+                this.action = 'main';
             },
         });
       </script>

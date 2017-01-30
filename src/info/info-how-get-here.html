@@ -1,6 +1,5 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/elements/my-news-container.html">
-<link rel="import" href="/elements/my-left-image-paper-card.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
 
 <link rel="import" href="/src/shared-styles.html">
 
@@ -13,19 +12,66 @@
 
         <!-- local DOM for your element -->
 
-        <my-news-container>
-            <a href="info/how-get-here">
-                <my-left-image-paper-card image="/images/500/boat001.jpg">
-                    <div class="card-content">
-                        <h1>How to get here</h1>
-                        <p>We have adapt all our tours to make it easy for you to get here. Most of our tours starts right at
-                            the airport or the railway station. For each tour you find information about where we pick you
-                            up. We believe that most of our guests come with plain or by train, but if you come by car we
-                            describe some alternative ways to get to Sweden at the end of this document.</p>
-                    </div>
-                </my-left-image-paper-card>
-            </a>
-        </my-news-container>
+        <paper-card>
+            <div class="card-content">
+                <h1>How to get here</h1>
+                <p class="lead">We have adapt all our tours to make it easy for you to get here. Most of our tours starts right at the airport
+                    or the railway station. For each tour you find information about where we pick you up. We believe that
+                    most of our guests come with plain or by train, but if you come by car we describe some alternative ways
+                    to get to Sweden at the end of this document.</p>
+                <p>If you have any questions do not hesitate to contact us.</p>
+
+                <h2>Information about all our destinations.</h2>
+                <p>If you are a group of your own we can pick you up on other places as well, contact us.</p>
+                <h3>Nyköping – Skavsta – Stockholm south</h3>
+                <p>Normally we pick you up at the airport called Skavsta or Stockholm south. You get here by Ryan Air from a
+                    lot of destinations around Europe.</p>
+                <p>From the airport there is only 5 minutes with local bus to the city of Nyköping. You arrive at the bus central,
+                    not the same place as the Railway station.</p>
+                <p>If you arrive at Stocckholm/Arlanda you can take the bus direct from Stockholm City Terminal, close to the
+                    Central station, to Skavsta. <a href="http://www.flygbussarna.se/">http://www.flygbussarna.se/</a>.</p>
+                <p>Or you take the train from Stockholm Central station to Nyköping station <a href="http://www.sj.se/">http://www.sj.se</a></p>
+                <p>If we should pick you up in Nyköping instead of at Skavsta put that as remark in the booking form.</p>
+                <h3>Linköping</h3>
+                <p>Normally we pick you up at the airport. You get here with KLM from Amsterdam or from Copenhagen with NextJet.
+                </p>
+                <p>The Airport is only 2,5 km from the city centre of Linköping and the Railway station.</p>
+                <p>If you use the train, there is a direct train from Copenhagen to Linköping, travel time approximately 3.5
+                    hours</p>
+
+                <h3>Stockholm / Arlanda</h3>
+                <p>We have no normal tours from Arlanda, but if you are a group of your own we can pick you up at Arlanda.</p>
+
+                <h3>Östersund – Ljungdalen – Vålådalen</h3>
+                <p>For our mountain tours Östersund is the closest city. To Östersund you get with train or by plain from Stockholm/Arlanda
+                    with SAS or from Trondheim in Norway with NextJet.</p>
+                <p>From Östersund you need to continue with bus to the mountains. From the airport to the bus central in Östersund
+                    there is 7,5 km. You get there by local bus or with taxi. Detailed information about how to travel will
+                    be provided.</p>
+                <p>Of course it is also possible to get a rented car at the airport to get to the mountains.</p>
+
+                <h3>Travel with car to Sweden.</h3>
+                <p>There are several ferries up to Sweden. You have them all represented at <a href="http://www.directferries.co.uk/">http://www.directferries.co.uk/</a>                    where you will find time schedules etc.</p>
+                <p>From Germany you have</p>
+                <ul class="flame-list">
+                    <li>Travemunde – Malmö</li>
+                    <li>Rostock – Trelleborg</li>
+                    <li>Sassnitz – Trelleborg</li>
+                    <li>Travemunde – Trelleborg</li>
+                    <li>Kiel – Göteborg (Gotenburg)</li>
+                </ul>
+                <p>From Denmark you have</p>
+                <ul class="flame-list">
+                    <li>Helsingborg – Helsingör</li>
+                    <li>Frederikhavn – Göteborg (Gotenburg)</li>
+                </ul>
+
+                <p>If you choose to travel trough Denmark there are several options, two of them are.</p>
+                <p><strong>No ferries:</strong> Drive trough Denmark, passing Flensburg and Odense until Copenhagen. Take the
+                    bridge over to Malmö and Sweden.</p>
+                <p><strong>With ferries:</strong> Puttgarden - Rödby and Helsingör – Helsingborg</p>
+            </div>
+        </paper-card>
 
     </template>
 

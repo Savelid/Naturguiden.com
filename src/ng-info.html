@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="/elements/my-news-container.html">
 
 <link rel="import" href="info/info-main.html">
 
@@ -9,7 +10,6 @@
     <template>
         <style is="custom-style" include="shared-styles">
             /* CSS rules for your element */
-            
         </style>
 
         <!-- local DOM for your element -->
@@ -44,13 +44,22 @@
                 </iron-selector>
             </paper-card>
         </div>
-        <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
-            <info-main name="main"></info-main>
-            <info-about-tours name="about-tours"></info-about-tours>
-            <info-how-get-here name="how-get-here"></info-how-get-here>
-            <info-accommodation name="accommodation"></info-accommodation>
-            <info-about-sweden name="about-sweden"></info-about-sweden>
-        </iron-pages>
+        <my-news-container>
+            <iron-pages selected="[[actionData.action]]" attr-for-selected="action" fallback-selection="main" role="main">
+                <info-main action="main"></info-main>
+                <info-about-tours action="about-tours"></info-about-tours>
+                <info-how-get-here action="how-get-here"></info-how-get-here>
+                <info-accommodation action="accommodation"></info-accommodation>
+                <div action="about-sweden">
+                    <info-about-sweden></info-about-sweden>
+                    <info-weather></info-weather>
+                </div>
+                <div action="weather">
+                    <info-weather></info-weather>
+                    <info-about-sweden></info-about-sweden>
+                </div>
+            </iron-pages>
+        </my-news-container>
 
     </template>
 
@@ -75,17 +84,23 @@
 
             _routePageChanged: function(route) {
                 for(var i = 0; i < this.$.selector.items.length; i++){
-                    if(this.$.selector.items[i].name == route.toLowerCase()){
+                    if(this.$.selector.items[i].name == route.toLowerCase() || route.toLowerCase() == 'weather'){ //added weather as an edge-case
                         this.action = route || 'main';
-                        console.log(this.action);
                     }
                 }
             },
 
             _pageChanged: function(action) {
-                // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl('info/info-' + action + '.html');
-                this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                //added weather as an edge-case
+                if(action == 'weather' || action == 'about-sweden'){
+                    this.importHref(this.resolveUrl('info/info-about-sweden.html'), null, this._showPage404, true);
+                    this.importHref(this.resolveUrl('info/info-weather.html'), null, this._showPage404, true);
+                }
+                else{
+                    // Load page import on demand. Show 404 page if fails
+                    var resolvedPageUrl = this.resolveUrl('info/info-' + action + '.html');
+                    this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                }
             },
 
             _showPage404: function() {

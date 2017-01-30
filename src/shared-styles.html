@@ -19,28 +19,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-fonts"></style>
     <style>
       :root {
-      --soft-highlight-color: #EEEEEE;
-      --softer-highlight-color: #FAFAFA;
-      --fun-yellow-color: #FFC107;
+        --soft-highlight-color: #EEEEEE;
+        --softer-highlight-color: #FAFAFA;
+        --fun-yellow-color: #FFC107;
       }
+      
       .my-package-menu {
         display: flex;
       }
+      
       .my-package-menu > a {
         flex: 1;
         margin-right: 20px;
       }
+      
       .my-package-menu a:last-child {
         margin-right: 0;
       }
+      
       .my-package-menu a.iron-selected paper-card {
         background-color: var(--soft-highlight-color);
         font-weight: 600;
       }
+      
       paper-card.colorfull {
         --paper-card-background-color: var(--fun-yellow-color);
       }
-
+      
       div.submenu {
         margin: 6px 12px 0 12px;
       }
@@ -49,15 +54,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
         background: white;
       }
-
-      .submenu iron-selector{
+      
+      .submenu iron-selector {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-around;
         width: 100%;
       }
-
+      
       .submenu iron-selector > div {
         text-align: center;
       }
@@ -68,7 +73,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 48px;
         flex: 1 auto;
       }
-
+      
       .submenu iron-selector a.iron-selected > div {
         background-color: var(--softer-highlight-color);
         font-weight: 600;
@@ -171,6 +176,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       .full-width {
         width: 100%;
+      }
+      
+      paper-spinner-lite {
+        left: 50%;
+        margin: 50px 0 50px -20px
       }
     </style>
   </template>

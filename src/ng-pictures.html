@@ -1,0 +1,64 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="/src/shared-styles.html">
+
+<dom-module id="ng-pictures">
+    <template>
+        <style include="app-grid-style">
+            :host {
+                --app-grid-columns: 3;
+                /* 50% the width of the item is equivalent to 2:1 aspect ratio*/
+                --app-grid-item-height: 50%;
+            }
+            
+            .item {
+                background-color: white;
+            }
+        </style>
+        <style is="custom-style" include="shared-styles">
+            #newsFeed {
+                @apply(--newsFeed);
+            }
+            
+            paper-card {
+                --paper-card-header-color: white;
+                --paper-card-header-text: {
+                    font: inherit;
+                    font-size: 1.4em;
+                    text-shadow: 1px 1px #555;
+                }
+                ;
+                @apply(--card);
+            }
+        </style>
+
+        <iron-ajax auto url="http://admin.naturguiden.com/query.php" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
+            id="ajaxRequest"></iron-ajax>
+
+        <ul class="app-grid" has-aspect-ratio>
+
+            <template is="dom-repeat" items="[[ajaxResponse.news]]">
+                <li class="item">
+                    <div style="background-image: url('[[item.image]]'); background-size: cover; margin: 10px;"></div>
+                </li>
+            </template>
+
+        </ul>
+
+    </template>
+
+    <script>
+    Polymer({
+        is: 'ng-pictures',
+
+        properties: {
+
+        },
+    });
+
+    </script>
+
+</dom-module>
