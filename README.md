@@ -1,3 +1,17 @@
+# Naturguiden.com
+The site builds around elements that are loaded on fist use. Each element then hold referanses to all it's dependencies.
+Each element will do only a small task, this way they will be more reusable.
+
+### File structure
+
+* **Elements** general and reusable elements that exist on different places on the website.
+* **Images** sorted by size.
+* **Src** pages and styles. ng-app is the main template. ng-x pages are main pages often having routing and templating roles.
+* **Test** Tests for elements (I guess).
+* **index.html** booting the app and setting title, meta-data, icons and stuff.
+
+-----------------------------------
+
 # Polymer App Toolbox - Starter Kit
 
 [![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
