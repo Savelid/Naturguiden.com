@@ -5,12 +5,12 @@
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-fancy-list.html">
 
-<link rel="import" href="shared-styles.html">
+<link rel="import" href="/src/shared-styles.html">
 
 <dom-module id="ng-home">
     <template>
         
-        <style is="custom-style" include="shared-styles">
+        <style include="shared-styles">
             .slider {
                 margin-bottom: 16px;
             }
@@ -21,14 +21,13 @@
 
         </style>
 
-
         <div class="slider">
             <ul class="slides">
                 <li>
                     <a href="/adventures/skating">
                         <img src="../images/2000/iceskating004.jpg">
                         <div class="caption left-align">
-                            <h3>Nordic Skating</h3>
+                            <h1>Nordic Skating</h1>
                             <h5 class="light grey-text text-lighten-3">Fantastic skating on the lakes of Sweden</h5>
                         </div>
                     </a>
@@ -168,9 +167,6 @@
         ready: function(){
             var slider = Polymer.dom(this.root).querySelector('.slider');
             $(slider).slider({full_width: true});
-
-            var parallax = Polymer.dom(this.root).querySelector('.parallax');
-            $(parallax).parallax();
         }
     });
 

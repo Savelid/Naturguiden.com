@@ -54,7 +54,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --paper-card-header-image-text: {
                     color: white;
                     text-shadow: 0 0 0.2em #000;
-
                 };
                 --paper-card-header-text: {
                     color: #242424;
@@ -64,13 +63,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --paper-card-header-image-text: {
                     color: #242424;
                     text-shadow: 0 0 0.2em #FFF;
-
                 };
             }
             paper-card.whiteHeading {
                 --paper-card-header-text: {
                     color: white;
                 };
+            }
+
+            @media (min-width: 1400px) {
+
+                paper-card .header {
+                    font-size: 32px;
+                }
             }
         </style>
     </template>

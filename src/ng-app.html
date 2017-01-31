@@ -29,7 +29,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="ng-app">
     <template>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
         <style is="custom-style" include="shared-styles">
             :host {
                 --app-primary-color: #4285f4;
@@ -332,11 +331,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
-                    <ng-adventures name="adventures" route="{{subroute}}"><paper-spinner-lite alt="Loading adventures page" active></ng-adventures>
-                    <ng-info name="info" route="{{subroute}}"><paper-spinner-lite alt="Loading information page" active></ng-info>
-                    <ng-pictures name="pictures"><paper-spinner-lite alt="Loading pictures page" active></ng-pictures>
-                    <ng-about name="about" route="{{subroute}}"><paper-spinner-lite alt="Loading about page" active></ng-about>
-                    <ng-view404 name="view404"><paper-spinner-lite alt="Loading error page" active></ng-view404>
+                    <ng-adventures name="adventures" route="{{subroute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
+                    <ng-info name="info" route="{{subroute}}"><paper-spinner-lite alt="Loading information page" active></paper-spinner-lite></ng-info>
+                    <ng-pictures name="pictures"><paper-spinner-lite alt="Loading pictures page" active></paper-spinner-lite></ng-pictures>
+                    <ng-about name="about" route="{{subroute}}"><paper-spinner-lite alt="Loading about page" active></paper-spinner-lite></ng-about>
+                    <ng-view404 name="view404"><paper-spinner-lite alt="Loading error page" active></paper-spinner-lite></ng-view404>
                 </iron-pages>
 
                 <footer>
