@@ -11,28 +11,21 @@
             :host {
                 --app-grid-columns: 3;
                 /* 50% the width of the item is equivalent to 2:1 aspect ratio*/
-                --app-grid-item-height: 50%;
+                --app-grid-item-height: 66%;
             }
-            
+            ul.app-grid {
+                margin: 3px 9px;
+            }
             .item {
-                background-color: white;
+                background-color: inherit;
+            }
+            .item div {
+                background-size: cover;
+                margin: 3px;
             }
         </style>
         <style is="custom-style" include="shared-styles">
-            #newsFeed {
-                @apply(--newsFeed);
-            }
-            
-            paper-card {
-                --paper-card-header-color: white;
-                --paper-card-header-text: {
-                    font: inherit;
-                    font-size: 1.4em;
-                    text-shadow: 1px 1px #555;
-                }
-                ;
-                @apply(--card);
-            }
+        
         </style>
 
         <iron-ajax auto url="http://admin.naturguiden.com/query.php" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
@@ -42,7 +35,7 @@
 
             <template is="dom-repeat" items="[[ajaxResponse.news]]">
                 <li class="item">
-                    <div style="background-image: url('[[item.image]]'); background-size: cover; margin: 10px;"></div>
+                    <div style="background-image: url('[[item.image]]')"></div>
                 </li>
             </template>
 

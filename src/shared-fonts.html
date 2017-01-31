@@ -16,8 +16,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <style>
             h1 {
-                color: #343434;
                 font-size: 2.4em;
+            }
+            
+            h2 {
+                font-size: 2em;
             }
             
             h3 {
@@ -28,8 +31,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 font-size: 1.4em;
             }
             
-            p {
+            h5 {
+                font-size: 1.2em;
+            }
+            
+            .card-content h1,
+            .card-content h2,
+            .card-content h3,
+            .card-content h4,
+            .card-content h5 {
+                color: #343434;
+            }
+            
+            .card-content p,
+            .card-content ul,
+            .card-content table,
+            .submenu iron-selector a {
                 color: #242424;
+            }
+            
+            paper-card {
+                --paper-card-header-image-text: {
+                    color: white;
+                    text-shadow: 0 0 0.2em #000;
+
+                };
+                --paper-card-header-text: {
+                    color: #242424;
+                };
+            }
+            paper-card.darkHeading {
+                --paper-card-header-image-text: {
+                    color: #242424;
+                    text-shadow: 0 0 0.2em #FFF;
+
+                };
+            }
+            paper-card.whiteHeading {
+                --paper-card-header-text: {
+                    color: white;
+                };
             }
         </style>
     </template>
