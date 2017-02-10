@@ -29,7 +29,9 @@
     "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
     "polymer-bg": "qed42/polymer-bg#^0.0.4",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
-    "paper-carousel": "Redbility/paper-carousel#^1.1.3"
+    "paper-carousel": "Redbility/paper-carousel#^1.1.3",
+    "l2t-paper-slider": "^1.2.6",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.1.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

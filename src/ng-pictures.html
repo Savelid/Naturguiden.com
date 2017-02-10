@@ -1,6 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
 
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="/src/shared-styles.html">
@@ -13,33 +17,45 @@
                 /* 50% the width of the item is equivalent to 2:1 aspect ratio*/
                 --app-grid-item-height: 66%;
             }
+            
             ul.app-grid {
                 margin: 3px 9px;
             }
+            
             .item {
                 background-color: inherit;
             }
+            
             .item div {
                 background-size: cover;
                 margin: 3px;
             }
         </style>
+
         <style is="custom-style" include="shared-styles">
-        
+
         </style>
 
-        <iron-ajax auto url="http://admin.naturguiden.com/query.php" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
-            id="ajaxRequest"></iron-ajax>
+        <iron-ajax auto url="http://api.naturguiden.com/api/Picture" handle-as="json" timeout="10000" last-response="{{ajaxPictures}}"
+            id="ajaxRequestPictures"></iron-ajax>
 
         <ul class="app-grid" has-aspect-ratio>
-
-            <template is="dom-repeat" items="[[ajaxResponse.news]]">
+            <template is="dom-repeat" items="[[ajaxPictures]]">
                 <li class="item">
-                    <div style="background-image: url('[[item.image]]')"></div>
+                    <div style="background-image: url('[[item.Url]]')"></div>
                 </li>
             </template>
-
         </ul>
+
+        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" last-response="{{ajaxPicture}}"
+            id="ajaxRequestPicture"></iron-ajax>
+
+        <paper-button raised on-tap="_dostuff">open</paper-button>
+        <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
+            <p>
+                <img src="[[ajaxPicture.Url]]" style="width:100%;"/>
+            </p>
+        </paper-dialog>
 
     </template>
 
@@ -48,8 +64,14 @@
         is: 'ng-pictures',
 
         properties: {
-
+            largePicture:{
+                type: Number,
+                value: 2
+            }
         },
+        _dostuff: function(){
+            this.$.animated.open()
+        }
     });
 
     </script>
