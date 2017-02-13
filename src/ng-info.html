@@ -3,7 +3,7 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="/elements/my-news-container.html">
 
-<link rel="import" href="info/info-main.html">
+<!--<link rel="import" href="info/info-main.html">-->
 
 <dom-module id="ng-info">
 
@@ -45,7 +45,7 @@
             </paper-card>
         </div>
         <my-news-container>
-            <iron-pages selected="[[actionData.action]]" attr-for-selected="action" fallback-selection="main" role="main">
+            <iron-pages selected="[[actionData.action]]" attr-for-selected="action" fallback-selection="main" role="about-tours">
                 <info-main action="main"></info-main>
                 <info-about-tours action="about-tours"></info-about-tours>
                 <info-how-get-here action="how-get-here"></info-how-get-here>

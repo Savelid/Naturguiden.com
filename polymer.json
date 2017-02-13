@@ -3,14 +3,27 @@
   "shell": "src/ng-app.html",
   "fragments": [
     "src/ng-home.html",
-    "src/ng-adventure.html",
+    "src/ng-adventures.html",
     "src/ng-info.html",
+    "src/ng-pictures.html",
     "src/ng-about.html",
-    "src/ng-view404.html"
+    "src/ng-view404.html",
+    "src/adventures/adventures-main.html",
+    "src/adventures/adventures-skating.html",
+    "src/adventures/adventures-skiing.html",
+    "src/adventures/adventures-kayak.html",
+    "src/adventures/adventures-hiking.html",
+    "src/adventures/skiing-tent.html",
+    "src/adventures/skiing-cabin.html",
+    "src/adventures/skiing-yourown.html",
+    "src/about/about-about-us.html",
+    "src/about/about-contact.html",
+    "src/about/about-inquiry.html"
   ],
-  "sourceGlobs": [
+    "sources": [
     "src/**/*",
     "images/**/*",
+    "fonts/**/*",
     "bower.json"
   ],
   "includeDependencies": [
