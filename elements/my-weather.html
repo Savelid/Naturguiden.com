@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+
+<dom-module id="my-weather">
+    <template>
+        <style is="custom-style" include="shared-styles">
+            .temperature {
+                line-height: 64px;
+                font-weight: bold;
+            }
+            
+            img {
+                width: 64px;
+                vertical-align: middle;
+            }
+            .stuff{
+                margin-left: auto;
+                margin-right: auto;
+                display:block;
+                width: 300px;
+            }
+        </style>
+
+        <iron-ajax auto url="http://api.openweathermap.org/data/2.5/group?id=8131853,2685750&units=metric&appid=619c45ce108a2074d23a044f1e297362"
+            handle-as="json" last-response="{{ajaxForecastResponse}}" timeout="10000" id="ajaxForecast">
+        </iron-ajax>
+        <template is="dom-if" if="[[ajaxForecastResponse]]">
+            <paper-card>
+                <div class="card-content">
+                    <span class="stuff">
+                <template is="dom-repeat" items="[[ajaxForecastResponse.list]]">
+                    <img src="http://openweathermap.org/img/w/[[item.weather.0.icon]].png" />
+                    <span class="temperature">[[item.main.temp]]°C in [[item.name]]</span>
+                    <br/>
+                </template>
+                    </span>
+                </div>
+            </paper-card>
+        </template>
+
+    </template>
+
+    <script>
+    Polymer({
+        is: 'my-weather',
+
+        properties: {
+
+        },
+    });
+
+    </script>
+
+</dom-module>
