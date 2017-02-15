@@ -1,11 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<!--
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<!--
 -->
 
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
@@ -44,22 +44,27 @@
         <ul class="app-grid" has-aspect-ratio>
             <template is="dom-repeat" items="[[ajaxPictures]]">
                 <li class="item">
-                    <div style="background-image: url('[[item.ThumbUrl]]')"></div>
+                    <div style="background-image: url('[[item.ThumbUrl]]')" id="[[item.Id]]" on-click="handleClick"></div>
                 </li>
             </template>
         </ul>
-<!--
-        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" last-response="{{ajaxPicture}}"
+
+        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" last-response="{{ajaxPicture}}"
             id="ajaxRequestPicture"></iron-ajax>
 
-        <paper-button raised on-tap="_dostuff">open</paper-button>
-        <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
+        <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
             <p>
-                <img src="[[ajaxPicture.Url]]" style="width:100%;"/>
+                <img src="[[ajaxPicture.FormatedUrl]]" style="width:100%;"/>
             </p>
         </paper-dialog>
+        <!--
+        <script>
+            this.addEventListener('kick', function (e) {
+                console.log(e.detail.kicked); // true
+                //this.largePicture = e.detail.kicked
+            })
+        </script>
         -->
-
     </template>
 
     <script>
@@ -72,8 +77,18 @@
                 value: 2
             }
         },
-        _dostuff: function(){
-            this.$.animated.open()
+        handleClick: function(e, detail) {
+            this.fire('kick', {kicked: e.target.id});
+        },
+        listeners: {
+          'kick': 'handleKick',
+        },
+
+        handleKick: function(e) {
+          console.info(e.detail.kicked + ' was kicked.');
+          this.largePicture = e.detail.kicked;
+          this.$.ajaxRequestPicture.generateRequest();
+          this.$.dialog.open();
         }
     });
 
