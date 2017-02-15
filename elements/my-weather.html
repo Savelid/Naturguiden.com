@@ -5,20 +5,16 @@
 <dom-module id="my-weather">
     <template>
         <style is="custom-style" include="shared-styles">
-            .temperature {
-                line-height: 64px;
-                font-weight: bold;
+            paper-card{
+                background: #BCAAA4;
+            }
+            h4 {
+                margin:0;
             }
             
             img {
                 width: 64px;
                 vertical-align: middle;
-            }
-            .stuff{
-                margin-left: auto;
-                margin-right: auto;
-                display:block;
-                width: 300px;
             }
         </style>
 
@@ -28,13 +24,12 @@
         <template is="dom-if" if="[[ajaxForecastResponse]]">
             <paper-card>
                 <div class="card-content">
-                    <span class="stuff">
                 <template is="dom-repeat" items="[[ajaxForecastResponse.list]]">
+                    <h4>
                     <img src="http://openweathermap.org/img/w/[[item.weather.0.icon]].png" />
-                    <span class="temperature">[[item.main.temp]]°C in [[item.name]]</span>
-                    <br/>
+                    [[item.main.temp]]°C in [[item.name]]
+                    </h4>
                 </template>
-                    </span>
                 </div>
             </paper-card>
         </template>
