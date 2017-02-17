@@ -3,6 +3,7 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-left-image-paper-card.html">
 <link rel="import" href="/elements/my-inquiry-button.html">
@@ -16,17 +17,15 @@
 <dom-module id="adventures-skiing">
 
     <template>
-        <style is="custom-style" include="shared-styles">
+        <style is="custom-style" include="iron-flex iron-flex-alignment shared-styles">
             /* CSS rules for your element */
         </style>
 
         <!-- local DOM for your element -->
         <app-route route="{{route}}" pattern="/:tour" data="{{tourData}}" tail="{{tail}}"></app-route>
 
-        <div class="row">
-
-            <div class="col l3 hide-on-med-and-down">
-
+        <div class="layout horizontal layout-start pageWidth">
+            <div class="menuWidth">
 
                 <my-inquiry-button></my-inquiry-button>
 
@@ -44,8 +43,7 @@
                 </a>
 
             </div>
-
-            <div class="col s12 m12 l9">
+            <div>
 
                 <template is="dom-if" if="{{isMain}}">
                     <paper-card>

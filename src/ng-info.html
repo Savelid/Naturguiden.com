@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="/elements/my-news-container.html">
+<link rel="import" href="/src/shared-styles.html">
 
 <!--<link rel="import" href="info/info-main.html">-->
 
@@ -15,7 +16,7 @@
         <!-- local DOM for your element -->
 
         <app-route route="{{route}}" pattern="/:action" data="{{actionData}}" tail="{{tail}}"></app-route>
-        <div class="submenu">
+        <div class="submenu pageWidth">
             <paper-card>
                 <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
                     <a href="/info/about-tours" name="about-tours">
