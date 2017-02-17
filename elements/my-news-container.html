@@ -1,25 +1,32 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="my-inquiry-button.html">
 <link rel="import" href="my-news.html">
 <link rel="import" href="my-weather.html">
+<link rel="import" href="/src/shared-styles.html">
 
 <dom-module id="my-news-container">
     <template>
-        <style is="custom-style" include="shared-styles">
+        <style is="custom-style" include="iron-flex iron-flex-alignment shared-styles">
+            .menuWidth {
+                display: none;
+            }
+            @media (min-width: 1400px){
+                .menuWidth {
+                    display: block;
+                }
+            }
         </style>
 
-        <div class="row">
-
-            <div class="col l3 hide-on-med-and-down">
+        <div class$="layout horizontal layout-start pageMargin [[pageWidth]]">
+            <div class="menuWidth">
 
                 <my-inquiry-button></my-inquiry-button>
                 <my-weather></my-weather>
                 <my-news></my-news>
 
             </div>
-
-            <div class="col s12 m12 l9">
-
+            <div>
                 <content></content>
 
             </div>
@@ -32,8 +39,19 @@
         is: 'my-news-container',
 
         properties: {
-
+            noMaxWidth:{
+                type: Boolean,
+                value: false,
+                reflectToAttribute: true
+            },
+            pageWidth:{
+                type: String,
+                computed: 'computedPageWidth(noMaxWidth)'
+            }
         },
+        computedPageWidth: function(noMaxWidth) {
+            return noMaxWidth ? '' : 'pageWidth';
+        }
     });
 
     </script>

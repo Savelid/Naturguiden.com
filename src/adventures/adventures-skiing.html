@@ -24,13 +24,13 @@
         <!-- local DOM for your element -->
         <app-route route="{{route}}" pattern="/:tour" data="{{tourData}}" tail="{{tail}}"></app-route>
 
-        <div class="layout horizontal layout-start pageWidth">
+        <div class="layout horizontal layout-start pageWidth pageMargin">
             <div class="menuWidth">
 
                 <my-inquiry-button></my-inquiry-button>
 
                 <a href="/before-trip/skiing">
-                    <paper-card heading="Before the trip" class="colorfull">
+                    <paper-card heading="Before the trip" class="colorfull flow-text">
                         <div class="card-content">
                             <p>In this section we will try to give you the information you need to be able to bring right kind
                                 of cloth and equipment, but also give an idea about what you can expect.</p>
@@ -38,7 +38,7 @@
                     </paper-card>
                 </a>
                 <a href="/photos/skiing">
-                    <paper-card heading="Skiing photos" image="/images/500/cabin_w002.jpg" class="darkHeading">
+                    <paper-card heading="Skiing photos" image="/images/500/cabin_w002.jpg" class="darkHeading flow-text">
                     </paper-card>
                 </a>
 
@@ -46,7 +46,7 @@
             <div>
 
                 <template is="dom-if" if="{{isMain}}">
-                    <paper-card>
+                    <paper-card class="flow-text">
                         <div class="card-content">
                             <h1>Cross country skiing</h1>
                             <p class="lead">Cross country skiing in the Swedish mountains during the best time of the year, the fifth season:
@@ -96,7 +96,7 @@
                     </iron-pages>
                 </template>
 
-                <paper-card>
+                <paper-card class="flow-text">
                     <div class="card-content">
                         <h1>Send an inquiry</h1>
                         <p class="lead">If you would like to know more, get a price or ask questions feel free to contact us, or fill out

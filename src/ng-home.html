@@ -5,6 +5,7 @@
 <link rel="import" href="/elements/my-left-image-paper-card.html">
 <link rel="import" href="/elements/my-news-container.html">
 <link rel="import" href="/elements/my-fancy-list.html">
+<link rel="import" href="/elements/materialize-slider.html">
 
 <link rel="import" href="/src/shared-styles.html">
 
@@ -12,60 +13,25 @@
     <template>
         
         <style include="shared-styles">
-            .slider {
-                margin-bottom: 16px;
-            }
 
-            .caption {
-                text-shadow: 0 0 0.4em #000;
+            @media (min-width: 1800px) {
+                .floatRightOnLarge {
+                    float: right;
+                    width: calc(40% - 12px);
+                }
+
+                .notFloatRightOnLarge {
+                    width: 60%;
+                }
             }
 
         </style>
 
-        <div class="slider">
-            <ul class="slides">
-                <li>
-                    <a href="/adventures/skating">
-                        <img src="../images/2000/iceskating004.jpg">
-                        <div class="caption left-align">
-                            <h1>Nordic Skating</h1>
-                            <h5 class="light grey-text text-lighten-3">Fantastic skating on the lakes of Sweden</h5>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/adventures/kayak">
-                        <img src="../images/2000/kayak003.jpg">
-                        <div class="caption right-align">
-                            <h1>Kayak</h1>
-                            <h5 class="light grey-text text-lighten-3">Paddle amoung the islands of the Swedish arcepelago</h5>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/adventures/skiing">
-                        <img src="http://lh3.ggpht.com/-7ogtBQtJO9E/VRe-bkip9qI/AAAAAAAAbLU/rG_AKTeb1tc/s1600/20150328_133105.jpg">
-                        <div class="caption left-align">
-                            <h1>Cross country skiing</h1>
-                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/adventures/hiking">
-                        <img src="../images/2000/hiking001.jpg">
-                        <div class="caption right-align">
-                            <h1>Hiking</h1>
-                            <h5 class="light grey-text text-lighten-3">Walk in the wilderness of northern Sweden</h5>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <materialize-slider></materialize-slider>
 
-        <my-news-container>
+        <my-news-container no-max-width>
 
-            <my-left-image-paper-card image="../images/500/happy_w001.jpg">
+            <my-left-image-paper-card image="../images/500/happy_w001.jpg" class="notFloatRightOnLarge flow-text">
                 <div class="card-content">
                     <h1>Adventure Tours in Sweden</h1>
                     <p>Join us on our tours. We have gathered our best outdoor experiences and are now offering all inclusive
@@ -85,7 +51,7 @@
                 </div>
             </my-left-image-paper-card>
 
-            <paper-card>
+            <paper-card class="floatRightOnLarge flow-text">
                 <div class="card-content">
                     <h1>They write about our skating trips:</h1>
                     <p class="lead">There are several articles about skating in Sweden. The most recent articles you found here.</p>
@@ -145,7 +111,7 @@
                 </div>
             </paper-card>
 
-            <paper-card>
+            <paper-card class="notFloatRightOnLarge flow-text">
                 <div class="card-content">
                     <h1>Inspiration</h1>
                     <p class="lead">A nice video from one of our guest. Coming here for Nordic skating 2015</p>
@@ -163,11 +129,7 @@
         is: 'ng-home',
 
         properties: {
-
-        },
-        ready: function(){
-            var slider = Polymer.dom(this.root).querySelector('.slider');
-            $(slider).slider({full_width: true});
+            
         }
     });
 
