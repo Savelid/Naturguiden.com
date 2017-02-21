@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
@@ -38,13 +39,18 @@
 
         </style>
 
-        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/Album" handle-as="json" timeout="10000" last-response="{{ajaxPictures}}"
-            id="ajaxRequestPictures"></iron-ajax>
+        <app-route route="{{route}}" pattern="/:category" data="{{categoryData}}" tail="{{tail}}"></app-route>
 
+        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/Album/[[categoryData.category]]" handle-as="json" timeout="10000" last-response="{{ajaxPictures}}"
+            id="ajaxRequestPictures"></iron-ajax>
+        <p hidden="[[!categoryData.category]]">
+            Show pictures tagged with 
+            [[categoryData.category]]
+        </p>
         <ul class="app-grid" has-aspect-ratio>
             <template is="dom-repeat" items="[[ajaxPictures]]">
                 <li class="item">
-                    <div style="background-image: url('[[item.ThumbUrl]]')" id="[[item.Id]]" on-click="handleClick"></div>
+                    <div style="background-image: url('[[item.BaseUrl]][[item.ThumbUrl]]')" id="[[item.Id]]" on-click="handleClick"></div>
                 </li>
             </template>
         </ul>
@@ -54,7 +60,7 @@
 
         <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
             <p>
-                <img src="[[ajaxPicture.FormatedUrl]]" style="width:100%;"/>
+                <img src="[[ajaxPicture.BaseUrl]][[ajaxPicture.FormatedUrl]]" style="width:100%;"/>
             </p>
         </paper-dialog>
         <!--

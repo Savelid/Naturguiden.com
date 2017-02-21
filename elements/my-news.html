@@ -12,17 +12,17 @@
         </style>
 
                 <div id="newsFeed">
-                    <iron-ajax auto url="http://admin.naturguiden.com/query.php" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
+                    <iron-ajax auto url="http://api.naturguiden.com/api/News" handle-as="json" timeout="10000" last-response="{{ajaxResponse}}"
                         id="ajaxRequest"></iron-ajax>
 
-                    <template is="dom-repeat" items="[[ajaxResponse.news]]">
-                        <paper-card heading="[[item.header]]" image="[[item.image]]" class="whiteHeading flow-text">
+                    <template is="dom-repeat" items="[[ajaxResponse]]">
+                        <paper-card heading="[[item.Heading]]" image="[[item.Picture.BaseUrl]][[item.Picture.FormatedUrl]]" class="whiteHeading flow-text">
                             <div class="card-content">
-                                <p>[[item.content]]</p>
+                                <p>[[item.Text]]</p>
                             </div>
-                            <div hidden="[[!item.link]]" class="card-actions">
-                                <a href="[[item.link]]">
-                                    <paper-button>[[item.linktext]]</paper-button>
+                            <div hidden="[[!item.LinkUrl]]" class="card-actions">
+                                <a href="[[item.LinkUrl]]">
+                                    <paper-button>[[item.LinkText]]</paper-button>
                                 </a>
                             </div>
                         </paper-card>
