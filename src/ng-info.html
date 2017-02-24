@@ -47,17 +47,17 @@
         </div>
         <my-news-container>
             <iron-pages selected="[[actionData.action]]" attr-for-selected="action" fallback-selection="main" role="about-tours">
-                <info-main action="main"></info-main>
-                <info-about-tours action="about-tours"></info-about-tours>
-                <info-how-get-here action="how-get-here"></info-how-get-here>
-                <info-accommodation action="accommodation"></info-accommodation>
+                <info-main action="main"><paper-spinner-lite alt="Loading info-main page" active></paper-spinner-lite></info-main>
+                <info-about-tours action="about-tours"><paper-spinner-lite alt="Loading about-tours page" active></paper-spinner-lite></info-about-tours>
+                <info-how-get-here action="how-get-here"><paper-spinner-lite alt="Loading how-get-here page" active></paper-spinner-lite></info-how-get-here>
+                <info-accommodation action="accommodation"><paper-spinner-lite alt="Loading accommodation page" active></paper-spinner-lite></info-accommodation>
                 <div action="about-sweden">
-                    <info-about-sweden></info-about-sweden>
-                    <info-weather></info-weather>
+                    <info-about-sweden><paper-spinner-lite alt="Loading about-sweden page" active></paper-spinner-lite></info-about-sweden>
+                    <info-weather><paper-spinner-lite alt="Loading weather page" active></paper-spinner-lite></info-weather>
                 </div>
                 <div action="weather">
-                    <info-weather></info-weather>
-                    <info-about-sweden></info-about-sweden>
+                    <info-weather><paper-spinner-lite alt="Loading weather page" active></paper-spinner-lite></info-weather>
+                    <info-about-sweden><paper-spinner-lite alt="Loading about-sweden page" active></paper-spinner-lite></info-about-sweden>
                 </div>
             </iron-pages>
         </my-news-container>

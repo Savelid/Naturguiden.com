@@ -6,10 +6,12 @@
     <template>
         <style is="custom-style" include="shared-styles">
             paper-card{
-                background: coral;
+                background: darkcyan;
             }
-            h4 {
-                margin:0;
+            .card-content h4 {
+                margin: -14px 0 -14px -10px;
+                font-weight: 400;
+                color: white;
             }
             
             img {
@@ -24,12 +26,14 @@
         <template is="dom-if" if="[[ajaxForecastResponse]]">
             <paper-card>
                 <div class="card-content">
-                <template is="dom-repeat" items="[[ajaxForecastResponse.list]]">
                     <h4>
-                    <img src="http://openweathermap.org/img/w/[[item.weather.0.icon]].png" />
-                    [[item.main.temp]]°C in [[item.name]]
+                    <img src="http://openweathermap.org/img/w/[[ajaxForecastResponse.list.0.weather.0.icon]].png" />
+                    [[ajaxForecastResponse.list.0.main.temp]]°C in Linköping
                     </h4>
-                </template>
+                    <h4>
+                    <img src="http://openweathermap.org/img/w/[[ajaxForecastResponse.list.1.weather.0.icon]].png" />
+                    [[ajaxForecastResponse.list.1.main.temp]]°C in Östersund
+                    </h4>
                 </div>
             </paper-card>
         </template>

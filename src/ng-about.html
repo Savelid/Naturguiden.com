@@ -42,15 +42,15 @@
         <my-news-container>
             <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="about-us" role="main">
                 <div name="about-us">
-                    <about-us></about-us>
-                    <about-contact></about-contact>
+                    <about-us><paper-spinner-lite alt="Loading about-us page" active></paper-spinner-lite></about-us>
+                    <about-contact><paper-spinner-lite alt="Loading contact page" active></paper-spinner-lite></about-contact>
                 </div>
                 <div name="contact">
-                    <about-contact></about-contact>
+                    <about-contact><paper-spinner-lite alt="Loading contact page" active></paper-spinner-lite></about-contact>
                 </div>
                 <div name="inquiry">
-                    <about-inquiry></about-inquiry>
-                    <about-contact></about-contact>
+                    <about-inquiry><paper-spinner-lite alt="Loading inquiry page" active></paper-spinner-lite></about-inquiry>
+                    <about-contact><paper-spinner-lite alt="Loading contact page" active></paper-spinner-lite></about-contact>
                 </div>
             </iron-pages>
         </my-news-container>

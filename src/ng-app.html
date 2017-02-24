@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
@@ -23,14 +24,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="/images/my-icons.html">
 
+<link rel="import" href="ng-view404.html">
 <link rel="import" href="/bower_components/paper-spinner/paper-spinner-lite.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="ng-app">
     <template>
-        <style is="custom-style" include="shared-styles">
+        <style is="custom-style" include="shared-styles app-grid-style">
             :host {
+                --app-grid-columns: 1;
+                --app-grid-expandible-item-columns: 1;
+
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
                 --softer-text-color: #444;
@@ -146,7 +151,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             
             footer h3 {
                 color: #DDD;
-                font-size: 1.7em
+                font-size: 1.7em;
+                margin: 0;
             }
             
             .footer-checkbox:checked + .footer-heading:after {
@@ -161,11 +167,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             
             .footer-checkbox {
                 position: absolute;
-                width: 100%;
-                height: 55.8px;
-                padding: 32px;
+                width: calc(100% - 40px);
+                height: 40px;
+                padding: 0;
                 margin: 0;
-                margin-top: -16px;
+                margin-top: 0;
                 cursor: pointer;
                 z-index: 1;
                 opacity: 0.0;
@@ -220,6 +226,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
                 .footer-checkbox:checked + .footer-heading:after {
                     content: '';
+                }
+                :host {
+                    --app-grid-columns: 3;
+                    --app-grid-expandible-item-columns: 3;
                 }
             }
         </style>
@@ -342,85 +352,82 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </iron-pages>
 
                 <footer>
-                    <div class="row">
-                        <div class="col m4">
+                    <div class="app-grid">
+                        <div class="item">
                             <input class="footer-checkbox" type="checkbox" checked>
                             <h3 class="footer-heading">Our adventures</h3>
                             <ul class="list-unstyled footer-list">
-                                <li><a href$="{{baseUrl}}adventures" data-route="adventures">Overview</a></li>
+                                <li><a href="/adventures">Overview</a></li>
                                 <li>
-                                    <a href$="{{baseUrl}}adventures/skating" data-route="skating">Skating </a>
-                                    <!--<a href$="{{baseUrl}}adventures/skating_nl" data-route="skating-nl">- Dutch </a>-->
-                                    <!--<a href$="{{baseUrl}}adventures/skating_fr" data-route="skating-fr">- French </a>-->
+                                    <a href="/adventures/skating">Skating </a>
                                 </li>
                                 <li>
-                                    <a href$="{{baseUrl}}adventures/skiing" data-route="skiing">Skiing </a>
-                                    <!--<a href$="{{baseUrl}}adventures/skiing_fr" data-route="skiing-fr">- French </a>-->
+                                    <a href="/adventures/skiing">Skiing </a>
                                 </li>
                                 <li>
-                                    <a href$="{{baseUrl}}adventures/kayak" data-route="kayak">Kayak</a>
+                                    <a href="/adventures/kayak">Kayak</a>
                                 </li>
                                 <li>
-                                    <a href$="{{baseUrl}}adventures/hiking" data-route="hiking">Hiking</a>
+                                    <a href="/adventures/hiking">Hiking</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col m4">
+                        <div class="item">
                             <div>
                                 <input class="footer-checkbox" type="checkbox" checked>
                                 <h3 class="footer-heading">Information</h3>
                                 <ul class="list-unstyled footer-list">
                                     <li>
-                                        <a href$="{{baseUrl}}info/about-tours" data-route="about-tours">About our tours</a>
+                                        <a href="/info/about-tours">About our tours</a>
                                     </li>
                                     <li>
-                                        <a href$="{{baseUrl}}info/how-get-here" data-route="how-get-here">How to get here</a>
+                                        <a href="/info/how-get-here">How to get here</a>
                                     </li>
                                     <li>
-                                        <a href$="{{baseUrl}}info/accommodation" data-route="accommodation">Accommodations</a>
+                                        <a href="/info/accommodation">Accommodations</a>
                                     </li>
                                     <li>
-                                        <a href$="{{baseUrl}}before-trip/0" data-route="before-trip">Before the trip</a>
+                                        <a href="/before-trip">Before the trip</a>
                                     </li>
                                     <li>
-                                        <a href$="{{baseUrl}}info/about-sweden" data-route="about-sweden">About Sweden</a>
+                                        <a href="/info/about-sweden">About Sweden</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col m4">
+                        <div class="item">
                             <input class="footer-checkbox" type="checkbox" checked>
                             <h3 class="footer-heading">About us</h3>
                             <ul class="list-unstyled footer-list">
                                 <li>
-                                    <a href$="{{baseUrl}}about-us" data-route="about-us">About Naturguiden</a>
+                                    <a href="/about/about-us">About Naturguiden</a>
                                 </li>
                                 <li>
-                                    <a href$="{{baseUrl}}about-us/contact" data-route="about-us">Contact us</a>
+                                    <a href="/about/contact">Contact us</a>
                                 </li>
                                 <li>
-                                    <a href="{{baseUrl}}booking" data-route="booking">Send an inquiry</a>
+                                    <a href="/about/inquiry">Send an inquiry</a>
                                 </li>
                                 <li>
                                     <br>
-                                    <a href="{{baseUrl}}pictures" data-route="pictures">Photos</a>
+                                    <a href="/pictures">Photos</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <!-- row -->
-                    <div class="row">
-                        <div class="col s12">
-                            <h3>Contact information</h3>
-                        </div>
+                    <div>
+                        <h3>Contact information</h3>
                     </div>
-                    <div class="row">
-                        <div class="col s6 m4">
+                    <div class="app-grid">
+                        <div class="item">
                             <address>
-                                <strong>Naturguiden</strong><br> Munkhagsgatan 120B<br> 587 25 LINKÖPING<br> SWEDEN
+                                <strong>Naturguiden</strong><br>
+                                Munkhagsgatan 120B<br>
+                                587 25 LINKÖPING<br>
+                                SWEDEN
                             </address>
                         </div>
-                        <div class="col s6 m4">
+                        <div class="item">
                             <address>
                                 <strong>John Savelid</strong><br>
                                 <a href="mailto:info@naturguiden.se">info@naturguiden.se</a><br>
@@ -452,6 +459,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: String,
                     value: "home"
                 },
+            },
+
+            attached: function() {
+                this._updateGridStyles = this._updateGridStyles || function() {
+                this.updateStyles();
+                }.bind(this);
+                window.addEventListener('resize', this._updateGridStyles);
+            },
+            detached: function() {
+                window.removeEventListener('resize', this._updateGridStyles);
             },
 
             observers: [
