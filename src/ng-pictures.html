@@ -16,9 +16,10 @@
     <template>
         <style include="app-grid-style">
             :host {
-                --app-grid-columns: 3;
+                --app-grid-columns: 2;
                 /* 50% the width of the item is equivalent to 2:1 aspect ratio*/
-                --app-grid-item-height: 66%;
+                --app-grid-item-height: 60%;
+                --app-grid-expandible-item-columns: 2;
             }
             
             ul.app-grid {
@@ -33,19 +34,80 @@
                 background-size: cover;
                 margin: 3px;
             }
+
+            @media (min-width: 768px) {
+                :host {
+                    --app-grid-columns: 3;
+                }
+            }
+            @media (min-width: 1024px) {
+                :host {
+                    --app-grid-columns: 4;
+                }
+            }
+            @media (min-width: 1280px) and (max-width: 1535px) {
+                :host {
+                    --app-grid-columns: 4;
+                    --app-grid-expandible-item-columns: 1.333333;
+                }
+                .item:nth-child(7n+1) {
+                    @apply(--app-grid-expandible-item);
+                }
+                .item:nth-child(7n+2) {
+                    @apply(--app-grid-expandible-item);
+                }
+                .item:nth-child(7n+3) {
+                    @apply(--app-grid-expandible-item);
+                }
+            }
+            @media (min-width: 1536px) and (max-width: 2047px) {
+                :host {
+                    --app-grid-columns: 5;
+                    --app-grid-expandible-item-columns: 1.25;
+                }
+                
+                .item:nth-child(9n+1) {
+                    @apply(--app-grid-expandible-item);
+                }
+                .item:nth-child(9n+2) {
+                    @apply(--app-grid-expandible-item);
+                }
+                .item:nth-child(9n+3) {
+                    @apply(--app-grid-expandible-item);
+                }
+                .item:nth-child(9n+4) {
+                    @apply(--app-grid-expandible-item);
+                }
+            }
+            @media (min-width: 2048px) {
+                :host {
+                    --app-grid-columns: 6;
+                }
+            }
+            @media (min-width: 2304px) {
+                :host {
+                    --app-grid-columns: 6;
+                }
+            }
+            @media (min-width: 2560px) {
+                :host {
+                    --app-grid-columns: 7;
+                }
+            }
         </style>
 
         <style is="custom-style" include="shared-styles">
 
         </style>
 
-        <app-route route="{{route}}" pattern="/:category" data="{{categoryData}}" tail="{{tail}}"></app-route>
+        <app-route route="{{route}}" pattern="/:category" data="{{categoryData}}" tail="{{tail}}" id="router"></app-route>
 
         <iron-ajax auto url="http://api.naturguiden.com/api/Picture/Album/[[categoryData.category]]" handle-as="json" timeout="10000" last-response="{{ajaxPictures}}"
             id="ajaxRequestPictures"></iron-ajax>
-        <p hidden="[[!categoryData.category]]">
-            Show pictures tagged with 
-            [[categoryData.category]]
+        <p hidden="[[!categoryData.category]]" style="padding-left: 16px;">
+            Only showing pictures related to
+            <b>[[categoryData.category]]</b>
+            <a href="/pictures/">click here</a> to see everything
         </p>
         <ul class="app-grid" has-aspect-ratio>
             <template is="dom-repeat" items="[[ajaxPictures]]">
@@ -55,7 +117,7 @@
             </template>
         </ul>
 
-        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" last-response="{{ajaxPicture}}"
+        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" on-response="openLargePicture"
             id="ajaxRequestPicture"></iron-ajax>
 
         <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
@@ -83,6 +145,9 @@
                 value: 2
             }
         },
+        observers: [
+            '_routeChanged(route)'
+        ],
         handleClick: function(e, detail) {
             this.fire('kick', {kicked: e.target.id});
         },
@@ -90,14 +155,38 @@
           'kick': 'handleKick',
         },
 
+        attached: function() {
+            this._updateGridStyles = this._updateGridStyles || function() {
+            this.updateStyles();
+            }.bind(this);
+            window.addEventListener('resize', this._updateGridStyles);
+        },
+        detached: function() {
+            window.removeEventListener('resize', this._updateGridStyles);
+        },
+
         handleKick: function(e) {
-          console.info(e.detail.kicked + ' was kicked.');
-          this.largePicture = e.detail.kicked;
-          this.$.ajaxRequestPicture.generateRequest();
-          this.$.dialog.open();
+            console.info(e.detail.kicked + ' was kicked.');
+            this.largePicture = e.detail.kicked;
+
+            var t = document.querySelector('#t');
+            t.mynumber = e.detail.kicked;
+            t.$.dialog.open();
+          //this.$.ajaxRequestPicture.generateRequest();
+          //this.$.dialog.open();
+        },
+
+        openLargePicture: function(data) {
+            var t = document.querySelector('#t');
+            console.log(data);
+            t.myfullscreenimage = data.BaseUrl + data.FormatedUrl;
+            t.$.dialog.open();
+        },
+
+        _routeChanged: function(route) {
+            console.log("New request for pictures")
         }
     });
-
     </script>
 
 </dom-module>

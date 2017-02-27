@@ -105,8 +105,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #eeeeee;
       }
     </style>
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/elements/my-dialog-img.html">
+    <link rel="import" href="/bower_components/neon-animation/animations/scale-up-animation.html">
+    <link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
   </head>
   <body>
+    <template id="t" is="dom-bind">
+
+        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/{{mynumber}}" handle-as="json" timeout="10000" last-response="{{ajaxPicture}}"
+            id="ajaxRequestPicture"></iron-ajax>
+
+        <my-dialog-img id="dialog" with-backdrop image-url="[[ajaxPicture.BaseUrl]][[ajaxPicture.FormatedUrl]]">
+            <!--<img src="[[ajaxPicture.BaseUrl]][[ajaxPicture.FormatedUrl]]"/>-->
+        </my-dialog-img>
+
+    </template>
     <ng-app>Loading...</ng-app>
   </body>
 </html>

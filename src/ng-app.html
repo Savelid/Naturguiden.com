@@ -235,7 +235,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <app-location route="{{route}}"></app-location>
-        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <app-route route="{{route}}" pattern="/pictures" tail="{{pictureSubroute}}"></app-route>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subRoute}}"></app-route>
         <app-route route="{{subRoute}}" pattern="/:subpage" data="{{subRouteData}}" tail="{{subRouteTail}}"></app-route>
 
         <app-drawer-layout fullbleed force-narrow>
@@ -262,7 +263,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             Information
                         </a>
 
-                        <a href="/pictures" name="pictures">
+                        <a href="/pictures/" name="pictures">
                             <iron-icon icon="custom-icons:collections"></iron-icon>
                             Photos
                         </a>
@@ -335,7 +336,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-tabs selected="[[page]]" attr-for-selected="name">
                         <paper-tab name="adventures"><a href="/adventures/main">Our adventures</a></paper-tab>
                         <paper-tab name="info"><a href="/info/about-tours">Information</a></paper-tab>
-                        <paper-tab name="pictures"><a href="/pictures">Photos</a></paper-tab>
+                        <paper-tab name="pictures"><a href="/pictures/">Photos</a></paper-tab>
                         <paper-tab name="about"><a href="/about/about-us">About us</a></paper-tab>
                     </paper-tabs>
 
@@ -344,10 +345,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
-                    <ng-adventures name="adventures" route="{{subroute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
-                    <ng-info name="info" route="{{subroute}}"><paper-spinner-lite alt="Loading information page" active></paper-spinner-lite></ng-info>
-                    <ng-pictures name="pictures" route="{{subroute}}"><paper-spinner-lite alt="Loading pictures page" active></paper-spinner-lite></ng-pictures>
-                    <ng-about name="about" route="{{subroute}}"><paper-spinner-lite alt="Loading about page" active></paper-spinner-lite></ng-about>
+                    <ng-adventures name="adventures" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
+                    <ng-info name="info" route="{{subRoute}}"><paper-spinner-lite alt="Loading information page" active></paper-spinner-lite></ng-info>
+                    <ng-pictures name="pictures" route="{{pictureSubroute}}"><paper-spinner-lite alt="Loading pictures page" active></paper-spinner-lite></ng-pictures>
+                    <ng-about name="about" route="{{subRoute}}"><paper-spinner-lite alt="Loading about page" active></paper-spinner-lite></ng-about>
                     <ng-view404 name="view404"><paper-spinner-lite alt="Loading error page" active></paper-spinner-lite></ng-view404>
                 </iron-pages>
 
@@ -410,7 +411,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 </li>
                                 <li>
                                     <br>
-                                    <a href="/pictures">Photos</a>
+                                    <a href="/pictures/">Photos</a>
                                 </li>
                             </ul>
                         </div>
@@ -459,6 +460,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: String,
                     value: "home"
                 },
+                picturesSubroute: {
+                    reflectToAttribute: true,
+                }
             },
 
             attached: function() {
