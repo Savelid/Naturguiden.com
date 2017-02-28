@@ -106,33 +106,25 @@
             id="ajaxRequestPictures"></iron-ajax>
         <p hidden="[[!categoryData.category]]" style="padding-left: 16px;">
             Only showing pictures related to
-            <b>[[categoryData.category]]</b>
-            <a href="/pictures/">click here</a> to see everything
+            <b>[[categoryData.category]]</b>.
+            <a href="/pictures/">Click here</a> to see everything
         </p>
+
+        <p hidden="[[!pictureShowStatus]]" style="padding-left: 16px;">
+            [[pictureShowStatus]]
+        </p>
+
         <ul class="app-grid" has-aspect-ratio>
             <template is="dom-repeat" items="[[ajaxPictures]]">
                 <li class="item">
-                    <div style="background-image: url('[[item.BaseUrl]][[item.ThumbUrl]]')" id="[[item.Id]]" on-click="handleClick"></div>
+                    <div style="background-image: url('[[item.BaseUrl]][[item.ThumbUrl]]')" id="[[item.Id]]" on-tap="_handleClick"></div>
                 </li>
             </template>
         </ul>
 
-        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[largePicture]]" handle-as="json" timeout="10000" on-response="openLargePicture"
+        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[activeID]]" handle-as="json" timeout="10000" last-response="{{recivedLargePicture}}"
             id="ajaxRequestPicture"></iron-ajax>
 
-        <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width:90%; max-width:1000px;">
-            <p>
-                <img src="[[ajaxPicture.BaseUrl]][[ajaxPicture.FormatedUrl]]" style="width:100%;"/>
-            </p>
-        </paper-dialog>
-        <!--
-        <script>
-            this.addEventListener('kick', function (e) {
-                console.log(e.detail.kicked); // true
-                //this.largePicture = e.detail.kicked
-            })
-        </script>
-        -->
     </template>
 
     <script>
@@ -140,21 +132,31 @@
         is: 'ng-pictures',
 
         properties: {
-            largePicture:{
-                type: Number,
-                value: 2
+            largePictureUrl:{
+                type: String,
+                reflectToAttribute: true,
+                notify: true,
+            },
+            activeID:{
+                type: String,
+            },
+            pictureWaitingToOpen:{
+                type: Boolean,
+                notify: true,
+                reflectToAttribute: true,
+                value: false
+            },
+            pictureShowStatus:{
+                type: String,
+                reflectToAttribute: true,
+                value: ""
+            },
+            recivedLargePicture: {
+                observer: '_recivedLargePicture',
             }
         },
-        observers: [
-            '_routeChanged(route)'
-        ],
-        handleClick: function(e, detail) {
-            this.fire('kick', {kicked: e.target.id});
-        },
-        listeners: {
-          'kick': 'handleKick',
-        },
 
+        //Handle grid on window-resize
         attached: function() {
             this._updateGridStyles = this._updateGridStyles || function() {
             this.updateStyles();
@@ -165,26 +167,17 @@
             window.removeEventListener('resize', this._updateGridStyles);
         },
 
-        handleKick: function(e) {
-            console.info(e.detail.kicked + ' was kicked.');
-            this.largePicture = e.detail.kicked;
-
-            var t = document.querySelector('#t');
-            t.mynumber = e.detail.kicked;
-            t.$.dialog.open();
-          //this.$.ajaxRequestPicture.generateRequest();
-          //this.$.dialog.open();
+        //Handle clicks on pictures
+        _handleClick: function(e, detail) {
+            this.activeID = e.target.id;
+            this.$.ajaxRequestPicture.generateRequest();
         },
 
-        openLargePicture: function(data) {
-            var t = document.querySelector('#t');
-            console.log(data);
-            t.myfullscreenimage = data.BaseUrl + data.FormatedUrl;
-            t.$.dialog.open();
-        },
-
-        _routeChanged: function(route) {
-            console.log("New request for pictures")
+        _recivedLargePicture: function(data){
+            if(!this.pictureWaitingToOpen){
+                this.largePictureUrl = data.BaseUrl + data.FormatedUrl;
+                this.pictureWaitingToOpen = true;
+            }
         }
     });
     </script>

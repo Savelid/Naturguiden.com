@@ -9,30 +9,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html">
-<link rel="import" href="/bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
 <link rel="import" href="/bower_components/iron-image/iron-image.html">
+<link rel="import" href="/bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
 
 <dom-module id="my-dialog-img">
   <template>
     <style>
-    :host{
+    paper-dialog{
         background: white;
-        
-    }
-    iron-image {
         height: calc(100vh - 100px);
-        width:calc(100vw - 100px);
+        width: calc(100vw - 100px);
+    }
+    paper-dialog iron-image {
+        /*
+        */
+        height: calc(100% - 48px);
+        width:calc(100% - 48px);
         border: white 24px solid;
         display: block;
         margin: 0 auto;
-        padding: 0;
         background-color: lightgray;
     }
     </style>
-      <div hidden="[[image.loaded]]">
-        <iron-image id="image" sizing="cover" src="[[imageUrl]]"></iron-image>
-      </div>
+
+    <paper-dialog id="dialog" with-backdrop entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+      <iron-image id="image" preload sizing="cover" loaded="{{loadedPicture}}" src="[[pictureUrl]]" style="margin: 0 auto;
+        padding: 0;"></iron-image>
+    </paper-dialog>
+
   </template>
 </dom-module>
 
@@ -45,53 +51,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     is: 'my-dialog-img',
     properties: {
         imageUrl:{
-            type: String,
-            reflectToAttribute: true
+          type: String,
+          reflectToAttribute: true
         },
-        imgElement: { 
+        loading: { 
+          type: Boolean,
+          reflectToAttribute: true,
+          notify: true
+        },
+        status: { 
+          type: String,
+          reflectToAttribute: true,
+          notify: true,
+          value: ""
+        },
+        loadedPicture: {
+          observer: '_loadedPicture'
         }
     },
+
     observers: [
-      '_observeLoaded(managerLoaded)'
-    ],
-    behaviors: [
-      Polymer.PaperDialogBehavior,
-      Polymer.NeonAnimationRunnerBehavior
+      '_loadedPicture(loadedPicture, loading)'
     ],
 
-    listeners: {
-      'neon-animation-finish': '_onNeonAnimationFinish'
-    },
-
-    _renderOpened: function() {
-      this.cancelAnimation();
-      this.playAnimation('entry');
-    },
-
-    _renderClosed: function() {
-      this.cancelAnimation();
-      this.playAnimation('exit');
-    },
-
-    _onNeonAnimationFinish: function() {
-      if (this.opened) {
-        this._finishRenderOpened();
-      } else {
-        this._finishRenderClosed();
+    _loadedPicture: function(loadedPicture, loading) {
+      if(loading && loadedPicture){
+          this.loading = false;
+          if(this.$.image.error) {
+            console.log("Failed to load picture");
+            this.status = "Failed to load picture";
+          }
+          else {
+            this.status = "";
+            this.$.dialog.refit();
+            this.$.dialog.open();
+          }
       }
-    },
-
-    _managerLoadedHandler: function() {
-      this.managerLoaded = this.$.image.loaded;
-    },
-
-    _observeLoaded: function(avail) {
-      console.log('observers', avail);
-      this.refit();
-    },
-
-    ready() {
-        this.listen(this.$.image, 'loaded-changed', '_managerLoadedHandler');
     }
 
   });
