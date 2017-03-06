@@ -5,10 +5,8 @@
 <link rel="import" href="shared-styles.html">
 
 <link rel="import" href="info/info-about-tours.html">
-<link rel="import" href="info/info-accommodation.html">
-<link rel="import" href="info/info-about-sweden.html">
-<link rel="import" href="info/info-how-get-here.html">
-<link rel="import" href="info/info-weather.html">
+
+<!--<link rel="import" href="info/info-main.html">-->
 
 <dom-module id="ng-info">
 
@@ -58,11 +56,11 @@
                 <info-accommodation action="accommodation"><paper-spinner-lite alt="Loading accommodation page" active></paper-spinner-lite></info-accommodation>
                 <div action="about-sweden">
                     <info-about-sweden><paper-spinner-lite alt="Loading about-sweden page" active></paper-spinner-lite></info-about-sweden>
-                    <info-weather><paper-spinner-lite alt="Loading weather page" active></paper-spinner-lite></info-weather>
+                    <!--<info-weather><paper-spinner-lite alt="Loading weather page" active></paper-spinner-lite></info-weather>-->
                 </div>
                 <div action="weather">
                     <info-weather><paper-spinner-lite alt="Loading weather page" active></paper-spinner-lite></info-weather>
-                    <info-about-sweden><paper-spinner-lite alt="Loading about-sweden page" active></paper-spinner-lite></info-about-sweden>
+                    <!--<info-about-sweden><paper-spinner-lite alt="Loading about-sweden page" active></paper-spinner-lite></info-about-sweden>-->
                 </div>
             </iron-pages>
         </my-news-container>
@@ -72,40 +70,45 @@
     <script>
         // element registration
         Polymer({
-          is: "ng-info",
+            is: "ng-info",
 
-          // add properties and methods on the element's prototype
-
+            // add properties and methods on the element's prototype
 
             properties: {
                 action: {
                     type: String,
-                    reflectToAttribute: true
-
+                    reflectToAttribute: true,
+                    observer: '_pageChanged',
                 },
             },
 
-
+            observers: [
+                '_routePageChanged(actionData.action)',
+            ],
 
             _routePageChanged: function(route) {
                 for(var i = 0; i < this.$.selector.items.length; i++){
-                    if(this.$.selector.items[i].name == route.toLowerCase()){
-                        this.action = route || 'about-tours';
+                    if(this.$.selector.items[i].name == route.toLowerCase()){ //added weather as an edge-case
+                        this.action = route || 'main';
                     }
                 }
             },
 
             _pageChanged: function(action) {
+                //added weather as an edge-case
+                //if(action == 'weather' || action == 'about-sweden'){
+                //    this.importHref(this.resolveUrl('info/info-about-sweden.html'), null, this._showPage404, true);
+                //    this.importHref(this.resolveUrl('info/info-weather.html'), null, this._showPage404, true);
+                //}
+                //else{
                     // Load page import on demand. Show 404 page if fails
-                    console.log(action);
-                    if(action.toLowerCase() !== "contact") {
-                        var resolvedPageUrl = this.resolveUrl('info/info-' + action + '.html');
-                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                    }
+                    var resolvedPageUrl = this.resolveUrl('info/info-' + action + '.html');
+                    this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                //}
             },
 
             _showPage404: function() {
-                this.action = 'about-tours';
+                this.action = 'main';
             },
         });
       </script>
