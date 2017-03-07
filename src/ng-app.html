@@ -17,9 +17,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 
@@ -74,13 +75,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin-left: 16px;
                 overflow: hidden;
                 height: 48px;
+                font-size: 20px;
             }
 
             [main-title] img,
             [condensed-title] img {
                 height: 100%;
             }
-            
+
+            [main-title] {
+                position: absolute;
+                bottom: 8px;
+                left: 72px;
+                margin: 0;
+                height: 48px;
+                font-size: 20px;
+            }
+        
             app-header paper-icon-button,
             app-header a paper-icon-button{
                 --paper-icon-button-ink-color: white;
@@ -211,12 +222,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             
             @media (min-width: 768px) {
 
-                [main-title] {
-                    position: absolute;
-                    bottom: 0px;
-                    left: 80px;
-                    margin: 0;
+                .dynamicHeader [main-title] {
                     height: 72px;
+                    font-size: 30px;
                 }
                 app-header.dynamicHeader {
                     height: 112px;
@@ -250,6 +258,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             }
         </style>
+
+        <iron-media-query query="(min-width: 768px)" query-matches="{{desktopMode}}"></iron-media-query>
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/pictures" tail="{{pictureSubroute}}"></app-route>
@@ -335,9 +345,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout>
 
-                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed
-                    effects="resize-snapped-title parallax-background fade-background"
-                    effects-config='{"resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}}'>
+                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed="{{desktopMode}}" reveals="{{!desktopMode}}"
+                    effects="resize-title blend-background">
                     <app-toolbar>
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
                         <a href="/" condensed-title>
@@ -350,7 +359,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <paper-icon-button icon="custom-icons:phone"></paper-icon-button>
                         </a>
                     </app-toolbar>
-                    <a href="/" main-title>
+                    <a href="/" main-title bottom-item>
                         <img alt="Naturguiden name" src="../images/name.png">
                     </a>
                     <paper-tabs selected="[[page]]" attr-for-selected="name">
@@ -509,7 +518,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 else{
                     this.$.scrollHeader.classList.add('dynamicHeader');
                 }
-                this.$.scrollHeader.resetLayout()
+                this.$.scrollHeader.resetLayout();
                 this.page = page || 'home';
                 if(page != null) {
                     this.selectedMenuItem = page || 'home';
