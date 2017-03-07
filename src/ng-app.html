@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
@@ -16,16 +17,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+
 <link rel="import" href="../images/my-icons.html">
 <link rel="import" href="../elements/my-dialog-img.html">
-
-<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
 
 <link rel="import" href="shared-styles.html">
 
@@ -38,6 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
+                --app-header-color: #303f9f;
                 --softer-text-color: #444;
                 display: block;
             }
@@ -51,7 +55,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 background-color: black;
                 --app-header-background-front-layer: {
+                    /*
                     background: url('/images/gradient.svg');
+                    */
                     background-size:contain;
                     background-position: bottom;
                     background-repeat:repeat-x;
@@ -61,6 +67,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     background-color: #303f9f;
                 }
                 ;
+            }
+
+            [condensed-title],
+            [main-title] {
+                margin-left: 16px;
+                overflow: hidden;
+                height: 48px;
+            }
+
+            [main-title] img,
+            [condensed-title] img {
+                height: 100%;
             }
             
             app-header paper-icon-button,
@@ -135,14 +153,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-align: center;
             }
             
-            .naturguiden_name,
-            .naturguiden_name_large {
-                position: absolute;
-                top: 5px;
-                left: 60px;
-                height: 48px;
-            }
-            
             footer {
                 padding: 16px 40px;
                 color: rgb(158, 158, 158);
@@ -200,11 +210,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
             
             @media (min-width: 768px) {
+
+                [main-title] {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 80px;
+                    margin: 0;
+                    height: 72px;
+                }
                 app-header.dynamicHeader {
-                    background-position: center center;
-                    background-size: cover;
-                    height: 192px;
-                    background-image: url(../images/2000/iceskating005.jpg);
+                    height: 112px;
+                    background: var(--app-header-color);
                 }
                 .dynamicHeader .naturguiden_name_large {
                     height: 100px;
@@ -213,6 +229,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
                 paper-tabs {
                     display: block;
+                    left: 320px;
                 }
                 .footer-checkbox {
                     display: none;
@@ -318,12 +335,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout>
 
-                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed effects="parallax-background resize-snapped-title fade-background"
-                    effects-config='resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}'>
+                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed
+                    effects="resize-snapped-title parallax-background fade-background"
+                    effects-config='{"resize-snapped-title": {"startsAt": 0.8, "duration": "100ms"}, "fade-background": {"startsAt": 0.8, "endsAt": 0.9}}'>
                     <app-toolbar>
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
                         <a href="/" condensed-title>
-                            <img class="naturguiden_name" alt="Naturguiden name" src="../images/name.png">
+                            <img alt="Naturguiden name" src="../images/name.png">
                         </a>
                         <a href="https://www.facebook.com/Naturguiden/">
                             <paper-icon-button icon="128-icons:facebook"></paper-icon-button>
@@ -333,7 +351,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </a>
                     </app-toolbar>
                     <a href="/" main-title>
-                        <img class="naturguiden_name_large" alt="Naturguiden name" src="../images/name.png">
+                        <img alt="Naturguiden name" src="../images/name.png">
                     </a>
                     <paper-tabs selected="[[page]]" attr-for-selected="name">
                         <paper-tab name="adventures"><a href="/adventures/main">Our adventures</a></paper-tab>
