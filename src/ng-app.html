@@ -56,18 +56,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 background-color: black;
                 --app-header-background-front-layer: {
-                    /*
-                    background: url('/images/gradient.svg');
-                    */
-                    background-size:contain;
-                    background-position: bottom;
-                    background-repeat:repeat-x;
+
                 }
                 ;
                 --app-header-background-rear-layer: {
-                    background-color: #303f9f;
+                    background-color: var(--app-header-color);
                 }
                 ;
+            }
+            app-header.dynamicHeader {
+                background-color: var(--app-header-color);
             }
 
             [condensed-title],
@@ -149,10 +147,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
             
             paper-tabs {
-                display: none;
                 position: absolute;
                 bottom: 0px;
-                left: 230px;
+                left: 320px;
                 width: 440px;
             }
             
@@ -220,7 +217,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: none;
             }
             
-            @media (min-width: 768px) {
+            /* DesktopMode */
+            @media (min-width: 896px) {
 
                 .dynamicHeader [main-title] {
                     height: 72px;
@@ -228,16 +226,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
                 app-header.dynamicHeader {
                     height: 112px;
-                    background: var(--app-header-color);
-                }
-                .dynamicHeader .naturguiden_name_large {
-                    height: 100px;
-                    top: 25px;
-                    left: 60px;
-                }
-                paper-tabs {
-                    display: block;
-                    left: 320px;
                 }
                 .footer-checkbox {
                     display: none;
@@ -259,7 +247,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <iron-media-query query="(min-width: 768px)" query-matches="{{desktopMode}}"></iron-media-query>
+        <iron-media-query query="(min-width: 896px)" query-matches="{{desktopMode}}"></iron-media-query>
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/pictures" tail="{{pictureSubroute}}"></app-route>
@@ -362,16 +350,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <a href="/" main-title bottom-item>
                         <img alt="Naturguiden name" src="../images/name.png">
                     </a>
-                    <paper-tabs selected="[[page]]" attr-for-selected="name">
-                        <paper-tab name="adventures"><a href="/adventures/main">Our adventures</a></paper-tab>
-                        <paper-tab name="info"><a href="/info/about-tours">Information</a></paper-tab>
-                        <paper-tab name="pictures"><a href="/pictures/">Photos</a></paper-tab>
-                        <paper-tab name="about"><a href="/about/about-us">About us</a></paper-tab>
-                    </paper-tabs>
-
-
+                    <template is="dom-if" if="[[desktopMode]]">
+                        <paper-tabs selected="[[page]]" attr-for-selected="name">
+                            <paper-tab name="adventures"><a href="/adventures/main">Our adventures</a></paper-tab>
+                            <paper-tab name="info"><a href="/info/about-tours">Information</a></paper-tab>
+                            <paper-tab name="pictures"><a href="/pictures/">Photos</a></paper-tab>
+                            <paper-tab name="about"><a href="/about/about-us">About us</a></paper-tab>
+                        </paper-tabs>
+                    </template>
                 </app-header>
-
+                
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
                     <ng-adventures name="adventures" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
