@@ -317,7 +317,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 -->
 
-                        <a href="about/inquiry" name="inquiry">
+                        <a href="/about/inquiry" name="inquiry">
                             <iron-icon icon="custom-icons:event"></iron-icon>
                             Send an inquiry
                         </a>
@@ -359,7 +359,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </paper-tabs>
                     </template>
                 </app-header>
-                
+
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
                     <ng-adventures name="adventures" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
