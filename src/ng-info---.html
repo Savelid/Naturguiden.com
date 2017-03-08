@@ -114,3 +114,30 @@
       </script>
 
 </dom-module>
+
+
+
+switch(action.toLowerCase()) {
+                        case "about-tours":
+                            var resolvedPageUrl = this.resolveUrl('info/info-about-tours.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                            break
+                        case "accommodation":
+                            var resolvedPageUrl = this.resolveUrl('info/info-accommodation.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                            break;
+                        case "how-get-here":
+                            var resolvedPageUrl = this.resolveUrl('info/info-how-get-here.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                            break;
+                        case "about-sweden":
+                        case "weather":
+                            var resolvedPageUrl = this.resolveUrl('info/info-about-sweden.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                            var resolvedPageUrl = this.resolveUrl('info/info-weather.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                            break;
+                        default:
+                            var resolvedPageUrl = this.resolveUrl('ng-view404.html');
+                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                    }

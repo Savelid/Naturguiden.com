@@ -18,7 +18,12 @@
     "src/adventures/skiing-yourown.html",
     "src/about/about-about-us.html",
     "src/about/about-contact.html",
-    "src/about/about-inquiry.html"
+    "src/about/about-inquiry.html",
+    "src/info/info-about-sweden.html",
+    "src/info/info-about-tours.html",
+    "src/info/info-accommodation.html",
+    "src/info/info-how-get-here.html",
+    "src/info/info-weather.html"
   ],
     "sources": [
     "src/**/*",
