@@ -141,3 +141,29 @@ switch(action.toLowerCase()) {
                             var resolvedPageUrl = this.resolveUrl('ng-view404.html');
                             this.importHref(resolvedPageUrl, null, this._showPage404, true);
                     }
+
+
+
+
+        <iron-ajax auto url="http://api.naturguiden.com/api/Picture/Album/[[categoryData.category]]" handle-as="json" timeout="10000" last-response="{{ajaxPictures}}"
+            id="ajaxRequestPictures"></iron-ajax>
+        <p hidden="[[!categoryData.category]]" style="padding-left: 16px;">
+            Only showing pictures related to
+            <b>[[categoryData.category]]</b>.
+            <a href="/pictures/">Click here</a> to see everything
+        </p>
+
+        <p hidden="[[!pictureShowStatus]]" style="padding-left: 16px;">
+            [[pictureShowStatus]]
+        </p>
+
+        <ul class="app-grid" has-aspect-ratio>
+            <template is="dom-repeat" items="[[ajaxPictures]]">
+                <li class="item">
+                    <div style="background-image: url('[[item.BaseUrl]][[item.ThumbUrl]]')" id="[[item.Id]]" on-tap="_handleClick"></div>
+                </li>
+            </template>
+        </ul>
+
+        <iron-ajax url="http://api.naturguiden.com/api/Picture/[[activeID]]" handle-as="json" timeout="10000" last-response="{{recivedLargePicture}}"
+            id="ajaxRequestPicture"></iron-ajax>

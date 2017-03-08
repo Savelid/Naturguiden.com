@@ -19,18 +19,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
     paper-dialog{
         background: white;
-        height: calc(100vh - 100px);
-        width: calc(100vw - 100px);
+        height: calc(100vh - 96px);
+        width: 100vw;
+        margin: 0;
     }
     paper-dialog iron-image {
         /*
         */
-        height: calc(100% - 48px);
-        width:calc(100% - 48px);
-        border: white 24px solid;
+        height: calc(100% - 32px);
+        width: calc(100%);
+        border: white solid 0px;
+        border-width: 16px 0;
         display: block;
         margin: 0 auto;
         background-color: lightgray;
+    }
+    
+    @media (min-width: 896px) {
+        paper-dialog {
+            background: white;
+            height: calc(100vh - 96px);
+            width: calc(100vw - 96px);
+        }
+        paper-dialog iron-image {
+            /*
+            */
+            width: calc(100% - 48px);
+            border-width: 24px 24px;
+        }
     }
     </style>
 
