@@ -8,6 +8,7 @@
     "src/ng-pictures.html",
     "src/ng-about.html",
     "src/ng-view404.html",
+    "src/ng-inquiry-success.html",
     "src/adventures/adventures-main.html",
     "src/adventures/adventures-skating.html",
     "src/adventures/adventures-skiing.html",

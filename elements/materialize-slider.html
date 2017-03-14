@@ -5,10 +5,10 @@
 <script src="materialize-shortened.js"></script>
 <dom-module id="materialize-slider">
     <template>
-        <style include="shared-styles">
+        <style is="custom-style" include="shared-styles">
             .slider {
                 position: relative;
-                height: 400px;
+                height: 250px;
                 width: 100%;
             }
             
@@ -34,7 +34,7 @@
             .slider .slides {
                 background-color: #9e9e9e;
                 margin: 0;
-                height: 400px;
+                height: 250px;
             }
             
             .slider .slides li {
@@ -132,6 +132,15 @@
 
             .caption {
                 text-shadow: 0 0 0.4em #000;
+            }
+
+            @media (min-width: 896px) {
+                .slider .slides {
+                    height: 400px;
+                }
+                .slider {
+                    height: 400px;
+                }
             }
         </style>
 
