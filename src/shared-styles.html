@@ -508,24 +508,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       
       .submenu iron-selector a {
-        color: rgba(238, 110, 115, 0.7);
-        display: block;
+        color: #9E9E9E;
         width: 100%;
         height: 100%;
-        padding: 0 24px;
-        font-size: 14px;
+        padding: 0 8px;
         text-overflow: ellipsis;
         overflow: hidden;
         transition: color .28s ease;
       }
       
-      .submenu iron-selector > div {
+      .submenu iron-selector a > div {
         text-align: center;
         line-height: 48px;
         height: 48px;
         padding: 0;
         margin: 0;
-        text-transform: uppercase;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       
       .submenu iron-selector a {
@@ -534,10 +533,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex: 1 auto;
       }
       
-      .submenu iron-selector a.iron-selected > a,
+      .submenu iron-selector a.iron-selected,
       .submenu iron-selector a:hover {
         background-color: transparent;
-        color: #ee6e73;
+        color: #607D8B;
       }
       
       my-left-image-paper-card,

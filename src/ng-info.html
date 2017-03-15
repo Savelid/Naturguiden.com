@@ -9,6 +9,20 @@
     <template>
         <style is="custom-style" include="shared-styles">
             /* CSS rules for your element */
+            .hide-on-768 {
+                display: inline;
+            }
+            .show-on-768 {
+                display: none;
+            }
+            @media(min-width: 768px) {
+                .hide-on-768 {
+                    display: none;
+                }
+                .show-on-768 {
+                    display: inline;
+                }
+            }
         </style>
 
         <!-- local DOM for your element -->
@@ -18,27 +32,27 @@
             <paper-card>
                 <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
                     <a href="/info/about-tours" name="about-tours">
-                        <div>
-                            <span class="hide-on-small-only">About our tours</span>
-                            <span class="hide-on-med-and-up">Tours</span>
+                        <div class="flow-text">
+                            <span class="show-on-768">About our tours</span>
+                            <span class="hide-on-768">Tours</span>
                         </div>
                     </a>
                     <a href="/info/how-get-here" name="how-get-here">
-                        <div>
-                            <span class="hide-on-small-only">How to get here</span>
-                            <span class="hide-on-med-and-up">Arrive</span>
+                        <div class="flow-text">
+                            <span class="show-on-768">How to get here</span>
+                            <span class="hide-on-768">Arrive</span>
                         </div>
                     </a>
                     <a href="/info/accommodation" name="accommodation">
-                        <div>
-                            <span class="hide-on-small-only">Accommodation</span>
-                            <span class="hide-on-med-and-up">Housing</span>
+                        <div class="flow-text">
+                            <span class="show-on-768">Accommodation</span>
+                            <span class="hide-on-768">Housing</span>
                         </div>
                     </a>
                     <a href="/info/about-sweden" name="about-sweden">
-                        <div>
-                            <span class="hide-on-small-only">About Sweden</span>
-                            <span class="hide-on-med-and-up">Sweden</span>
+                        <div class="flow-text">
+                            <span class="show-on-768">About Sweden</span>
+                            <span class="hide-on-768">Sweden</span>
                         </div>
                     </a>
                 </iron-selector>

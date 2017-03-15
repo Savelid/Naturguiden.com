@@ -11,6 +11,20 @@
     <template>
         <style include="shared-styles">
             /* CSS rules for your element */
+            .show-on-1024{
+                display: none;
+            }
+            .hide-on-1024{
+                display: inline;
+            }
+            @media (min-width: 1024px) {
+                .show-on-1024{
+                    display: inline;
+                }
+                .hide-on-1024{
+                    display: none;
+                }
+            }
         </style>
 
         <!-- local DOM for your element -->
@@ -20,24 +34,24 @@
             <paper-card>
                 <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
                     <a href="/adventures/skating/main" name="skating">
-                        <div>
+                        <div class="flow-text">
                             <span class="hide-on-small-only">Ice skating</span>
                             <span class="hide-on-med-and-up">Skating</span>
                         </div>
                     </a>
                     <a href="/adventures/skiing/main" name="skiing">
-                        <div>
-                            <span class="hide-on-small-only">Cross country skiing</span>
-                            <span class="hide-on-med-and-up">Skiing</span>
+                        <div class="flow-text">
+                            <span class="show-on-1024">Cross country skiing</span>
+                            <span class="hide-on-1024">Skiing</span>
                         </div>
                     </a>
                     <a href="/adventures/kayak/main" name="kayak">
-                        <div>
+                        <div class="flow-text">
                             Kayak<span class="hide-on-small-only">ing</span>
                         </div>
                     </a>
                     <a href="/adventures/hiking/main" name="hiking">
-                        <div>
+                        <div class="flow-text">
                             Hiking
                         </div>
                     </a>
