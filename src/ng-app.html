@@ -363,7 +363,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </paper-tabs>
                     </template>
                 </app-header>
-
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home" desktop="{{desktopMode}}"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
                     <ng-adventures name="adventures" desktop="{{desktopMode}}" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
@@ -475,12 +474,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 page: {
                     type: String,
                     reflectToAttribute: true,
-                    observer: '_pageChanged',
+                    observer: '_pageChanged'
                 },
                 subpage: {
                     type: String,
                     reflectToAttribute: true,
-                    observer: '_subpageChanged',
+                    observer: '_subpageChanged'
                 },
                 selectedMenuItem: {
                     type: String,
