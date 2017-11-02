@@ -44,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
-                --app-header-color: #303f9f;
+                --app-header-color: #00008b;
                 --softer-text-color: #444;
                 display: block;
             }
@@ -56,15 +56,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 width: 100%;
                 height: 64px;
                 color: #fff;
-                background-color: black;
-                --app-header-background-front-layer: {
+                background-color: var(--app-header-color);
+                /*--app-header-background-front-layer: {
 
                 }
                 ;
                 --app-header-background-rear-layer: {
                     background-color: var(--app-header-color);
                 }
-                ;
+                ;*/
             }
             app-header.dynamicHeader {
                 background-color: var(--app-header-color);
@@ -337,7 +337,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout>
 
-                <app-header id="scrollHeader" class="dynamicHeader" condenses fixed="{{desktopMode}}" reveals="{{!desktopMode}}"
+                <app-header id="scrollHeader" class="" condenses fixed="{{desktopMode}}" reveals="{{!desktopMode}}"
                     effects="resize-title blend-background">
                     <app-toolbar>
                         <paper-icon-button icon="custom-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
@@ -507,12 +507,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             ],
 
             _routePageChanged: function(page) {
-                if(this.page == 'home') {
-                    this.$.scrollHeader.classList.remove('dynamicHeader');
-                }
-                else{
-                    this.$.scrollHeader.classList.add('dynamicHeader');
-                }
+                // if(this.page == 'home') {
+                //     this.$.scrollHeader.classList.remove('dynamicHeader');
+                // }
+                // else{
+                //     this.$.scrollHeader.classList.add('dynamicHeader');
+                // }
                 this.$.scrollHeader.resetLayout();
                 this.page = page || 'home';
                 if(page != null) {
