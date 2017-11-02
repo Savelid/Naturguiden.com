@@ -26,14 +26,14 @@
         <template is="dom-if" if="[[ajaxForecastResponse]]">
             <paper-card>
                 <div class="card-content">
-                    <h4>
+                    <h3>
                     <img src="http://openweathermap.org/img/w/[[ajaxForecastResponse.list.0.weather.0.icon]].png" />
                     [[ajaxForecastResponse.list.0.main.temp]]°C in Linköping
-                    </h4>
-                    <h4>
+                    </h3>
+                    <h3>
                     <img src="http://openweathermap.org/img/w/[[ajaxForecastResponse.list.1.weather.0.icon]].png" />
                     [[ajaxForecastResponse.list.1.main.temp]]°C in Östersund
-                    </h4>
+                    </h3>
                 </div>
             </paper-card>
         </template>
