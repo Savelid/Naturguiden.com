@@ -16,17 +16,25 @@
 <dom-module id="adventures-skiing">
 
     <template>
-        <style is="custom-style" include="iron-flex iron-flex-alignment shared-styles">
+        <style is="custom-style" include="iron-flex iron-flex-reverse iron-flex-alignment shared-styles">
             /* CSS rules for your element */
+            iron-selector > a > paper-button {
+                margin:0;
+                min-width: 0;
+            }
+            iron-selector > a {
+                margin:0;
+                min-width: 0;
+            }
         </style>
 
         <!-- local DOM for your element -->
         <app-route route="{{route}}" pattern="/:tour" data="{{tourData}}" tail="{{tail}}"></app-route>
 
-        <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="menuWidth">
+        <div id="container" class="layout vertical-reverse layout-start pageWidth pageMargin">
+            <div id="menu" class="">
 
-                <my-inquiry-button></my-inquiry-button>
+                <my-inquiry-button hidden$="[[!desktop]]"></my-inquiry-button>
 
                 <a href="/before-trip/skiing">
                     <paper-card heading="Before the trip" class="colorfull flow-text">
@@ -62,7 +70,8 @@
 
                 <iron-selector class="my-package-menu" selected="{{tourData.tour}}" attr-for-selected="tour">
                     <a href="/adventures/skiing/cabin" tour="cabin">
-                        <paper-card heading="Cabin tour" image="/images/500-300/skiing001.jpg">
+                        <paper-button raised class="small-link">Cabin</paper-button>
+                        <paper-card heading="Cabin tour" image="/images/500-300/skiing001.jpg" hidden$="[[!desktop]]">
                             <div class="card-content">
                                 <p>Our standard package is including everything for a fantastic skiing experience!</p>
                             </div>
@@ -70,7 +79,8 @@
                     </a>
 
                     <a href="/adventures/skiing/tent" tour="tent">
-                        <paper-card heading="Tent tour" image="/images/500-300/skiing002.jpg">
+                        <paper-button raised class="small-link">Tent</paper-button>
+                        <paper-card heading="Tent tour" image="/images/500-300/skiing002.jpg" hidden$="[[!desktop]]">
                             <div class="card-content">
                                 <p>This package focuses more on giving you an adventure to remember.</p>
                             </div>
@@ -78,7 +88,8 @@
                     </a>
 
                     <a href="/adventures/skiing/yourown" tour="yourown">
-                        <paper-card heading="Your own tour" image="/images/500-300/skiing003.jpg">
+                        <paper-button raised class="small-link">Custom</paper-button>
+                        <paper-card heading="Your own tour" image="/images/500-300/skiing003.jpg" hidden$="[[!desktop]]">
                             <div class="card-content">
                                 <p>Experiens the fantastic feeling of skiing all night where the sun never sets</p>
                             </div>
@@ -123,10 +134,18 @@
                     type: String,
                     reflectToAttribute: true,
                 },
+
                 isMain: {
                     type: Boolean,
                     computed: '_computeIsMain(tour)'
-                }
+                },
+
+                desktop: {
+                    type: Boolean,
+                    reflectToAttribute: true,
+                    value: false,
+                    observer: '_desktopChange'
+                },
             },
 
             observers: [
@@ -139,6 +158,18 @@
             },
             _computeIsMain: function(tour) {
                 return tour === 'main';
+            },
+            _desktopChange: function(desktop) {
+                if(desktop){
+                    this.$.container.classList.add('horizontal');
+                    this.$.container.classList.remove('vertical-reverse');
+                    this.$.menu.classList.add('menuWidth');
+                }
+                else{
+                    this.$.container.classList.remove('horizontal');
+                    this.$.container.classList.add('vertical-reverse');
+                    this.$.menu.classList.remove('menuWidth');
+                }
             }
         });
       </script>

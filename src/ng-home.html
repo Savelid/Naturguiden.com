@@ -27,7 +27,7 @@
 
         </style>
 
-        <materialize-slider><paper-spinner-lite alt="Loading slider" active></paper-spinner-lite></materialize-slider>
+        <materialize-slider desktop="{{desktopMode}}"><paper-spinner-lite alt="Loading slider" active></paper-spinner-lite></materialize-slider>
 
         <my-news-container no-max-width>
 
@@ -130,7 +130,11 @@
         is: 'ng-home',
 
         properties: {
-            
+            desktop: {
+                type: Boolean,
+                reflectToAttribute: true,
+                value: false
+            }
         }
     });
 

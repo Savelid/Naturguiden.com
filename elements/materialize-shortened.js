@@ -493,16 +493,16 @@ if (jQuery) {
 
         // Set height of slider
         // If fullscreen, do nothing
-        if (!$this.hasClass('fullscreen')) {
-          if (options.indicators) {
-            // Add height if indicators are present
-            $this.height(options.height + 40);
-          }
-          else {
-            $this.height(options.height);
-          }
-          $slider.height(options.height);
-        }
+        // if (!$this.hasClass('fullscreen')) {
+        //   if (options.indicators) {
+        //     // Add height if indicators are present
+        //     $this.height(options.height + 40);
+        //   }
+        //   else {
+        //     $this.height(options.height);
+        //   }
+        //   $slider.height(options.height);
+        // }
 
 
         // Set initial positions of captions
