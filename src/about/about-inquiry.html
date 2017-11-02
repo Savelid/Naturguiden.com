@@ -7,6 +7,7 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
@@ -43,6 +44,12 @@
                  background-color: var(--app-primary-color);
                  color: white;
             }
+            paper-button > paper-spinner-lite {
+                left:0;
+                margin:0;
+                margin-right:8px;
+                --paper-spinner-color: white;
+            }
 
         </style>
 
@@ -55,10 +62,12 @@
                     <form   is="iron-form"
                             id="form"
                             method="post"
-                            action="http://apa.naturguiden.com/api/Inquiry"
+                            action="http://api.naturguiden.com/api/Inquiry"
                             content-type="application/json"
                             on-iron-form-error="_handleError"
                             on-iron-form-response="_handleResponse"
+                            on-iron-form-submit="_handleSubmit"
+                            on-iron-form-invalid="_handleInvalid"
                             class="app-grid">
                         <div class="item">
                             <vaadin-date-picker name="StartDate" label="Start Date">
@@ -109,7 +118,9 @@
                         <div class="item">
                             <paper-input type="text" name="Country" label="Country"></paper-input>
                         </div>
-                        <paper-button on-tap="_sendForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}" class="main-btn">Send</paper-button>
+                        <paper-button on-tap="_sendForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}" class="main-btn">
+                            <paper-spinner-lite id="spinner" active="{{sendingForm}}" hidden="{{!sendingForm}}"></paper-spinner-lite>Send
+                        </paper-button>
                         <paper-button on-tap="_clearForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}">Clear form</paper-button>
                     </form>
                     <form method="get" action="/inquiry-success" id="nativeForm">
@@ -140,10 +151,17 @@
 
             _sendForm: function() {
                 this.$.form.submit();
-                this.sendingForm = true;
             },
             _clearForm: function() {
                 this.$.form.reset();
+            },
+
+            _handleSubmit: function() {
+                this.sendingForm = true;
+            },
+
+            _handleInvalid: function() {
+                this.fire("scroll-top");
             },
 
             _handleResponse: function() {

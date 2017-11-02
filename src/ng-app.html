@@ -335,7 +335,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </app-drawer>
 
             <!-- Main content -->
-            <app-header-layout>
+            <app-header-layout id="test">
 
                 <app-header id="scrollHeader" class="dynamicHeader" condenses fixed="{{desktopMode}}" reveals="{{!desktopMode}}"
                     effects="resize-title blend-background">
@@ -366,7 +366,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
                     <ng-home name="home"><paper-spinner-lite alt="Loading start page" active></paper-spinner-lite></ng-home>
-                    <ng-adventures name="adventures" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
+                    <ng-adventures name="adventures" desktop="{{desktopMode}}" route="{{subRoute}}"><paper-spinner-lite alt="Loading adventures page" active></paper-spinner-lite></ng-adventures>
                     <ng-info name="info" route="{{subRoute}}"><paper-spinner-lite alt="Loading information page" active></paper-spinner-lite></ng-info>
                     <div name="pictures">
                         <ng-pictures route="{{pictureSubroute}}" large-picture-url="{{largePictureUrl}}" picture-waiting-to-open="{{pictureWaitingToOpen}}" picture-show-status="{{pictureShowStatus}}">
@@ -506,6 +506,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 '_routeSubPageChanged(subRouteData.subpage)'
             ],
 
+            listeners: {
+                // `click` events on the host are delegated to `clickHandler`
+                'scroll-top': 'scrollToTop'
+            },
+
+            scrollToTop: function() {
+                this.$.scrollHeader.scroll(0,0)
+            },
+
             _routePageChanged: function(page) {
                 if(this.page == 'home') {
                     this.$.scrollHeader.classList.remove('dynamicHeader');
@@ -521,12 +530,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
+                this.scrollToTop();
             },
 
             _routeSubPageChanged: function(subpage) {
                 if(subpage != null){
                     this.selectedMenuItem = subpage;
                 }
+                this.scrollToTop();
             },
 
             _pageChanged: function(page) {
