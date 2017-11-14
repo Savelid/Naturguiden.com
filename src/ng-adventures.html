@@ -33,7 +33,7 @@
         <div class="submenu pageWidth">
             <paper-card>
                 <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
-                    <a href="/adventures/skating/main" name="skating">
+                    <a href="/adventures/skating-weekend" name="skating-weekend">
                         <div class="flow-text">
                             <span class="hide-on-small-only">Ice skating</span>
                             <span class="hide-on-med-and-up">Skating</span>
@@ -61,7 +61,7 @@
 
         <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
             <adventures-main name="main"><paper-spinner-lite alt="Loading adventure-main page" active></paper-spinner-lite></adventures-main>
-            <adventures-skating desktop="{{desktop}}" name="skating"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></adventures-skating>
+            <skating-weekend desktop="{{desktop}}" name="skating-weekend"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-weekend>
             <adventures-skiing desktop="{{desktop}}" name="skiing" route="{{tail}}"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></adventures-skiing>
             <adventures-kayak desktop="{{desktop}}" name="kayak"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></adventures-kayak>
             <adventures-hiking desktop="{{desktop}}" name="hiking"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></adventures-hiking>
@@ -105,7 +105,7 @@
             _pageChanged: function(action) {
                 // Load page import on demand. Show 404 page if fails
                 
-                var resolvedPageUrl = this.resolveUrl('adventures/adventures-' + action + '.html');
+                var resolvedPageUrl = this.resolveUrl('adventures/' + action + '.html');
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 
