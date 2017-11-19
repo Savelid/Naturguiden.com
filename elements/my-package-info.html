@@ -13,15 +13,28 @@
             a{
                 color: inherit;
             }
+            
         </style>
             <a href="[[link]]">
                 <paper-card heading="[[name]]" class="flow-text">
                     <div class="card-content">
                         <p><content></content></p>
+                        <dl class="dl-horizontal">
+                            <dt>Season:</dt>
+                            <dd>[[season]]</dd>
+                        </dl>
                         <dl>
-                            <dt>Price</dt>
+                            <dt>Days:</dt>
+                            <dd>[[days]]></dd>
+                        </dl>
+                        <dl>
+                            <dt>Price:</dt>
                             <dd>[[price]]</dd>
                         </dl>
+                        <dl>
+                            <dt>Lodging:</dt>
+                            <dd>[[lodging]]</dd>
+                        </dl>    
                     </div>
                 </paper-card>
             </a>
