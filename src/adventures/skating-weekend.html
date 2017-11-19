@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../elements/my-left-image-paper-card.html">
+<link rel="import" href="../../elements/my-package-info.html">
 <link rel="import" href="../../elements/my-inquiry-button.html">
 
 <link rel="import" href="../shared-styles.html">
@@ -26,6 +27,18 @@
         <div class="layout horizontal layout-start pageWidth pageMargin">
             <div class="menuWidth">
 
+                <my-package-info name="Standard" season="Winter" price="From €300" days="4 days" lodging="Cabins" active link="/adventures/skating-standard">
+                    This is a standard ice-skating tour
+                </my-package-info>
+                <my-package-info name="Special" season="Winter" price="From €500" days="4 days" lodging="Hotel" link="/adventures/skating-special">
+                    This is a special ice-skating tour
+                </my-package-info>
+                <my-package-info name="Crazy" season="Winter" price="From €1200" days="13 days" lodging="Bus" link="/adventures/skating-crazy">
+                    This is a crazy ice-skating tour
+                </my-package-info>
+
+
+
                 <my-inquiry-button></my-inquiry-button>
                 <!--
                 <a href="/before-trip/skiing">
@@ -37,6 +50,8 @@
                     </paper-card>
                 </a>
                 -->
+
+
                 <a href="/pictures/skiing">
                     <paper-card heading="Skiing pictures" image="/images/500/cabin_w002.jpg" class="darkHeading flow-text">
                     </paper-card>

@@ -1,0 +1,70 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../src/shared-styles.html">
+
+<dom-module id="my-package-info">
+    <template>
+        <style include="shared-styles">
+            .card-content p {
+                font-size: 0.85em;
+            }
+            a{
+                color: inherit;
+            }
+        </style>
+            <a href="[[link]]">
+                <paper-card heading="[[name]]" class="flow-text">
+                    <div class="card-content">
+                        <p><content></content></p>
+                        <dl>
+                            <dt>Price</dt>
+                            <dd>[[price]]</dd>
+                        </dl>
+                    </div>
+                </paper-card>
+            </a>
+
+    </template>
+
+    <script>
+    Polymer({
+        is: 'my-package-info',
+
+        properties: {
+            name:{
+                type: String,
+                reflectToAttribute: true
+            },
+            season:{
+                type: String,
+                reflectToAttribute: true
+            },
+            price:{
+                type: String,
+                reflectToAttribute: true
+            },
+            days:{
+                type: String,
+                reflectToAttribute: true
+            },
+            lodging:{
+                type: String,
+                reflectToAttribute: true
+            },
+            link:{
+                type: String,
+                reflectToAttribute: true
+            },
+            active:{
+                type: Boolean,
+                value: false,
+                reflectToAttribute: true
+            }
+        },
+    });
+
+    </script>
+
+</dom-module>
