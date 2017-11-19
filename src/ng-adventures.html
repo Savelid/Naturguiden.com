@@ -33,24 +33,40 @@
         <div class="submenu pageWidth">
             <paper-card>
                 <iron-selector id="selector" selected="[[actionData.action]]" attr-for-selected="name">
+
                     <a href="/adventures/skating-weekend" name="skating-weekend">
                         <div class="flow-text">
                             <span class="hide-on-small-only">Ice skating</span>
                             <span class="hide-on-med-and-up">Skating</span>
                         </div>
                     </a>
-                    <a href="/adventures/skiing/main" name="skiing">
+
+                    <a href="/adventures/skating-yourown" name="skating-yourown">
                         <div class="flow-text">
-                            <span class="show-on-1024">Cross country skiing</span>
-                            <span class="hide-on-1024">Skiing</span>
+                        <!--    <span class="hide-on-small-only">Ice y skating</span>
+                            <span class="hide-on-med-and-up">Skating y</span>  -->
                         </div>
                     </a>
-                    <a href="/adventures/kayak/main" name="kayak">
+
+                    <a href="/adventures/skiing-cabin" name="skiing-cabin">
+                        <div class="flow-text">
+                            <span class="hide-on-small-only">Cross country skiing</span>
+                            <span class="hide-on-med-and-up">Skiing</span>
+                        </div>
+                    </a>
+
+                    <a href="/adventures/kayak" name="kayak">
                         <div class="flow-text">
                             Kayak<span class="hide-on-small-only">ing</span>
                         </div>
                     </a>
-                    <a href="/adventures/hiking/main" name="hiking">
+                    <a href="/adventures/kayak-yourown" name="kayak-yourown">
+                        <div class="flow-text">
+                        <!--    Kayak<span class="hide-on-small-only">ing</span>  -->
+                        </div>
+                    </a>
+
+                    <a href="/adventures/adventures-hiking" name="hiking">
                         <div class="flow-text">
                             Hiking
                         </div>
@@ -60,11 +76,22 @@
         </div>
 
         <iron-pages selected="[[actionData.action]]" attr-for-selected="name" fallback-selection="main" role="main">
+            
             <adventures-main name="main"><paper-spinner-lite alt="Loading adventure-main page" active></paper-spinner-lite></adventures-main>
+
             <skating-weekend desktop="{{desktop}}" name="skating-weekend"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-weekend>
-            <adventures-skiing desktop="{{desktop}}" name="skiing" route="{{tail}}"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></adventures-skiing>
-            <adventures-kayak desktop="{{desktop}}" name="kayak"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></adventures-kayak>
+
+            <skating-yourown desktop="{{desktop}}" name="skating-yourown"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-yourown>
+            
+            <skiing-cabin desktop="{{desktop}}" name="skiing-cabin"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></skiing-cabin>
+            <!--<adventures-skiing desktop="{{desktop}}" name="skiing" route="{{tail}}"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></adventures-skiing> -->
+            
+            <kayak desktop="{{desktop}}" name="kayak"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak>
+
+            <kayak-yourown desktop="{{desktop}}" name="kayak-yourown"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak-yourown>
+            
             <adventures-hiking desktop="{{desktop}}" name="hiking"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></adventures-hiking>
+        
         </iron-pages>
 
     </template>
