@@ -5,14 +5,17 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../elements/my-left-image-paper-card.html">
+<link rel="import" href="../../elements/my-package-info.html">
 <link rel="import" href="../../elements/my-inquiry-button.html">
 
 <link rel="import" href="../shared-styles.html">
 
-<link rel="import" href="../adventures/skating-weekend.html">
-<link rel="import" href="../adventures/skating-yourown.html">
+<link rel="import" href="../adventures/kayak-yourown.html">
+<link rel="import" href="../adventures/kayak-weekend.html">
 
-<dom-module id="adventures-skating">
+<link rel="import" href="../../elements/materialize-slider-skating.html">
+
+<dom-module id="kayak-yourown">
 
     <template>
         <style is="custom-style" include="iron-flex iron-flex-alignment shared-styles">
@@ -21,119 +24,126 @@
 
         <!-- local DOM for your element -->
 
-        <app-route route="{{route}}" pattern="/:tour" data="{{tourData}}" tail="{{tail}}"></app-route>
-
         <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="menuWidth">
+            <div class="packageWidth">
+                        <my-package-info name="Kayak – private tour" season="May - October" price="From €400" days="4 days/ 3 nights" lodging="Tent" active link="/adventures/kayak-yourown">
+                            Book your own kayak tour with friends or family. Come any day and stay as long as you want.
+                        </my-package-info>
+                        <my-package-info name="Kayak – weekend tour" season="May - October" price="From €400" days="4 days/ 3 nights" lodging="Tent in the archipelago"  link="/adventures/kayak-weekend">
+                            An all inclusive guided kayak tour for small groups out in the archipelago of Sweden. Meeting point Trosa harbour south of Stockholm.
+                        </my-package-info>
 
-                <my-inquiry-button></my-inquiry-button>
-        <!--
-                <a href="/before-trip/skiing">
-                    <paper-card heading="Before the trip" class="colorfull flow-text">
-                        <div class="card-content">
-                            <p>In this section we will try to give you the information you need to be able to bring right kind
-                                of cloth and equipment, but also give an idea about what you can expect.</p>
-                        </div>
-                    </paper-card>
-                </a>
-        -->        
-                <a href="/pictures/skiing">
-                    <paper-card heading="Skiing pictures" image="/images/500/cabin_w002.jpg" class="darkHeading flow-text">
-                    </paper-card>
-                </a>
-
-            </div>
-            <div>
-
-                <template is="dom-if" if="{{isMain}}">
-                    <paper-card class="flow-text">
-                        <div class="card-content">
-                            <h1>Kayak among thousands of islands on the Baltic Sea</h1>
-                            <p class="lead">It's great adventure, it's fun, it's skating on natural ice. Experience some amazing skating adventures in Sweden.
-                            In Sweden we have very good conditions for skating on natural ice. We have a lot of small and big lakes and we have the Baltic sea. Most of them are frozen witch gives us many options for great skating.</p>
-                            <P>This is the tour where you will get a lot of skating on natural ice.</P>
-                            <P>All our tours are guided tours for small groups. We provide you with everything you need, all necessary equipment, accommodation, food and transportations. You only have to bring yourself and proper cloth. We meet you at the airport  and travel with minibus to the lakes with the best ice. Spend the days on the ice, taking a rest at some island for a lunch break. The night we spend in a nearby hostel or hotel where we normally also have our dinner.</P>
-                            <h3>You might wonder how it is ?</h3> 
-                            <P>Skating the Swedish way is a little bit like hiking. We have a backpack with extra cloth and our lunch, everything we need for a whole day outdoor. This video gives you some feeling about what to expect.</P>
-                            <P>Enjoy Nordic skating in Sweden, choose between our weekend tours or do as many of our guests do, book your own private tour with your friends or family.</P> 
-                        </div>
-                    </paper-card>
-                </template>
-
-                <iron-selector class="my-package-menu" selected="{{tourData.tour}}" attr-for-selected="tour">
-                    <a href="/adventures/skating/weekend" tour="weekend">
-                        <paper-card heading="Weekend tour" image="/images/500-300/skiing001.jpg">
-                            <div class="card-content">
-                                <p>A weekend with great skating on the frozen lakes of Sweden</p>
-                            </div>
-                        </paper-card>
-                    </a>
-
-                    <a href="/adventures/skating/yourown" tour="yourown">
-                        <paper-card heading="Your own tour" image="/images/500-300/skiing003.jpg">
-                            <div class="card-content">
-                                <p>A skating vacation together with friends or family. Book your own private tour.</p>
-                            </div>
-                        </paper-card>
-                    </a>
-
-                </iron-selector>
-
-                <template is="dom-if" if="{{!isMain}}">
-                    <iron-pages selected="{{tourData.tour}}" attr-for-selected="tour">
-                        <skating-weekend tour="weekend"></skating-weekend>
-                        <skating-yourown tour="yourown"></skating-yourown>
-                    </iron-pages>
-                </template>
-
-                <paper-card class="flow-text">
-                    <div class="card-content">
-                        <h2>Send an inquiry</h2>
-                        <p class="lead">If you would like to know more, get a price or ask questions feel free to contact us, or fill out
-                            the form</p>
-                        <P><a href="mailto:info@naturguiden.com">info(@)naturguiden.com</a><br />
-                            +46 70 53 53 630</P>    
+                        <my-inquiry-button></my-inquiry-button>
+           
                     </div>
-                    <div class="card-actions">
-                        <a href="/about/inquiry">
-                            <paper-button>Go to the inquiry form</paper-button>
-                        </a>
-                    </div>
-                </paper-card>
+                    <div>
+                        </div>
+                        <div>
+            
+                            <materialize-slider desktop>
+                                <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                            </materialize-slider>
+            
+                            <paper-card class="flow-text">
+                                <div class="card-content">
+            
+                                    <h1>Your own kayak adventure</h1>
+                                    <p class="lead">Enjoy the beatifull archipelago of Sweden. Between islands and skerries, out in the open sea and in seduced caves. We sleep in tents on the islands along the way, prepare the food over open fire and wash ourselves in rock pools of the Baltic Sea.</p>
+                                    <p>With kayak out on the Baltic sea. Out among thousands of islands, most of them unsettled. The Swedish “allemansrätt” gives us the opportunity to stay on any one of them. There is no fix tour, the wind and waves affect our plans and you never now where to spend the night. During the day we make several stops, for a meal or just to stretch our legs. In the evening, after a swim we make a fire and start making dinner. Maybe we manage to catch some fish that we can fry in the pan.</p>
+                                    <P>
+                                    You decide how you like to spend the days. How fast and long we going with the kayak. How much time you like to spent on the islands, swiming or just relax.
+                                    </P>
+                                    
+                                    <P>Below you have all information you need, but if you still have some more questions, don't hesitate
+                                        to contact us on info@naturguiden.se or on +46 70 53 53 630.</P> 
+                                    
+                                    <div class="high-light">  
+                                        <h2>Book your own skating tour</h2>
+                                        <h4>Price: from 590 EUR (4 day/ 3 nights)</h4>
+                                        <p>Everything included, accommodation in tent, normally two persons / tent</br>
+                                        But you need to bring sleepingbag and camping mattress. Or rent them for 30 EUR</p> 
+                                        
+                                        <h4>More days</h4>
+                                        <p>If you like to stay longer than 4 days<br />
+                                        You pay from: 100 EUR/day (depending on number of participants)</p>
+                                    </div>
 
-            </div>
-        </div>
 
-    </template>
-
-    <script>
-         // element registration
-        Polymer({
-          is: "adventures-skating",
-
-            properties: {
-                tour: {
-                    type: String,
-                    reflectToAttribute: true,
-                },
-                isMain: {
-                    type: Boolean,
-                    computed: '_computeIsMain(tour)'
-                }
-            },
-
-            observers: [
-                '_routePageChanged(tourData.tour)',
-            ],
-
-            _routePageChanged: function(route) {
-                this.tour = route || 'main';
-
-            },
-            _computeIsMain: function(tour) {
-                return tour === 'main';
-            }
-        });
-      </script>
-
-</dom-module>
+                                    <h3>A normal day in the archipelago</h3>
+                                    <p>We start with breakfast prepared at the shoreline on the camping stove. Maybe porridge, bread and te/coffe. Then we put down our tents and stow everything in our kayaks. We head of out between the islands. The weather and wind decide were to go, out on the open or close to the islands.</p>
+                                    <p>At lunch time we find a nice spot where we can prepare our lunch, take a swim or just stroll along the shore line</p>
+                                    <p>In the evening we take a swim, spend time around the fire, and make dinner over open fire. Maybe someone try to cath a fish that we can eat as well. Just enjoy</p>
+            
+                                    <h3>Meeting point</h3>
+                                    <p>Normally we start our tours in Trosa, south of Stockholm. But we are open for other options if that suits you better</p>
+            
+                                    <h3>Time:</h3>
+                                    <p>Any time you like, you decide when we we will meet and how long we will stay</p>
+            
+                                    <h3>Accommodation: Tents or hostel if you preffere that</h3>
+                                    <P>You will sleep in a tent on an island in the archipelago. Normally two persons in each tent.<br />
+                                        You need to bring sleepingbag and camping mattress. Or rent them for 30 EUR. <br />
+                                        We prepare the meals together over open fire or on a camping stove. All food is provided and included in the price.</P>
+            
+                                    <h3>Personal equipment</h3>
+                                    <p>Clothing suitable for kayaking. Rain cloth and swimwaer, Sleepingbag and camping mattress. Sun glass. More info
+                                        >>></p>
+                                    <P>Good to have but not necessary: Hat for the sun, or rain. Dry bag for your mobile/camera.</p>
+            
+                                    <h3>Equipment included</h3>
+                                    <p>Kayak, life jacket, tent, maps.<br />
+                                    Normally we provide single kayaks K1, but if you prefere a two seat kayak K2 we provide that for you</p>
+            
+                                    <h3>
+                                        <div class="not">Not included</div>
+                                    </h3>
+                                    <P>Alcoholic drinks</P>
+                                   
+            
+                                    <h3>Included in the price</h3>
+                                    <div class="table-responsive">
+                                       <table class="table table-hover table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <td item-width="100">Day I </td>
+                                                    <td>Lunch, dinner, guide, rent of equipment</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Day II - xx </td>
+                                                    <td>Breakfast, lunch, dinner, guide, rent of equipment</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Last day </td>
+                                                    <td>Breakfast, lunch, guide,rent of equipment</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+            
+                                    <paper-card class="flow-text">
+                                        <div class="card-content">
+                                            <h2>Send an inquiry</h2>
+                                            <p class="lead">If you would like to know more, get a price or ask questions feel free to contact us, or fill out
+                                            the form</p>
+                                            <P><a href="mailto:info@naturguiden.se">info(@)naturguiden.se</a><br /> +46 70 53 53 630</P>
+                                        </div>
+                                        <div class="card-actions">
+                                            <a href="/about/inquiry">
+                                                <paper-button>Go to the inquiry form</paper-button>
+                                            </a>
+                                        </div>
+                                    </paper-card>    
+            
+                                </div>
+                        </div>
+                </template>
+            
+                <script>
+                    // element registration
+                    Polymer({
+                        is: "kayak-yourown",
+                        properties: {
+                        }
+                    });
+                </script>
+            </dom-module>
