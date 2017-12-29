@@ -89,28 +89,29 @@
             },
 
             _pageChanged: function(action) {
-                    // Load page import on demand. Show 404 page if fails
-                    switch(action.toLowerCase()) {
-                        case "about-us":
-                            var resolvedPageUrl = this.resolveUrl('about/about-about-us.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                            var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                            break
-                        case "contact":
-                            var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                            break;
-                        case "inquiry":
-                            var resolvedPageUrl = this.resolveUrl('about/about-inquiry.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                            var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                            break;
-                        default:
-                            var resolvedPageUrl = this.resolveUrl('ng-view404.html');
-                            this.importHref(resolvedPageUrl, null, this._showPage404, true);
-                    }
+                console.log("page chaged to " + action);
+                // Load page import on demand. Show 404 page if fails
+                switch(action.toLowerCase()) {
+                    case "about-us":
+                        var resolvedPageUrl = this.resolveUrl('about/about-about-us.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                        var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                        break
+                    case "contact":
+                        var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                        break;
+                    case "inquiry":
+                        var resolvedPageUrl = this.resolveUrl('about/about-inquiry.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                        var resolvedPageUrl = this.resolveUrl('about/about-contact.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                        break;
+                    default:
+                        var resolvedPageUrl = this.resolveUrl('ng-view404.html');
+                        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+                }
             },
 
             _showPage404: function() {

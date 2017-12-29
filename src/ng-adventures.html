@@ -134,7 +134,7 @@
 
             _pageChanged: function(action) {
                 // Load page import on demand. Show 404 page if fails
-                
+                console.log("page chaged to " + action);
                 var resolvedPageUrl = this.resolveUrl('adventures/' + action + '.html');
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
