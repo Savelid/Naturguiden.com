@@ -19,7 +19,8 @@
     "paper-dialog": "PolymerElements/paper-dialog#^1.1.0",
     "neon-animation": "PolymerElements/neon-animation#^1.2.4",
     "iron-form": "PolymerElements/iron-form#^1.1.4",
-    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.10.2"
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.10.2",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.22"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
