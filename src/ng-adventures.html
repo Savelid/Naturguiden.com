@@ -41,13 +41,6 @@
                         </div>
                     </a>
 
-                    <!--<a href="/adventures/skating-yourown" name="skating-yourown">
-                        <div class="flow-text">
-                            <span class="hide-on-small-only">Ice y skating</span>
-                            <span class="hide-on-med-and-up">Skating y</span>  
-                        </div>
-                    </a>-->
-
                     <a href="/adventures/skiing-cabin" name="skiing-cabin">
                         <div class="flow-text">
                             <span class="hide-on-small-only">Cross country skiing</span>
@@ -61,17 +54,19 @@
                                 <span class="hide-on-med-and-up">Kayak</span>
                         </div>
                     </a>
-                    <!--<a href="/adventures/kayak-yourown" name="kayak-yourown">
-                        <div class="flow-text">
-                            Kayak<span class="hide-on-small-only">ing</span> 
-                        </div>
-                    </a> -->
 
                     <a href="/adventures/hiking-eightdays" name="hiking-eightdays">
                         <div class="flow-text">
                             Hiking
                         </div>
                     </a>
+
+                    <!-- All adventure packages need to be pressent here in order to be lazy-loaded, for pages not directly linked - use hidden-->
+                    <a name="hiking-yourown" hidden></a>
+                    <a name="kayak-yourown" hidden></a>
+                    <a name="skating-yourown" hidden></a>
+                    <a name="skiing-yourown" hidden></a>
+                    <a name="skiing-tent" hidden></a>
                 </iron-selector>
             </paper-card>
         </div>
@@ -80,21 +75,19 @@
             
             <adventures-main name="main"><paper-spinner-lite alt="Loading adventure-main page" active></paper-spinner-lite></adventures-main>
 
-            <skating-weekend desktop="{{desktop}}" name="skating-weekend"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-weekend>
+            <hiking-eightdays desktop="{{desktop}}" name="hiking-eightdays"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></hiking-eightdays>
+            <hiking-yourown desktop="{{desktop}}" name="hiking-yourown"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></hiking-yourown>
 
+            <kayak-weekend desktop="{{desktop}}" name="kayak-weekend"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak-weekend>
+            <kayak-yourown desktop="{{desktop}}" name="kayak-yourown"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak-yourown>
+
+            <skating-weekend desktop="{{desktop}}" name="skating-weekend"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-weekend>
             <skating-yourown desktop="{{desktop}}" name="skating-yourown"><paper-spinner-lite alt="Loading skating page" active></paper-spinner-lite></skating-yourown>
             
             <skiing-cabin desktop="{{desktop}}" name="skiing-cabin"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></skiing-cabin>
-            <!--<adventures-skiing desktop="{{desktop}}" name="skiing" route="{{tail}}"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></adventures-skiing> -->
-            
-            <kayak-weekend desktop="{{desktop}}" name="kayak-weekend"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak-weekend>
+            <skiing-tent desktop="{{desktop}}" name="skiing-tent"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></skiing-tent>
+            <skiing-yourown desktop="{{desktop}}" name="skiing-yourown"><paper-spinner-lite alt="Loading skiing page" active></paper-spinner-lite></skiing-yourown>
 
-            <kayak-yourown desktop="{{desktop}}" name="kayak-yourown"><paper-spinner-lite alt="Loading kayak page" active></paper-spinner-lite></kayak-yourown>
-            
-            <hiking-eightdays desktop="{{desktop}}" name="hiking-eightdays"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></hiking-eightdays>
-
-            <hiking-yourown desktop="{{desktop}}" name="hiking-yourown"><paper-spinner-lite alt="Loading hiking page" active></paper-spinner-lite></hiking-yourown>
-        
         </iron-pages>
 
     </template>
@@ -125,10 +118,19 @@
             ],
 
             _routePageChanged: function(route) {
+                console.log("routepage chaged to " + route);
+                found = new Boolean;
+                found = false;
                 for(var i = 0; i < this.$.selector.items.length; i++){
+                    console.log(this.$.selector.items[i].name);
                     if(this.$.selector.items[i].name == route.toLowerCase()){
-                        this.action = route || 'main';
+                        this.action = route;
+                        found = true;
+                        break;
                     }
+                }
+                if (!found){
+                    this.action = "adventures-main";
                 }
             },
 

@@ -7,13 +7,10 @@
 <link rel="import" href="../../elements/my-left-image-paper-card.html">
 <link rel="import" href="../../elements/my-package-info.html">
 <link rel="import" href="../../elements/my-inquiry-button.html">
+<link rel="import" href="../../elements/my-inquiry-card.html">
+<link rel="import" href="../../elements/materialize-slider-skating.html">
 
 <link rel="import" href="../shared-styles.html">
-
-<link rel="import" href="../adventures/skating-weekend.html">
-<link rel="import" href="../adventures/skating-yourown.html">
-
-<link rel="import" href="../../elements/materialize-slider-skating.html">
 
 <dom-module id="skating-weekend">
 
@@ -27,54 +24,22 @@
         <div class="layout horizontal layout-start pageWidth pageMargin">
             <div class="packageWidth">
 
-                <my-package-info name="Nordic Skating – weekend tour" season="January - mid March" price="From €645" days="4 days/ 3 nights" lodging="Hostel, double room with shared toilet and shower " active link="/adventures/skating-weekend">
-                    An all inclusive guided tour were we travel in small groups on max 8 persons. We pick you up at Stockholm airport / Arlanda or elsewhere after agreement.
+                <my-package-info name="Nordic Skating – weekend tour" season="January - mid March" price="From €645" days="4 days/ 3 nights"
+                    lodging="Hostel, double room with shared toilet and shower " active link="/adventures/skating-weekend">
+                    An all inclusive guided tour were we travel in small groups on max 8 persons. We pick you up at Stockholm airport / Arlanda
+                    or elsewhere after agreement.
                 </my-package-info>
                 <my-package-info name="Nordic skating – private tour" season="Winter" price="From €500" days="4 days" lodging="Hotel" link="/adventures/skating-yourown">
                     Book your own skating tour with friends or family. Come any day and stay as long as you want.
                 </my-package-info>
-
-
                 <my-inquiry-button></my-inquiry-button>
-                <!--
-                <a href="/before-trip/skiing">
-                    <paper-card heading="Before the trip" class="colorfull flow-text">
-                        <div class="card-content">
-                            <p>In this section we will try to give you the information you need to be able to bring right kind
-                                of cloth and equipment, but also give an idea about what you can expect.</p>
-                        </div>
-                    </paper-card>
-                </a>
-                
 
-
-                <a href="/pictures/skiing">
-                    <paper-card heading="Skiing pictures" image="/images/500/cabin_w002.jpg" class="darkHeading flow-text">
-                    </paper-card>
-                </a>
-
-                <a href="/adventures/skating/weekend" tour="weekend">
-                    <paper-card heading="Weekend tour" image="/images/500-300/skiing001.jpg">
-                        <div class="card-content">
-                            <p>A weekend with great skating on the frozen lakes of Sweden</p>
-                        </div>
-                    </paper-card>
-                </a>
-
-                <a href="/adventures/skating/yourown" tour="yourown">
-                    <paper-card heading="Your own tour" image="/images/500-300/skiing003.jpg">
-                        <div class="card-content">
-                            <p>A skating vacation together with friends or family. Book your own private tour.</p>
-                        </div>
-                    </paper-card>
-                </a>
-            -->
             </div>
             <div>
 
-                <materialize-slider desktop>
+                <materialize-slider-skating desktop>
                     <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                </materialize-slider>
+                </materialize-slider-skating>
 
                 <paper-card class="flow-text">
                     <div class="card-content">
@@ -95,7 +60,8 @@
                             and fitness we have some weekends for those with more experiences and other weekends for those
                             with less. You don't need to be an champion to join the tour for more experienced skaters but
                             you should be able to skate on ice skates or Rollerblades without difficulties and be reasonable
-                            fit.</p>
+                            fit.
+                        </p>
                         <P>Below you have all information you need, but if you still have some more questions, don't hesitate
                             to contact us on info@naturguiden.se or on +46 70 53 53 630.</P>
 
@@ -161,10 +127,11 @@
                             you arrive. If you arrive mid day we find a place close to the airport where we went for skating.
                             If other guests arrives later we then went back to the airport and pick them up. Late afternoon
                             we head of for the the place to stay the first night.</p>
-                            <p><b>Skavsta:</b> Pick up around 09:30</p>
+                        <p><b>Skavsta:</b> Pick up around 09:30</p>
                         <p><b>Departure:</b> Not before 18:00. We drop you of at the airport 16:30 or later depending on depature
-                            time.</p>
-                            <p><b>Skavsta:</b> Drop of around 18:30</p>
+                            time.
+                        </p>
+                        <p><b>Skavsta:</b> Drop of around 18:30</p>
 
                         <h3>Accommodation: Youth Hostel, Self Catering</h3>
                         <P>Youth hostels in two or four beds dormitory room with shared shower and toilet (normally two persons
@@ -173,7 +140,8 @@
 
                         <h3>Personal equipment</h3>
                         <p>Clothing suitable for skating. A complete set of clothes to bring in provided backpack. More info
-                            >>></p>
+                            >>>
+                        </p>
                         <P>Good to have but not necessary: Sun glass, Dry bag for your mobile/camera. Indoor shoes.</p>
 
                         <h3>Equipment included</h3>
@@ -181,7 +149,8 @@
 
                         <h3>Extra equipment that we can provide</h3>
                         <P>We can provide you with the following but you need to make a reservation for it when you place your
-                            order.</P>
+                            order.
+                        </P>
                         <P>Extra safety equipment: Helmet, knee pad, wrist and arm bow protectors. Free of charge.</P>
                         <P>Sheets and towel: +20 EUR extra. </P>
 
@@ -274,23 +243,12 @@
                         <P>After breakfast we head off for another day on ice, skating as long as possible depending on the
                             scheduled departure times. On our way back to the airport we stop for a shower and change clothes
                             and maybe for something to eat. The guide then drives you back to the airport.</P>
-
-                        <paper-card class="flow-text">
-                            <div class="card-content">
-                                <h2>Send an inquiry</h2>
-                                <p class="lead">If you would like to know more, get a price or ask questions feel free to contact us, or fill out
-                                the form</p>
-                                <P><a href="mailto:info@naturguiden.se">info(@)naturguiden.se</a><br /> +46 70 53 53 630</P>
-                            </div>
-                            <div class="card-actions">
-                                <a href="/about/inquiry">
-                                    <paper-button>Go to the inquiry form</paper-button>
-                                </a>
-                            </div>
-                        </paper-card>    
-
                     </div>
+                </paper-card>
+                <my-inquiry-card></my-inquiry-card>
+
             </div>
+        </div>
     </template>
 
     <script>
