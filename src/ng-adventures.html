@@ -61,12 +61,6 @@
                         </div>
                     </a>
 
-                    <!-- All adventure packages need to be pressent here in order to be lazy-loaded, for pages not directly linked - use hidden-->
-                    <a name="hiking-yourown" hidden></a>
-                    <a name="kayak-yourown" hidden></a>
-                    <a name="skating-yourown" hidden></a>
-                    <a name="skiing-yourown" hidden></a>
-                    <a name="skiing-tent" hidden></a>
                 </iron-selector>
             </paper-card>
         </div>
@@ -118,12 +112,12 @@
             ],
 
             _routePageChanged: function(route) {
+                // All adventure packages need to be pressent here in order to be lazy-loaded, for pages not here, user will be redirected to main
+                var adventurePages = ["skating-weekend", "skating-yourown", "hiking-eightdays", "hiking-yourown", "kayak-weekend", "kayak-yourown", "skating-yourown", "skiing-cabin", "skiing-tent", "skiing-yourown"];
                 console.log("routepage chaged to " + route);
-                found = new Boolean;
-                found = false;
-                for(var i = 0; i < this.$.selector.items.length; i++){
-                    console.log(this.$.selector.items[i].name);
-                    if(this.$.selector.items[i].name == route.toLowerCase()){
+                var found = false;
+                for(var i = 0; i < adventurePages.length; i++){
+                    if(adventurePages[i] == route.toLowerCase()){
                         this.action = route;
                         found = true;
                         break;
