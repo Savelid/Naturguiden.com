@@ -22,25 +22,12 @@
         <!-- local DOM for your element -->
 
         <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="packageWidth">
-                <my-package-info name="Kayak – private tour" season="May - October" price="From €490" days="4 days/ 3 nights" lodging="Tent"
-                    active link="/adventures/kayak-yourown">
-                    Book your own kayak tour with friends or family. Come any day and stay as long as you want.
-                </my-package-info>
-                <my-package-info name="Kayak – weekend tour" season="May - October" price="From €490" days="4 days/ 3 nights" lodging="Tent in the archipelago"
-                    link="/adventures/kayak-weekend">
-                    An all inclusive guided kayak tour for small groups out in the archipelago of Sweden. Meeting point Trosa harbour south of
-                    Stockholm.
-                </my-package-info>
-
-                <my-inquiry-button></my-inquiry-button>
-
-            </div>
             <div>
-
-                <materialize-slider-kayak desktop>
-                    <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                </materialize-slider-kayak>
+                <template is="dom-if" if="{{desktop}}">
+                    <materialize-slider-kayak desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-kayak>
+                </template>
 
                 <paper-card class="flow-text">
                     <div class="card-content">
@@ -69,8 +56,8 @@
                                 But you need to bring sleepingbag and camping mattress. Or rent them for 30 EUR</p>
 
                             <h4>More days</h4>
-                            <p>If you like to stay longer than 4 days<br /> You pay from: 75 EUR/day (depending on number of
-                                participants)
+                            <p>If you like to stay longer than 4 days
+                                <br /> You pay from: 75 EUR/day (depending on number of participants)
                             </p>
                         </div>
 
@@ -92,9 +79,10 @@
                         <p>Any time you like, you decide when we we will meet and how long we will stay</p>
 
                         <h3>Accommodation: Tents or hostel if you preffere that</h3>
-                        <P>You will sleep in a tent on an island in the archipelago. Normally two persons in each tent.<br />                            You need to bring sleepingbag and camping mattress. Or rent them for 30 EUR. <br /> We prepare
-                            the meals together over open fire or on a camping stove. All food is provided and included in
-                            the price.</P>
+                        <P>You will sleep in a tent on an island in the archipelago. Normally two persons in each tent.
+                            <br /> You need to bring sleepingbag and camping mattress. Or rent them for 30 EUR.
+                            <br /> We prepare the meals together over open fire or on a camping stove. All food is provided and
+                            included in the price.</P>
 
                         <h3>Personal equipment</h3>
                         <p>Clothing suitable for kayaking. Rain cloth and swimwaer, Sleepingbag and camping mattress. Sun glass.
@@ -103,8 +91,9 @@
                         <P>Good to have but not necessary: Hat for the sun, or rain. Dry bag for your mobile/camera.</p>
 
                         <h3>Equipment included</h3>
-                        <p>Kayak, life jacket, tent, maps.<br /> Normally we provide single kayaks K1, but if you prefere a
-                            two seat kayak K2 we provide that for you</p>
+                        <p>Kayak, life jacket, tent, maps.
+                            <br /> Normally we provide single kayaks K1, but if you prefere a two seat kayak K2 we provide that
+                            for you</p>
 
                         <h3>
                             <div class="not">Not included</div>
@@ -131,10 +120,35 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
+                <template is="dom-if" if="{{!desktop}}">
+                    <paper-card>
+                        <materialize-slider-kayak desktop>
+                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                        </materialize-slider-kayak>
+                    </paper-card>
+                </template>
+            </div>
+            <div class="packageWidthPlaceholder"></div>
+            <div class="packageWidth">
+
+                <my-package-info header="Kayak" subheader="weekend tour" season="May - October" price="From €490" days="4 days/ 3 nights"
+                lodging="Tent in the archipelago" link="/adventures/kayak-weekend" desktop="{{desktop}}">
+                <div class="card-content">
+                    An all inclusive guided kayak tour for small groups out in the archipelago of Sweden. Meeting point Trosa harbour south of
+                    Stockholm.
+                </div>
+            </my-package-info>
+            <my-package-info header="Kayak" subheader="private tour" season="May - October" price="From €490" days="4 days/ 3 nights"
+                lodging="Tent" active link="/adventures/kayak-yourown" desktop="{{desktop}}">
+                <div class="card-content">
+                    Book your own kayak tour with friends or family. Come any day and stay as long as you want.
+                </div>
+            </my-package-info>
+                <my-inquiry-button hidden="{{!desktop}}"></my-inquiry-button>
+
             </div>
         </div>
     </template>
@@ -144,6 +158,10 @@
         Polymer({
             is: "kayak-yourown",
             properties: {
+                desktop: {
+                    type: Boolean,
+                    reflectToAttribute: true
+                }
             }
         });
     </script>

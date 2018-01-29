@@ -22,25 +22,12 @@
         <!-- local DOM for your element -->
 
         <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="packageWidth">
-
-                <my-package-info name="Nordic skating – private tour" season="December - March" price="From €615" days="4 days/ 3 nights" lodging="Hotel or Hostel" link="/adventures/skating-yourown">
-                    Book your own skating tour with friends or family. Come any day and stay as long as you want.
-                </my-package-info>
-                <my-package-info name="Nordic Skating – weekend tour" season="January - mid March" price="From €645" days="4 days/ 3 nights"
-                    lodging="Hostel, double room with shared toilet and shower " active link="/adventures/skating-weekend">
-                    An all inclusive guided tour were we travel in small groups on max 8 persons. We pick you up at Stockholm airport / Arlanda
-                    or elsewhere after agreement.
-                </my-package-info>
-                
-                <my-inquiry-button></my-inquiry-button>
-
-            </div>
             <div>
-
-                <materialize-slider-skating desktop>
-                    <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                </materialize-slider-skating>
+                <template is="dom-if" if="{{desktop}}">
+                    <materialize-slider-skating desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-skating>
+                </template>
 
                 <paper-card class="flow-text">
                     <div class="card-content">
@@ -75,7 +62,8 @@
                             bring your own.</P>
 
                         <h3>Price</h3>
-                        <P><b>50 EUR early season discount </b> before 5 February </P>
+                        <P>
+                            <b>50 EUR early season discount </b> before 5 February </P>
                         <div class="table-responsive">
                             <table class="table table-hover table-condensed">
                                 <tbody>
@@ -141,8 +129,12 @@
                                             and the boot are separate so you can take of the skate when walking to and from
                                             the ice. If you have suitable skates, for example the Salomon skates, you may
                                             use them if you like.</td>
-                                        <td><img src="/images/200/sweskate.jpg"></td>
-                                        <td><img src="/images/200/schoen.jpg"></td>
+                                        <td>
+                                            <img src="/images/200/sweskate.jpg">
+                                        </td>
+                                        <td>
+                                            <img src="/images/200/schoen.jpg">
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -161,7 +153,9 @@
                                             <p>PS: The only time we had a person fell into the water, they had not follow the
                                                 given instructions.</p>
                                         </td>
-                                        <td><img width="300" src="/images/500/safety_eq.jpg"></td>
+                                        <td>
+                                            <img width="300" src="/images/500/safety_eq.jpg">
+                                        </td>
                                     </tr>
                                     <td></td>
                                     <td>Back pack, Safety line, Ice nails and Poles</td>
@@ -195,7 +189,8 @@
                             </table>
                         </div>
                         <p>*Dinner is not included in alternative B1 and C1.</p>
-                        <p class="bg-warning"><b>Not included:</b> alcoholic drinks. </p>
+                        <p class="bg-warning">
+                            <b>Not included:</b> alcoholic drinks. </p>
 
                         <h3>Extra days</h3>
                         <p>It is possible to extend the tour with one or several days.</br>
@@ -247,10 +242,35 @@
                         <P>After breakfast we head off for another day on ice, skating as long as possible depending on the
                             scheduled departure times. On our way back to the airport we stop for a shower and change clothes
                             and maybe for something to eat. The guide then drives you back to the airport.</P>
-
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
+                <template is="dom-if" if="{{!desktop}}">
+                    <paper-card>
+                        <materialize-slider-skating desktop>
+                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                        </materialize-slider-skating>
+                    </paper-card>
+                </template>
+            </div>
+            <div class="packageWidthPlaceholder"></div>
+            <div class="packageWidth">
+
+                <my-package-info header="Nordic Skating" subheader="weekend tour" season="January - mid March" price="From €645" days="4 days/ 3 nights"
+                    lodging="Hostel, double room with shared toilet and shower" link="/adventures/skating-weekend" desktop="{{desktop}}">
+                    <div class="card-content">
+                        An all inclusive guided tour were we travel in small groups on max 8 persons. We pick you up at Stockholm airport / Arlanda
+                        or elsewhere after agreement.
+                    </div>
+                </my-package-info>
+                <my-package-info header="Nordic skating" subheader="private tour" season="December - March" price="From €615" days="4 days/ 3 nights"
+                    lodging="Hotel or Hostel" link="/adventures/skating-yourown" desktop="{{desktop}}" active>
+                    <div class="card-content">
+                        Book your own skating tour with friends or family. Come any day and stay as long as you want.
+                    </div>
+                </my-package-info>
+                <my-inquiry-button hidden="{{!desktop}}"></my-inquiry-button>
+
             </div>
         </div>
 

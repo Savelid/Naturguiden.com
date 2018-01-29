@@ -22,25 +22,13 @@
         <!-- local DOM for your element -->
 
         <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="packageWidth">
-
-                <my-package-info name="Hiking - 8 days" season="July - September" price="From €625" days="8 days/ 7 nights" lodging="Tent on the mountain"
-                    active link="/adventures/hiking-eightdays">
-                    Eight days of hiking in the Swedish mountains. One of the best hikes in the world acording to National Geographic.
-                </my-package-info>
-                <my-package-info name="Hiking – private tour" season="July - September" price="From €425" days="4 days/ 3 nights" lodging="Tent"
-                    link="/adventures/hiking-yourown">
-                    Book your own hiking tour with friends or family. Come any day and stay as long as you want.
-                </my-package-info>
-
-                <my-inquiry-button></my-inquiry-button>
-
-            </div>
             <div>
 
-                <materialize-slider-hiking desktop>
-                    <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                </materialize-slider-hiking>
+                <template is="dom-if" if="{{desktop}}">
+                    <materialize-slider-hiking desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-hiking>
+                </template>
 
                 <paper-card class="flow-text">
                     <div class="card-content">
@@ -52,12 +40,21 @@
                             outside all regular tracks and mountain lodges.</p>
                         <div class="high-light">
                             <p></p>But for sure we will do a summit hike to Helags. Number three among the World's best summit
-                            hikes according to <a href="https://www.nationalgeographic.com/adventure/lists/hiking-backpacking/worlds-best-summit-hikes/#/helagsfjallet-mountain-sweden_91186_600x450.jpg"> National Geographic</a>                            <i>"Sweden's highest peak south of the Arctic Circle, Helagsfjället, also simply called Helags, stands out above the surrounding peaks of the Scandinavian Mountains right on the Norway border."</i></p>
+                            hikes according to
+                            <a href="https://www.nationalgeographic.com/adventure/lists/hiking-backpacking/worlds-best-summit-hikes/#/helagsfjallet-mountain-sweden_91186_600x450.jpg">
+                                National Geographic</a>
+                            <i>"Sweden's highest peak south of the Arctic Circle, Helagsfjället, also simply called Helags,
+                                stands out above the surrounding peaks of the Scandinavian Mountains right on the Norway
+                                border."
+                            </i>
+                            </p>
                             <p>On Helags there is also a glacier that we will visit and maybe we will visit the mountain Sylarna
                                 as well</p>
                             <p>Another high light is the arctic fox in the area. They are very rare, but with hard work from
                                 some enthusiasts that have bring out food to them for many years, they are now starts to
-                                coming back. <a href="https://www.rewildingeurope.com/news/arctic-fox-safaris-in-sweden-helps-the-arctic-fox-while-making-business-sense/">Read more about the arctic fox project in the region</a></p>
+                                coming back.
+                                <a href="https://www.rewildingeurope.com/news/arctic-fox-safaris-in-sweden-helps-the-arctic-fox-while-making-business-sense/">Read more about the arctic fox project in the region</a>
+                            </p>
                         </div>
                         <p>While hiking in the Swedish mountains we stay above tree level, the area where no trees can grow.
                             It is still green with grass and flowers. We are exposed to the force of nature with only tents
@@ -66,7 +63,10 @@
                             any other people, only the reindeer's and lemmings.</p>
                         <p>The tour starts in Ljungdalen, the south port to the Jämtland mountains.</p>
                         <P>
-                            <I>If you come together with your friends or family and you are 4-6 persons or more consider the options for your own private tour. <a href="/adventures/hiking-yourown">Read more here..</a></I>
+                            <I>If you come together with your friends or family and you are 4-6 persons or more consider the
+                                options for your own private tour.
+                                <a href="/adventures/hiking-yourown">Read more here..</a>
+                            </I>
                         </P>
 
                         <P>Below you have all information you need, but if you still have some more questions, don't hesitate
@@ -102,31 +102,35 @@
 
                         <p>Some of the days we stay two nights at same place and from there make a summit hike to some of the
                             peaks, i.e Helags. We will also try to catch fish in the small lakes and fry them over open fire.
-                            </p>
+                        </p>
 
                         <h3>Meeting point</h3>
                         <p>Normally we start our tours in Ljungdalen. A small village up in the mountains. South of Åre and
                             close to the Norwegian border.</p>
 
                         <h3>Get here</h3>
-                        <p>You can get here in several different ways. We will help you with more details when we know from where
-                            you will travel. More information here <a href="/info/how-get-here">How to get here>>></a></p>
+                        <p>You can get here in several different ways. We will help you with more details when we know from
+                            where you will travel. More information here
+                            <a href="/info/how-get-here">How to get here>>></a>
+                        </p>
 
                         <h3>Time:</h3>
                         <p>We meet you when you arrive to Ljungdalen</p>
                         <p>Last day: We find the most convenient way for you to go back.</p>
 
                         <h3>Accommodation: Tents</h3>
-                        <P>You will sleep in tent close to the creek or the lake. Normally two persons in each tent.<br /> You
-                            need to bring sleeping bag and camping mattress. Or rent them for 30 EUR. <br /> We prepare the
-                            meals together over open fire or on a camping stove. All food is provided and included in the
-                            price.</P>
+                        <P>You will sleep in tent close to the creek or the lake. Normally two persons in each tent.
+                            <br /> You need to bring sleeping bag and camping mattress. Or rent them for 30 EUR.
+                            <br /> We prepare the meals together over open fire or on a camping stove. All food is provided and
+                            included in the price.
+                        </P>
 
                         <h3>Personal equipment</h3>
                         <p>Hiking boots, Water resistant and suitable clothes, Backpack for hiking, Sleeping bag, Sleeping pad,
                             Cap and cloves, Sandals to where when crossing the rivers. More info >>></p>
-                        <P><b>Good to have but not necessary:</b> Hat for the sun, rain or mosquito, Swimwear, Dry bag for your
-                            mobile/camera. Sun glasses.</p>
+                        <P>
+                            <b>Good to have but not necessary:</b> Hat for the sun, rain or mosquito, Swimwear, Dry bag for
+                            your mobile/camera. Sun glasses.</p>
 
                         <h3>Equipment included</h3>
                         <p>Tents, camping stove, maps.</p>
@@ -226,7 +230,8 @@
                         <p>The last stage is going down towards Ljungdalen– an easy stretch where long parts are downhill. The
                             hiking starts right after breakfast and after lunchtime we reach Ljungdalen. Now it is time to
                             get a real shower at the hostel, or maybe a sauna. In the evening we get dinner at the local
-                            restaurant.</p>
+                            restaurant.
+                        </p>
 
                         <h3>Day IX</h3>
                         <p>Last day, time to relax and to see more of Ljungdalen. Visit the old "Gammelgården" were you can
@@ -237,6 +242,31 @@
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
+                <template is="dom-if" if="{{!desktop}}">
+                    <paper-card>
+                        <materialize-slider-hiking desktop>
+                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                        </materialize-slider-hiking>
+                    </paper-card>
+                </template>
+            </div>
+            <div class="packageWidthPlaceholder"></div>
+            <div class="packageWidth">
+
+                <my-package-info header="Hiking" subheader="8 days" season="July - September" price="From €625" days="8 days/ 7 nights" lodging="Tent on the mountain"
+                    active link="/adventures/hiking-eightdays" desktop="{{desktop}}">
+                    <div class="card-content">
+                        Eight days of hiking in the Swedish mountains. One of the best hikes in the world acording to National Geographic.
+                    </div>
+                </my-package-info>
+                <my-package-info header="Hiking" subheader="private tour" season="July - September" price="From €425" days="4 days/ 3 nights" lodging="Tent"
+                    link="/adventures/hiking-yourown" desktop="{{desktop}}">
+                    <div class="card-content">
+                        Book your own hiking tour with friends or family. Come any day and stay as long as you want.
+                    </div>
+                </my-package-info>
+                <my-inquiry-button hidden="{{!desktop}}"></my-inquiry-button>
+
             </div>
         </div>
     </template>

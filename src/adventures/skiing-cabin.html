@@ -20,24 +20,12 @@
         </style>
 
         <div class="layout horizontal layout-start pageWidth pageMargin">
-            <div class="packageWidth">
-
-                <my-package-info name="Skiing – Cabin" season="" price="" days="" lodging="" link="/adventures/skiing-cabin" active>
-                </my-package-info>
-
-                <my-package-info name="Skiing – Tent" season="" price="" days="" lodging="" active link="/adventures/skiing-tent">
-                </my-package-info>
-
-                <my-package-info name="Skiing – Your own" season="" price="" days="" lodging="" active link="/adventures/skiing-yourown">
-                </my-package-info>
-
-                <my-inquiry-button></my-inquiry-button>
-
-            </div>
             <div>
-                <materialize-slider-skiing desktop>
-                    <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                </materialize-slider-skiing>
+                <template is="dom-if" if="{{desktop}}">
+                    <materialize-slider-skiing desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-skiing>
+                </template>
 
                 <paper-card class="flow-text">
                     <div class="card-content">
@@ -106,7 +94,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <p class="bg-warning"><b>Not included:</b> alcoholic drinks. Transfer from the airport to Östersund (approx. 5 EUR with
+                        <p class="bg-warning">
+                            <b>Not included:</b> alcoholic drinks. Transfer from the airport to Östersund (approx. 5 EUR with
                             bus, 12 EUR for a taxi)</p>
                         <h3>Choices of extras:</h3>
                         <h3>Extra days</h3>
@@ -188,6 +177,36 @@
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
+                <template is="dom-if" if="{{desktop}}">
+                    <paper-card>
+                        <materialize-slider-skiing desktop>
+                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                        </materialize-slider-skiing>
+                    </paper-card>
+                </template>
+            </div>
+            <div class="packageWidthPlaceholder"></div>
+            <div class="packageWidth">
+
+                <my-package-info header="Skiing" subheader="Cabin" season="" price="" days="" lodging="" link="/adventures/skiing-cabin" active desktop="{{desktop}}">
+                    <div class="card-content">
+
+                    </div>
+                </my-package-info>
+
+                <my-package-info header="Skiing" subheader="Tent" season="" price="" days="" lodging="" active link="/adventures/skiing-tent" desktop="{{desktop}}">
+                    <div class="card-content">
+
+                    </div>
+                </my-package-info>
+
+                <my-package-info header="Skiing" subheader="Your own" season="" price="" days="" lodging="" active link="/adventures/skiing-yourown" desktop="{{desktop}}">
+                    <div class="card-content">
+
+                    </div>
+                </my-package-info>
+                <my-inquiry-button hidden="{{!desktop}}"></my-inquiry-button>
+
             </div>
         </div>
 
