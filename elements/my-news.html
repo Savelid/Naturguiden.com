@@ -18,16 +18,18 @@
                         id="ajaxRequest"></iron-ajax>
 
                     <template is="dom-repeat" items="[[ajaxResponse]]">
-                        <paper-card heading="[[item.Heading]]" image="[[item.Picture.BaseUrl]][[item.Picture.FormatedUrl]]" class="whiteHeading flow-text">
-                            <div class="card-content">
-                                <p>[[item.Text]]</p>
-                            </div>
-                            <div hidden="[[!item.LinkUrl]]" class="card-actions">
-                                <a href="[[item.LinkUrl]]">
-                                    <paper-button>[[item.LinkText]]</paper-button>
-                                </a>
-                            </div>
-                        </paper-card>
+                        <template is="dom-if" if="{{isGreater(item.Position, 0)}}">
+                            <paper-card heading="[[item.Heading]]" image="[[item.Picture.BaseUrl]][[item.Picture.FormatedUrl]]" class="whiteHeading flow-text">
+                                <div class="card-content">
+                                    <p>[[item.Text]]</p>
+                                </div>
+                                <div hidden="[[!item.LinkUrl]]" class="card-actions">
+                                    <a href="[[item.LinkUrl]]">
+                                        <paper-button>[[item.LinkText]]</paper-button>
+                                    </a>
+                                </div>
+                            </paper-card>
+                        </template>
                     </template>
                 </div>
 
@@ -40,6 +42,9 @@
         properties: {
 
         },
+            isGreater: function(nr1, nr2) {
+            return nr1 > nr2
+        }
     });
 
     </script>
