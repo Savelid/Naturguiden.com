@@ -59,6 +59,10 @@
         <paper-card class="flow-text">
             <div class="card-content">
                 <h1>Send an inquiry</h1>
+                <p>This form can be used to contact us <br/>
+                    You only have yo fill out information you find relevent for your question/request/inquiry. <br/>
+                    We look forward to hearing from you</p>
+                    <p style="color:red; font-size: 1.7em">[[warningMessage]]<p>
                     <form   is="iron-form"
                             id="form"
                             method="post"
@@ -97,6 +101,7 @@
                                 <!--<paper-radio-button name="SubCategory" value="cabin">Cabin tour</paper-radio-button>
                                 <paper-radio-button name="SubCategory" value="tent">Tent tour</paper-radio-button> -->
                                 <paper-radio-button name="SubCategory" value="yourown">Your own tour</paper-radio-button>
+                                <paper-radio-button name="SubCategory" value="other">Something else</paper-radio-button>
                             </paper-radio-group>
                         </div>
                         <div class="item fullWidth">
@@ -146,13 +151,19 @@
                 sendingForm:{
                     type: Boolean,
                     value: false
+                },
+                warningMessage:{
+                    type: String,
+                    value: ''
                 }
             },
 
             _sendForm: function() {
+                this.warningMessage = '';
                 this.$.form.submit();
             },
             _clearForm: function() {
+                this.warningMessage = '';
                 this.$.form.reset();
             },
 
@@ -171,8 +182,10 @@
             },
 
             _handleError: function() {
-                console.log("Error");
+                this.fire("scroll-top");
+                console.log("Failed to post form");
                 this.sendingForm = false;
+                this.warningMessage = 'We are sorry, for some reason posting this form failed.';
             }
         });
       </script>
