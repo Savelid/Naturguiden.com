@@ -138,13 +138,6 @@
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
-                <template is="dom-if" if="{{!desktop}}">
-                    <paper-card>
-                        <materialize-slider-kayak desktop>
-                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                        </materialize-slider-kayak>
-                    </paper-card>
-                </template>
             </div>
 
             <div class="packageWidthPlaceholder"></div>
@@ -167,6 +160,15 @@
 
             </div>
         </div>
+        <template is="dom-if" if="{{!desktop}}">
+            <div class="layout horizontal layout-start pageWidth pageMargin">
+                <paper-card>
+                    <materialize-slider-kayak desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-kayak>
+                </paper-card>
+            </div>
+        </template>
     </template>
 
     <script>
