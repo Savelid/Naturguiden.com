@@ -213,13 +213,6 @@
                     </div>
                 </paper-card>
                 <my-inquiry-card></my-inquiry-card>
-                <template is="dom-if" if="{{!desktop}}">
-                    <paper-card>
-                        <materialize-slider-skating desktop>
-                            <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
-                        </materialize-slider-skating>
-                    </paper-card>
-                </template>
             </div>
             <div class="packageWidthPlaceholder"></div>
             <div class="packageWidth">
@@ -241,6 +234,15 @@
 
             </div>
         </div>
+        <template is="dom-if" if="{{!desktop}}">
+            <div class="layout horizontal layout-start pageWidth pageMargin">
+                <paper-card>
+                    <materialize-slider-skating desktop>
+                        <paper-spinner-lite alt="Loading slider" active></paper-spinner-lite>
+                    </materialize-slider-skating>
+                </paper-card>
+            </div>
+        </template>
 
     </template>
 
