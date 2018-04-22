@@ -1,0 +1,47 @@
+<ArrayOfNews>
+	<News>
+		<Creator>John Savelid</Creator>
+		<Date>2017-11-19T10:06:00</Date>
+		<Heading>Skating season is here</Heading>
+		<Id>4</Id>
+		<LinkText>Nordic Skating</LinkText>
+		<LinkUrl>http://www.naturguiden.com/adventures/skating-weekend</LinkUrl>
+		<Picture>
+			<Alt>Ice skating leader showing direction</Alt>
+			<Categories/>
+			<Date>2018-02-08T00:00:00</Date>
+			<FileName>skating_0001</FileName>
+			<Format>News</Format>
+			<FormatedUrl>images/news/skating_0001 _news_87eb5acc-dc9e-4c2a-b3db-7881cf418cb3.jpeg</FormatedUrl>
+			<Id>52</Id>
+			<Owner>Robin</Owner>
+			<ThumbUrl i:nil="true"/>
+			<Url>images/skating_0001_orginal_676a7df4-327a-4861-beea-3872229d89d5.jpeg</Url>
+		</Picture>
+		<PictureId>52</PictureId>
+		<Position>1000</Position>
+		<Text>Finally we have ice on our lakes again. After several cold nights there are very good skating conditions. And we are many that are longing for some ice skating. One weekend is fully booked and for another weekend there are only two more places left.</Text>
+	</News>
+	<News>
+		<Creator i:nil="true"/>
+		<Date>2018-02-08T11:17:00</Date>
+		<Heading i:nil="true"/><Id>5</Id><LinkText i:nil="true"/>
+		<LinkUrl i:nil="true"/>
+		<Picture i:nil="true"/>
+		<PictureId>0</PictureId>
+		<Position>0</Position>
+		<Text i:nil="true"/>
+	</News>
+	<News>
+		<Creator i:nil="true"/>
+		<Date>2018-02-08T11:17:00</Date>
+		<Heading i:nil="true"/>
+		<Id>6</Id>
+		<LinkText i:nil="true"/>
+		<LinkUrl i:nil="true"/>
+		<Picture i:nil="true"/>
+		<PictureId>0</PictureId>
+		<Position>0</Position>
+		<Text i:nil="true"/>
+	</News>
+</ArrayOfNews>
