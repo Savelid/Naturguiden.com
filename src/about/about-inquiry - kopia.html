@@ -65,7 +65,7 @@
                     <form   is="iron-form"
                             id="form"
                             method="post"
-                            action="/src/about/post.php"
+                            action="http://api.naturguiden.com/api/Inquiry"
                             content-type="application/json"
                             on-iron-form-error="_handleError"
                             on-iron-form-response="_handleResponse"
@@ -122,16 +122,11 @@
                         <div class="item">
                             <paper-input type="text" name="Country" label="Country"></paper-input>
                         </div>
-
-
                         <paper-button on-tap="_sendForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}" class="main-btn">
                             <paper-spinner-lite id="spinner" active="{{sendingForm}}" hidden="{{!sendingForm}}"></paper-spinner-lite>Send
                         </paper-button>
-
-
                         <paper-button on-tap="_clearForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}">Clear form</paper-button>
-                   </form>
-
+                    </form>
                     <form method="get" action="/inquiry-success" id="nativeForm">
                     </form>
             </div>
