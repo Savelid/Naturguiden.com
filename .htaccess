@@ -1,1 +1,13 @@
-ErrorDocument 404 /index.html
+ErrorDocument 404     /index.html
+
+RewriteEngine On
+
+# If not using www
+RewriteCond %{HTTP_HOST} !^www.(.*)$ [NC]
+RewriteCond %{HTTP:HTTPS} !on
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+# If using www
+RewriteCond %{HTTP_HOST} ^www.(.*)$ [NC]
+RewriteCond %{HTTP:HTTPS} !on
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R,L]

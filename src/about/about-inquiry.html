@@ -60,12 +60,13 @@
             <div class="card-content">
                 <h1>Send an inquiry</h1>
                 <p>Please use the form below to contact us about a trip you are interested in or any further questions. <br/>
-                   We look forward to hearing from you!</p>
+                   We look forward to hear from you! -2</p>
                     <p style="color:red; font-size: 1.7em">[[warningMessage]]<p>
                     <form   is="iron-form"
                             id="form"
                             method="post"
                             action="/src/about/post.php"
+
                             content-type="application/json"
                             on-iron-form-error="_handleError"
                             on-iron-form-response="_handleResponse"
@@ -123,17 +124,17 @@
                             <paper-input type="text" name="Country" label="Country"></paper-input>
                         </div>
 
-
                         <paper-button on-tap="_sendForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}" class="main-btn">
                             <paper-spinner-lite id="spinner" active="{{sendingForm}}" hidden="{{!sendingForm}}"></paper-spinner-lite>Send
                         </paper-button>
 
-
                         <paper-button on-tap="_clearForm" noink="{{sendingForm}}" disabled="{{sendingForm}}" raised="{{!sendingForm}}">Clear form</paper-button>
                    </form>
 
-                    <!-- <form method="get" action="/src/about/inquiry-success" id="nativeForm">
-                    </form>  -->
+
+
+                  <form method="get" action="/src/about/inquiry-success" id="nativeForm">
+                    </form>
             </div>
         </paper-card>
 
@@ -190,7 +191,7 @@
                 console.log("Failed to post form");
                 this.sendingForm = false;
                 this.warningMessage = 'We are sorry, for some reason posting this form failed.';
-            }
+            } 
         });
       </script>
 
