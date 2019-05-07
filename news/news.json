@@ -3,18 +3,18 @@
 			"Position": 5,
 			"Creator": "John Savelid",
 			"Date": "2017-12-09T10:06:00",
-			"Heading": "Great interest for our skating tours",		
+			"Heading": "Join us on a kayak weekend",		
 			"Id": "4",
-			"LinkText": "Nordic skating",
-			"LinkUrl": "/adventures/skating-weekend",
-			"Text": "Most weekends are almost fully booked already, but we do have some vacancies. And we can also offer skating tours during the first half of the week - Monday until Wednesday.",
+			"LinkText": "Kayak tours",
+			"LinkUrl": "/adventures/kayak-weekend",
+			"Text": "We have a scheduled kayak weekend in late June, and another tour in August. Or book your own private weekend.",
 			"Picture": {
 				"Alt": "Early season skating",
 				"Categories": "",
 				"Date": "2018-11-20T00:00:00",
 				"FileName": "kayak001",
 				"Format": "News",
-				"FormatedUrl": "/images/500/skating_2018_003.jpg",
+				"FormatedUrl": "/images/500/kayak003.jpg",
 				"Id": "52",
 				"Owner": "Robin"
 			}
@@ -38,25 +38,6 @@
 				"Id": "52",
 				"Owner": "Robin"
 			}
-		},
-		{
-			"Position": 3,
-			"Creator": "John Savelid",
-			"Date": "2018-11-09T10:06:00",
-			"Heading": "First day on ice!!",
-			"Id": "4",
-			"LinkText": "Skating",
-			"LinkUrl": "/adventures/skating-weekend",
-			"Text": "Our favourite season, finally there is ice again, a small area, and foggy. But we can skate, it's beautiful and the ice is perfect!.",	
-			"Picture": {
-				"Alt": "Ice skating in the mountains",
-				"Categories": "",
-				"Date": "2018-11-09T00:00:00",
-				"FileName": "skating_2018_001",
-				"Format": "News",
-				"FormatedUrl": "/images/500/skating_2018_001.jpg",
-				"Id": "52",
-				"Owner": "Robin"
-			}
 		}
+		
 	]
